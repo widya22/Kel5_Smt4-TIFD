@@ -9,22 +9,22 @@ class Lp extends CI_Controller{
 
 	function aksi_login(){
 		//menangkap data yang di inputkan pada form login di v_login dan menyimpanya ke variabel sementara
-		$username = $this->input->post('username_a');
-		$password = $this->input->post('password_a');
+		$username = $this->input->post('NAMA_MHS');
+		$password = $this->input->post('PASSWORD_MHS');
 
 		//menyimpan data ke array pada variabel $where
 		$where = array(
-			'username_a' => $username,
-			'password_a' => ($password)
+			'NAMA_MHS' => $username,
+			'PASSWORD_MHS' => ($password)
 			);
 		//mengecek ada atau tidaknya data dari tabel admin yang sesuai dengan data yang disimpan di $where
 		//mencari function cek_login pada model m_login
-		$cek = $this->m_login->cek_login("tb_admin",$where)->num_rows();
+		$cek = $this->m_login->cek_login("user",$where)->num_rows();
 		if($cek > 0){
 			
 			//jika data ada maka status = login
 			$data_session = array(
-				'username_a' => $username,
+				'NAMA_MHS' => $username,
 				'status' => "login"
 				);
 

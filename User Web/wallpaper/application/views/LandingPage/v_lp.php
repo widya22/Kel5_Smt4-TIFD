@@ -90,13 +90,13 @@
                         <div class="form-group row">
                             <label require class="col-sm-4 col-form-label">Username</label>
                             <div class="col-sm-8">
-                                <input type="text" name="username_a" class="form-control" placeholder="Masukkan Username">
+                                <input type="text" name="NAMA_MHS" class="form-control" placeholder="Masukkan Username">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Password</label>
                             <div class="col-sm-8">
-                                <input require type="text" name="password_a" class="form-control"
+                                <input require type="text" name="PASSWORD_MHS" class="form-control"
                                     placeholder="Masukkan Password">
                             </div>
                         </div>
