@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Yaseen</title>
+	<title>JTI-Surat</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,300,500,600" rel="stylesheet">
 		<!--
@@ -24,30 +24,43 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/nice-select.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
 	<body>
 		<div class="main-wrapper-first">
 			<div class="hero-area relative">
 				<header>
-					<div class="container">
-						<div class="header-wrap">
-							<div class="header-top d-flex justify-content-between align-items-center">
-								<div class="logo">
-									<a href="index.html"><img src="<?php echo base_url('assets/img/logo.png') ?>" alt=""></a>
-								</div>
-								<div class="main-menubar d-flex align-items-center">
-									<nav class="hide">
-										<a href="index.html">Home</a>
-										<a href="generic.html">Generic</a>
-										<a href="elements.html">Elements</a>
-									</nav>
-									<div class="menu-bar"><span class="lnr lnr-menu"></span></div>
-								</div>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<i class="fa fa-envelope fa-2x"></i>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
+						</li>
+						
+						</ul>
+						<li class="nav-item dropdown list-unstyled border border-primary">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								User : @Ohana
+							</a>
+							<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">@Ohana</a>
+								<a class="dropdown-item" href="#">Ubah Akun</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Keluar?</a>
 							</div>
-						</div>
+						</li>
 					</div>
+					</nav>
+					
 				</header>
 				<div class="banner-area relative">
 					<div class="overlay hero-overlay-bg"></div>
@@ -55,11 +68,11 @@
 						<div class="row height align-items-center justify-content-center">
 							<div class="col-lg-7">
 								<div class="banner-content text-center">
-									<h1 class="text-uppercase text-white"><span>Yaseen</span> <br> What else do you need?</h1>
+									<h1 class="text-uppercase text-white"><span>E-Surat JTI POLIJE</span> <br><!--diisi kalo butuh--></h1>
 									<p class="text-white p-2 mb-30">
 										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
 									</p>
-
+									<button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button>
 								</div>
 							</div>
 						</div>
@@ -69,150 +82,6 @@
 		</div>
 		<div class="main-wrapper">
 
-			<!-- Start about Area -->
-			<section class="about-area pt-100 pb-100">
-				<div class="container">
-					<div class="row align-items-center justify-content-between">
-						<div class="col-lg-6 col-md-12 col-sm-12 about-left">
-								<img class="img-fluid" src="<?php echo base_url('assets/img/about.jpg') ?>" alt="">
-						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 about-right">
-							<span class="lnr lnr-sun"></span>
-							<h1 class="text-uppercase">
-
-								<span>Visually</span> <br>
-								clean & Perfect
-							</h1>
-							<p>
-								Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.
-							</p>
-							<a class="learn-btn text-uppercase" href="#">Learn Details</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End about Area -->
-
-			<!-- Start feature Area -->
-			<section class="feature-area pt-100 pb-100">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Multiple Layouts</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Endless Features</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Responsive View</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Clean Coding</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Fully Customizables</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 d-flex flex-row">
-							<div class="single-feature">
-								<h2 class="text-uppercase">Flexible Design</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End feature Area -->
-
-			<!-- Start facts Area -->
-			<section class="facts-area pt-100 pb-100">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-3 col-md-6 single-fact">
-							<h2 class="counter">2536</h2>
-							<p class="text-uppercase">New Followers</p>
-						</div>
-						<div class="col-lg-3 col-md-6 single-fact">
-							<h2 class="counter">6785</h2>
-							<p class="text-uppercase">Site Visitors</p>
-						</div>
-						<div class="col-lg-3 col-md-6 single-fact">
-							<h2 class="counter">1059</h2>
-							<p class="text-uppercase">Online now</p>
-						</div>
-						<div class="col-lg-3 col-md-6 single-fact">
-							<h2 class="counter">2239</h2>
-							<p class="text-uppercase">New Customers</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End facts Area -->
-
-			<!-- Start secvice Area -->
-			<section class="secvice-area pt-90 pb-90">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 single-service">
-							<img class="d-block mx-auto img-fluid" src="<?php echo base_url('assets/img/s1.jpg') ?>" alt="">
-							<div class="desc">
-								<h2 class="text-uppercase">The Important of food</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization. Societies globalization. Societies and the power of globalization. Societies globalization. Societies.
-								</p>
-								<a class="text-uppercase view-details" href="#">View Details</a>
-							</div>
-						</div>
-						<div class="col-md-4 single-service">
-							<div class="desc">
-								<h2 class="text-uppercase">To Hire A Personal Chef</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization. Societies.
-								</p>
-								<a class="text-uppercase view-details" href="#">View Details</a>
-							</div>
-							<img class="d-block mx-auto img-fluid" src="<?php echo base_url('assets/img/s2.jpg') ?>" alt="">
-						</div>
-						<div class="col-md-4 single-service">
-							<img class="d-block mx-auto img-fluid" src="<?php echo base_url('assets/img/s3.jpg') ?>" alt="">
-							<div class="desc">
-								<h2 class="text-uppercase">Thrill Friends And Family</h2>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization. Societies.
-								</p>
-								<a class="text-uppercase view-details" href="#">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End secvice Area -->
 
 			<!-- Start feature-bottom Area -->
 			<section class="feature-bottom-area pt-100 pb-100">
@@ -220,35 +89,38 @@
 					<div class="row ">
 						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
 							<div class="count">
-								<h1>01</h1>
+								<h4>01</h4>
 							</div>
 							<div class="desc">
-								<h2 class="text-uppercase">responsive View</h2>
-								<p>
+								<h5 class="text-uppercase">Ajukan Surat</h5>
+								<!-- <p>
 									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
+								</p> -->
+								<i class="fa fa-envelope fa-5x"></i>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
 							<div class="count">
-								<h1>02</h1>
+								<h4>02</h4>
 							</div>
 							<div class="desc">
-								<h2 class="text-uppercase">Multiple Layouts</h2>
-								<p>
+								<h5 class="text-uppercase">Tunggu</h5>
+								<!-- <p>
 									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
+								</p> -->
+								<i class="fa fa-spinner fa-5x""></i>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
 							<div class="count">
-								<h1>03</h1>
+								<h4>03</h4>
 							</div>
 							<div class="desc">
-								<h2 class="text-uppercase">Flexible Design</h2>
-								<p>
+								<h5 class="text-uppercase">Selesai</h5>
+								<!-- <p>
 									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p>
+								</p> -->
+								<i class="fa fa-check-circle fa-5x"></i>
 							</div>
 						</div>
 					</div>
@@ -261,9 +133,9 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<div class="section-title text-center">
-								<h3 class="text-uppercase text-white"><span>Subscribe</span> <br>
-								for our Newsletter</h3>
-								<span class="text-white">We won’t send any kind of spam</span>
+								<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
+								</h3>
+								<!-- <span class="text-white">We won’t send any kind of spam</span> -->
 							</div>
 						</div>
 					</div>
@@ -271,11 +143,11 @@
 						<div class="col-lg-6">
 							<div id="mc_embed_signup">
 								<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-									<input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
+									<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
 									<div style="position: absolute; left: -5000px;">
 										<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
 									</div>
-									<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Get Started</span><span class="lnr lnr-arrow-right"></span></button>
+									<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
 									<div class="info"></div>
 								</form>
 							</div>
@@ -290,13 +162,10 @@
 					<div class="row d-flex justify-content-center">
 						<ul class="footer-menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.html">Beranda</a>
 							</li>
 							<li>
-								<a href="generic.html">Generic</a>
-							</li>
-							<li>
-								<a href="elements.html">Elements</a>
+								<a href="elements.html">Author</a>
 							</li>
 						</ul>
 					</div>
@@ -309,7 +178,7 @@
 							</div>
 							<div class="footer-content">
 								<div class="text-center">
-									Copyright © 2018 All rights reserved   |   This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com">Colorlib</a>
+									Copyright © 2020 
 							</div>
 						</div>
 					</footer>
@@ -324,7 +193,10 @@
     <script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 	</body>
 </html>
