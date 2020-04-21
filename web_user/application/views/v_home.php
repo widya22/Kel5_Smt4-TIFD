@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/nice-select.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 	</head>
 	<body>
 		<div class="main-wrapper-first">
@@ -85,45 +86,13 @@
 
 			<!-- Start feature-bottom Area -->
 			<section class="feature-bottom-area pt-100 pb-100">
-				<div class="container">
-					<div class="row ">
-						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
-							<div class="count">
-								<h4>01</h4>
-							</div>
-							<div class="desc">
-								<h5 class="text-uppercase">Ajukan Surat</h5>
-								<!-- <p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p> -->
-								<i class="fa fa-envelope fa-5x"></i>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
-							<div class="count">
-								<h4>02</h4>
-							</div>
-							<div class="desc">
-								<h5 class="text-uppercase">Tunggu</h5>
-								<!-- <p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p> -->
-								<i class="fa fa-spinner fa-5x""></i>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-12 single-feat2 d-flex justify-content-between align-items-top">
-							<div class="count">
-								<h4>03</h4>
-							</div>
-							<div class="desc">
-								<h5 class="text-uppercase">Selesai</h5>
-								<!-- <p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and the power of globalization.
-								</p> -->
-								<i class="fa fa-check-circle fa-5x"></i>
-							</div>
-						</div>
-					</div>
+				<div class="container text-center">
+					<ul class="list-group list-group-horizontal">
+						<li class="list-group-item flex-fill">Andi</li>
+						<li class="list-group-item flex-fill">Budi</li>
+						<li class="list-group-item flex-fill">Cahyo</li>
+						<li class="list-group-item flex-fill">Dono</li>
+					</ul>
 				</div>
 			</section>
 			<!-- End feature-bottom Area -->
@@ -193,10 +162,11 @@
     <script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 
 	</body>
 </html>
