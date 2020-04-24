@@ -41,12 +41,9 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+							<a class="nav-link ml-2 mr-2" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/form">Formulir Surat</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
-						</li>
-						
+						<a class="nav-link ml-2 mr-2" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/dashboard">Surat Saya</a>
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,22 +58,12 @@
 						</li>
 					</div>
 					</nav>
-					
 				</header>
 				<div class="banner-area relative">
 					<div class="overlay hero-overlay-bg"></div>
 					<div class="container">
 						<div class="row height align-items-center justify-content-center">
-							<div class="col-lg-7">
-								<div class="banner-content text-center">
-									<h1 class="text-uppercase text-white"><span>E-Surat JTI POLIJE</span> <br><!--diisi kalo butuh--></h1>
-									<p class="text-white p-2 mb-30">
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
-									</p>
-									<a class="btn btn-primary btn-lg" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/dashboard">Buat Surat Sekarang <i class="fa fa-chevron-circle-right text-light"></i></a>
-									<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -84,48 +71,8 @@
 		</div>
 		<div class="main-wrapper">
 
-
-			<!-- Start feature-bottom Area -->
-			<section class="feature-bottom-area pt-100 pb-100">
-				<div class="container text-center">
-					<ul class="list-group list-group-horizontal">
-						<li class="list-group-item flex-fill">Andi</li>
-						<li class="list-group-item flex-fill">Budi</li>
-						<li class="list-group-item flex-fill">Cahyo</li>
-						<li class="list-group-item flex-fill">Dono</li>
-					</ul>
-				</div>
-			</section>
 			<!-- End feature-bottom Area -->
-			<!-- Start Subscription Area -->
-			<section class="subscription-area pt-100 pb-100">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="section-title text-center">
-								<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
-								</h3>
-								<!-- <span class="text-white">We won’t send any kind of spam</span> -->
-							</div>
-						</div>
-					</div>
-					<div class="row justify-content-center">
-						<div class="col-lg-6">
-							<div id="mc_embed_signup">
-								<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-									<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
-									<div style="position: absolute; left: -5000px;">
-										<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
-									</div>
-									<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
-									<div class="info"></div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End Subscription Area -->
+
 			<!-- Start Footer Widget Area -->
 			<section class="footer-area pt-60 pb-60">
 				<div class="container">
