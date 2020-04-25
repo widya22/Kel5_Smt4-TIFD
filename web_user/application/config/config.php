@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = "http://localhost/Github/Kel5_Smt4-TIFD/web_user/";
-$config['base_url'] = "http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/";
+$config['base_url'] = "http://localhost/Kel5_Smt4-TIFD/web_user/";
 
 
 

@@ -41,9 +41,9 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a class="nav-link ml-2 mr-2" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/form">Formulir Surat</a>
+							<a class="nav-link ml-2 mr-2" href="<?php echo base_url('form')?>">Formulir Surat</a>
 						</li>
-						<a class="nav-link ml-2 mr-2" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/dashboard">Surat Saya</a>
+						<a class="nav-link ml-2 mr-2" href="<?php echo base_url('dashboard')?>">Surat Saya</a>
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
