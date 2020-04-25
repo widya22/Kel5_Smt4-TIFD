@@ -2113,10 +2113,6 @@ body:after {
   font-weight: 600;
 }
 
-.hero-area {
-  background: url(../img/banner-bg.jpg) no-repeat center/contain;
-  background-size: cover;
-}
 
 .hero-overlay-bg {
   background: -webkit-linear-gradient(left top, #91d1ff, #a387ff);

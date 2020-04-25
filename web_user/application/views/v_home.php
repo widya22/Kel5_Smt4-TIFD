@@ -29,6 +29,13 @@
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 	</head>
 	<body>
+	<!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+	<?php
+
+	?>
 		<div class="main-wrapper-first">
 			<div class="hero-area relative">
 				<header>
@@ -48,16 +55,28 @@
 						</li>
 						
 						</ul>
-						<li class="nav-item dropdown list-unstyled border border-primary">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								User : @Ohana
-							</a>
-							<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">@Ohana</a>
-								<a class="dropdown-item" href="#">Ubah Akun</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Keluar?</a>
-							</div>
+						<li class="nav-item dropdown list-unstyled border border-primary text primary">
+								<?php
+								if(isset($_SESSION["status"])){ 
+												$nama = $_SESSION['nama'];
+												foreach($nama as $u){ 
+													$nama_user= $u->NAMA_MHS;
+												}
+									?>
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											User : @<?php echo $nama_user ?>
+										</a>
+										<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
+											<a class="dropdown-item" href="#">Ubah Akun</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>">Keluar?</a>
+										</div>
+
+								<?php }else{ ?>
+									<a href="#" data-toggle="modal"  class="nav-link" aria-haspopup="true" aria-expanded="false"
+                            		data-target="#modalLogin">Masuk/Daftar</a>
+								<?php } ?>
 						</li>
 					</div>
 					</nav>
@@ -73,7 +92,7 @@
 									<p class="text-white p-2 mb-30">
 										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
 									</p>
-									<button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button>
+									<button type="button" class="btn btn-light btn-lg text-info rounded-pill pr-5 pl-5">Buat Surat Sekarang  <i class="fa fa-2x fa-chevron-right text-info ml-2"></i></button>
 								</div>
 							</div>
 						</div>
@@ -85,15 +104,24 @@
 
 
 			<!-- Start feature-bottom Area -->
-			<section class="feature-bottom-area pt-100 pb-100">
-				<div class="container text-center">
-					<ul class="list-group list-group-horizontal">
-						<li class="list-group-item flex-fill">Andi</li>
-						<li class="list-group-item flex-fill">Budi</li>
-						<li class="list-group-item flex-fill">Cahyo</li>
-						<li class="list-group-item flex-fill">Dono</li>
-					</ul>
-				</div>
+			<section class="feature-bottom-area pt-100 pb-100 mr-5 ml-5">
+
+				<table class="table table-borderless container text-center ">
+					<thead>
+						<tr>
+						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img></th>
+						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img></th>
+						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/cepat.png') ?>"></img></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>Lebih Hemat Waktu</td>
+						<td>Live Tracking</td>
+						<td>Lebih Cepat</td>
+						</tr>
+					</tbody>
+					</table>
 			</section>
 			<!-- End feature-bottom Area -->
 			<!-- Start Subscription Area -->
@@ -167,6 +195,69 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
+<!-- modal -->
+  <!-- modal login -->
+  <div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Masuk</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form login -->
+                    <form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
+                    <div class="form-group">
+                        <label for="nim">NIM</label>
+                        <input type="text" name="nim" placeholder="NIM" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" />
+                    </div>
+					<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Masuk</button>
+                    </div>
+                    </form>
+                    <!-- end form login -->
+                </div>
+                </div>
+            </div>
+            </div>
+
+             <!-- modal Register -->
+        <div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Daftar</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo base_url().'crud/register'; ?>" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="Username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" />
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Daftar</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+<!-- modal -->
 	</body>
 </html>
