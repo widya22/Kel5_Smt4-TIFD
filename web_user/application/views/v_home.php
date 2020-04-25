@@ -92,7 +92,8 @@
 									<p class="text-white p-2 mb-30">
 										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
 									</p>
-									<button type="button" class="btn btn-light btn-lg text-info rounded-pill pr-5 pl-5">Buat Surat Sekarang  <i class="fa fa-2x fa-chevron-right text-info ml-2"></i></button>
+									<a class="btn btn-light btn-lg text-info rounded-pill pr-5 pl-5" href="http://localhost/Kel6_Smt4-TIFD/E41181216_NUR_HADI/Kel5_Smt4-TIFD/web_user/dashboard">Buat Surat Sekarang <i class="fa fa-2x fa-chevron-right text-info ml-2"></i></a>
+									<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
 								</div>
 							</div>
 						</div>
