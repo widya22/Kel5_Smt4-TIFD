@@ -15,6 +15,11 @@ class Crud extends CI_Controller{
 
     
     }
+
+    function detailSrt(){
+      $data['detail_surat'] = $this->m_data->tampil_detail_surat()->result();
+      $this->load->view('detailsurat',$data);
+      }
   
     function dtSrtPd(){
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
@@ -86,5 +91,7 @@ class Crud extends CI_Controller{
     //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan pada array
     // melalui model
     //kemudian data tersebut disimpan kembali dengan id yang sama.
-    
+  
+ 
+
 }

@@ -4,6 +4,10 @@ class M_data extends CI_Model{
 	function tampil_data_mhs(){
 		return $this->db->get('user');
     }
+    function tampil_detail_surat(){
+      return $this->db->get('detail_surat');
+      }
+
   function tampil_data_suratPending(){
     //return $this->db->get('surat');
     $this->db->select('*');
@@ -46,5 +50,6 @@ class M_data extends CI_Model{
     function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
-	}
+  }
+  
 }
