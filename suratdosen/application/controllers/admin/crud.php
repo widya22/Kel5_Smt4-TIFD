@@ -17,9 +17,7 @@ class Crud extends CI_Controller{
     $this->load->view('list',$data);
    
   }
-  function detailSrt(){
-    $this->load->model('m_data');
-    $this->m_data->myjoin();
+  
   }
     function tambah(){
 		$this->load->view('v_input'); 
@@ -34,19 +32,7 @@ class Crud extends CI_Controller{
 		$this->load->view('formtambah'); 
     }
 
-    function tambah_aksi(){
-		$judul = $this->input->post('judul');
-		$fasilitas = $this->input->post('fasilitas');
-		$harga = $this->input->post('harga');
- 
-		$data = array(
-			'judul' => $judul,
-			'fasilitas' => $fasilitas,
-			'harga' => $harga
-			);
-		$this->m_data->input_data($data,'surat');
-		redirect('AgenTour/admin/crud/admin');
-    }
+    
     //Pada fungsi tambah_aksi data yang diinputkan akan dimasukkan kedalam array $data kemudia diparsing ke model m_data
 
     function hapus($id){
@@ -73,20 +59,8 @@ class Crud extends CI_Controller{
     $this->load->view('detailsurat', $data);
       }
 
-    function editkntn($id){
-      $where = array('id' => $id);
-      $data['surat'] = $this->m_data->edit_data($where,'surat')->result();
-      $this->load->view('formedit',$data);
-      }
-    //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan melalui model
-    //kemudian data tersebut disimpan kembali dengan id yang sama.
-
+    
     function update($id){
-      //$id = $this->input->post('id');
-      //$nama = $this->input->post('nama');
-      //$alamat = $this->input->post('alamat');
-      //$pekerjaan = $this->input->post('pekerjaan');
-  
       $data = array(
           'TRAKING_SURAT' => "Menunggu Admin"
           //'alamat' => $alamat,
