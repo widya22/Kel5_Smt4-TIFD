@@ -17,7 +17,10 @@ class Crud extends CI_Controller{
     $this->load->view('list',$data);
    
   }
-
+  function detailSrt(){
+    $this->load->model('m_data');
+    $this->m_data->myjoin();
+  }
     function tambah(){
 		$this->load->view('v_input'); 
     }
@@ -58,6 +61,17 @@ class Crud extends CI_Controller{
 		$data['surat'] = $this->m_data->edit_data($where,'surat')->result();
 		$this->load->view('v_edit',$data);
     }
+
+      //function dtlSrt($id){
+      //$where = array('ID_SURAT' => $id);
+      //$data['surat'] = $this->m_data->detail_data($where,'surat')->result();
+      //$this->load->view('detailsurat',$data);
+      //}
+
+    function detailSurat($id){
+    $data['detailnilai'] = $this->m_data->detaildata($id);
+    $this->load->view('detailsurat', $data);
+      }
 
     function editkntn($id){
       $where = array('id' => $id);
