@@ -44,7 +44,7 @@
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
-             <!-- modal Register -->
+            <!-- modal Register -->
             <div class="modal-dialog pt-60" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
