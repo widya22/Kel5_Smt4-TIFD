@@ -14,24 +14,26 @@ class Form extends CI_Controller
 
 	public function tambahsurat()
 	{
-		$id_surat		= $this->input->post('ID_SURAT');
-		$tgl			= $this->input->post('TANGGAL');
-		$status			= $this->input->post('STATUS_SURAT');
+		$nip			= $this->input->post('NIP');
 		$jenis_surat	= $this->input->post('ID_JENIS_SURAT');
-		$tgl_pengajuan	= $this->input->post('TANGGAL_PENGAJUAN');
+		$nim			= $this->input->post('NIM');
 		$nama_mitra		= $this->input->post('NAMA_MITRA');
 		$alm_mitra		= $this->input->post('ALAMAT_MITRA');
-		$nip			= $this->input->post('NIP');
+		$tgl			= $this->input->post('TANGGAL');
+		$tgl_pengajuan	= $this->input->post('TANGGAL_PENGAJUAN');
+		$status			= $this->input->post('STATUS_SURAT');
+		$tracking		= $this->input->post('TRAKING_SURAT');
 
 		$data = array(
-			'ID_SURAT'			=> $id_surat,
 			'NIP'  				=> $nip,
-			'ID_JENIS_SURAT'  	=> $id_surat,
+			'ID_JENIS_SURAT'  	=> $jenis_surat,
+			'NIM'				=> $nim,
 			'NAMA_MITRA'  		=> $nama_mitra,
 			'ALAMAT_MITRA'  	=> $alm_mitra,
 			'TANGGAL'  			=> $tgl,
 			'TANGGAL_PENGAJUAN' => $tgl_pengajuan,
 			'STATUS_SURAT'  	=> $status,
+			'TRAKING_SURAT'		=> $tracking,
 		);
 
 		$this->m_form->tambahsurat($data, 'surat');

@@ -24,10 +24,4 @@ class M_form extends CI_Model
     $this->db->where($where);
     $this->db->delete($table);
   }
-
-  public function lihat_data($id = NULL)
-  {
-    $query = $this->db->get_where('tb_produk', array('id_p' => $id))->row();
-    return $query;
-  }
 }

@@ -43,22 +43,34 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?php echo base_url('form') ?>">Formulir Surat</a>
+                <a class="nav-link ml-2 mr-2" href="#">Beranda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?php echo base_url('dashboard') ?>">Surat Saya</a>
+                <a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
               </li>
+
             </ul>
-            <li class="nav-item dropdown list-unstyled border border-primary">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                User : @Ohana
-              </a>
-              <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">@Ohana</a>
-                <a class="dropdown-item" href="#">Ubah Akun</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Keluar?</a>
-              </div>
+            <li class="nav-item dropdown list-unstyled border border-primary text primary">
+              <?php
+              if (isset($_SESSION["status"])) {
+                $nama = $_SESSION['nama'];
+                foreach ($nama as $u) {
+                  $nama_user = $u->NAMA_MHS;
+                }
+              ?>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  User : @<?php echo $nama_user ?>
+                </a>
+                <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
+                  <a class="dropdown-item" href="#">Ubah Akun</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Keluar</a>
+                </div>
+
+              <?php } else { ?>
+                <a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
+              <?php } ?>
             </li>
           </div>
         </nav>
@@ -89,26 +101,40 @@
                     <!-- form start -->
                     <form role="form" action="<?= base_url() ?>form/tambahsurat" method="post">
                       <div class="card-body">
+                        <?php date_default_timezone_set('Asia/Jakarta'); ?>
+                        <input type="hidden" readonly name="TANGGAL" value="<?= date("Y-m-d"); ?>">
                         <div class="form-group row">
-                          <label class="col-md-3 ml-4">Jenis Surat</label>
-                          <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
+                          <label class="col-md-3 ml-4">Nama Dosen</label>
+                          <select class="custom-select col-md-8 mr-2" name="NIP">
+                            <option selected disabled>Pilih Nama Dosen</option>
                             <?php
                             $no1 = 1;
-                            foreach ($jenis as $js) :
+                            foreach ($dosen as $d) :
                             ?>
-                              <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
+                              <option value="<?= $d->NIP ?>"><?= $d->NAMA_DOSEN ?></option>
                               <?php $no1++ ?>
                             <?php endforeach ?>
                           </select>
                         </div>
-
-                        <input type="hidden" name="ID_SURAT" value="5">
-                        <input type="hidden" name="TANGGAL" value="01-09-2020">
-                        <input type="hidden" name="STATUS" value="Menunggu">
-
                         <div class="form-group row">
-                          <label class="col-md-3 ml-4">Tanggal Survei</label>
-                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                          <label class="col-md-3 ml-4">Jenis Surat</label>
+                          <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
+                            <option selected disabled>Pilih Jenis Surat</option>
+                            <?php
+                            $no2 = 1;
+                            foreach ($jenis as $js) :
+                            ?> <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
+                              <?php $no2++ ?>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">NIM Pengaju</label>
+                          <?php
+                          if (isset($_SESSION["status"])) {
+                            $nim = $_SESSION['nim'];
+                          } ?>
+                          <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM" value="<?= $nim ?>">
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Kepada</label>
@@ -119,62 +145,48 @@
                           <input type="text" name="ALAMAT_MITRA" placeholder="Alamat Instansi / Mitra" class="form-control col-md-8 mr-2">
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 ml-4">Nama Dosen</label>
-                          <select class="custom-select col-md-8 mr-2" name="NIP">
+                          <label class="col-md-3 ml-4">Tanggal Survei</label>
+                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                        </div>
+                        <input type="hidden" name="STATUS" value="Menunggu">
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">No HP Mahasiswa</label>
+                          <input type="text" placeholder="No HP Mahasiswa Pengaju" class="form-control col-md-8 mr-2">
+                        </div>
+                        <input type="hidden" name="STATUS_SURAT" value="0">
+                        <input type="hidden" name="TRAKING_SURAT" value="Menunggu Dosen">
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Data Mahasiswa Anggota</label>
+                          <div>
+                            <div class="form-group fieldGroup">
+                              <div class="input-group">
+                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                <div class="input-group-addon ml-3">
+                                  <a href="javascript:void(0)" class="btn btn-success addMore"><i class="fa fa-plus"></i></a>
+                                </div>
+                              </div>
+                            </div>
 
-                            <?php
-                            $no2 = 1;
-                            foreach ($dosen as $d) :
-                            ?>
-                              <option value="<?= $d->NIP ?>"><?= $d->NAMA_DOSEN ?></option>
-                              <?php $no2++ ?>
-                            <?php endforeach ?>
-
-                          </select>
+                            <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Simpan Data Anggota" />
+                            <div class="form-group fieldGroupCopy" style="display: none;">
+                              <div class="input-group">
+                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                <div class="input-group-addon ml-3">
+                                  <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fa fa-trash"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                            <br>
+                          </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">HP Dosen</label>
-                          <input type="text" class="form-control col-md-8 mr-2">
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Data Mahasiswa</label>
-                          <button class="btn btn-primary " id="addmaha" data-toggle="modal" data-target="#exampleModal">Tambah Data
-                            Mahasiswa</button>
-                        </div>
-                        <div class="form-group row">
-                          <table class="table table-bordered mx-4">
-                            <thead>
-                              <tr>
-                                <th scope="col">NAMA</th>
-                                <th scope="col">NIM</th>
-                                <th scope="col">HP Mahasiswa</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Adi</td>
-                                <td>E41182424</td>
-                                <td>081554973333</td>
-                              </tr>
-                              <tr>
-                                <td>Bagas</td>
-                                <td>E41181216</td>
-                                <td>-</td>
-                              </tr>
-                              <tr>
-                                <td>Alfian</td>
-                                <td>E41181346</td>
-                                <td>-</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                        <br>
                         <div class="form-group row">
                           <label class="col-md-3 my-2"></label>
-                          <button type="submit" class="btn btn-primary ml-4">Ajukan</button>
+                          <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
                         </div>
-                      </div>
-                      <!-- /.card-body -->
+                        <!-- /.card-body -->
                     </form>
                   </div>
                   <!-- /.row -->
@@ -235,7 +247,7 @@
   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 
   <!-- Modal -->
-  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <!-- <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -269,6 +281,25 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <!--Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Pilih "Keluar" jika ingin mengakhirinya.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Keluar</a>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>
@@ -284,5 +315,47 @@
     });
   });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // membatasi jumlah inputan
+    var maxGroup = 10;
+
+    //melakukan proses multiple input 
+    $(".addMore").click(function() {
+      if ($('body').find('.fieldGroup').length < maxGroup) {
+        var fieldHTML = '<div class="form-group fieldGroup">' + $(".fieldGroupCopy").html() + '</div>';
+        $('body').find('.fieldGroup:last').after(fieldHTML);
+      } else {
+        alert('Maximum ' + maxGroup + ' groups are allowed.');
+      }
+    });
+
+    //remove fields group
+    $("body").on("click", ".remove", function() {
+      $(this).parents(".fieldGroup").remove();
+    });
+  });
+</script>
+
+<?php
+if (isset($_POST['submit'])) {
+  $nama = $_POST['ANGGOTA_MHS'];
+  $nim = $_POST['NIM_ANGGOTA'];
+  if (!empty($nama)) {
+    for ($a = 0; $a < count($nama); $a++) {
+      if (!empty($nama[$a])) {
+        $nama = $nama[$a];
+        $nim = $nim[$a];
+
+        //membuat insert data sementara
+        echo 'Data ke -' . ($a + 1) . '=> Nama: ' . $nama . '; NIM: ' . $nim . '</br>';
+      }
+    }
+  }
+}
+?>
 
 </html>
