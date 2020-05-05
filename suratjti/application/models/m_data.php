@@ -1,7 +1,8 @@
 <?php 
  
 class M_data extends CI_Model{
-	
+  
+  //MODEL DOSEN	
     function tampil_data(){
       //return $this->db->get('surat');
       $this->db->select('*');
@@ -53,4 +54,38 @@ class M_data extends CI_Model{
     $this->db->where('surat.id_surat', $id);
     return $this->db->get()->result();
   }
+  
+
+
+  //MODEL ADMIN
+  function tampil_data_mhs(){
+		return $this->db->get('user');
+    }
+  function tampil_data_suratPending(){
+    //return $this->db->get('surat');
+    $this->db->select('*');
+  $this->db->from('surat');
+  $this->db->like("traking_surat", 'Menunggu');
+  //$this->db->where("traking_surat", "Menunggu Admin");
+  //$this->db->where("usertype","admin");
+  return $query=$this->db->get();
+      }
+  function tampil_data_suratTolak(){
+  //return $this->db->get('surat');
+  $this->db->select('*');
+  $this->db->from('surat');
+  $this->db->where("traking_surat", "Ditolak");
+  //$this->db->where("usertype","admin");
+  return $query=$this->db->get();
+      }
+  
+  function tampil_data_suratSelesai(){
+  //return $this->db->get('surat');
+  $this->db->select('*');
+  $this->db->from('surat');
+  $this->db->where("traking_surat", "Selesai");
+  //$this->db->where("usertype","admin");
+  return $query=$this->db->get();
+  }    
+    
 }
