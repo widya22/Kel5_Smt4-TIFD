@@ -101,10 +101,12 @@
                             <?php endforeach ?>
                           </select>
                         </div>
+                        <?php
+                        $tanggal = date("Y-m-d H:i:s");
+                        ?>
 
-                        <input type="hidden" name="ID_SURAT" value="5">
-                        <input type="hidden" name="TANGGAL" value="01-09-2020">
-                        <input type="hidden" name="STATUS" value="Menunggu">
+                        <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
+                        <input type="hidden" name="STATUS_SURAT" value="Menunggu">
 
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Tanggal Survei</label>

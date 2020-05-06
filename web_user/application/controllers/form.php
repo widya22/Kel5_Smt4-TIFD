@@ -14,8 +14,8 @@ class Form extends CI_Controller
 
 	public function tambahsurat()
 	{
-		$id_surat		= $this->input->post('ID_SURAT');
-		$tgl			= $this->input->post('TANGGAL');
+
+		$tanggal		= $this->input->post('TANGGAL');
 		$status			= $this->input->post('STATUS_SURAT');
 		$jenis_surat	= $this->input->post('ID_JENIS_SURAT');
 		$tgl_pengajuan	= $this->input->post('TANGGAL_PENGAJUAN');
@@ -23,10 +23,11 @@ class Form extends CI_Controller
 		$alm_mitra		= $this->input->post('ALAMAT_MITRA');
 		$nip			= $this->input->post('NIP');
 
+
 		$data = array(
-			'ID_SURAT'			=> $id_surat,
+			'TANGGAL'			=> $tanggal,
 			'NIP'  				=> $nip,
-			'ID_JENIS_SURAT'  	=> $id_surat,
+			'ID_JENIS_SURAT'  	=> $jenis_surat,
 			'NAMA_MITRA'  		=> $nama_mitra,
 			'ALAMAT_MITRA'  	=> $alm_mitra,
 			'TANGGAL'  			=> $tgl,
