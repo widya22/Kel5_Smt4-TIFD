@@ -24,7 +24,7 @@ class Login0 extends CI_Controller{
 
 			$data_session = array(
 				'id_admin' => $ID_ADMIN,
-				'nama_admin' => $NAMA_ADMIN,
+				'nama_admin' => $row->NAMA_ADMIN,
 				'status' => "login"
 				);
 
