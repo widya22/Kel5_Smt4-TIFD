@@ -28,7 +28,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.php" class="nav-link">Home</a>
+        <a href="<?php echo base_url('admin');?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"></a>
@@ -159,7 +159,7 @@
           <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nama Admin</a>
+          <a href="#" class="d-block"><?php echo $this->session->userdata("NAMA_ADMIN"); ?></a>
         </div>
       </div>
 
@@ -178,7 +178,7 @@
             </a>
             <ul class="nav nav-treeview">              
               <li class="nav-item">
-                <a href="./index.php" class="nav-link">
+                <a href="<?php echo base_url('admin');?>"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Home</p>
                 </a>
@@ -190,7 +190,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="dataMahasiswa.php" class="nav-link">
+                <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
                 </a>
@@ -205,19 +205,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtPd" class="nav-link active">
+                <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link active">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Menunggu Persetujuan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtTlk" class="nav-link">
+                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p>Surat Ditolak</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtSls" class="nav-link">
+                <a href="<?php echo base_url('admin/dtSrtSls');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-info"></i>
                   <p>Surat Selesai</p>
                 </a>
@@ -244,7 +244,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
               <li class="breadcrumb-item active">Surat Pending</li>
             </ol>
           </div>

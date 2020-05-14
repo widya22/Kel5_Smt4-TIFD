@@ -90,5 +90,9 @@ class Admin extends CI_Controller{
     //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan pada array
     // melalui model
     //kemudian data tersebut disimpan kembali dengan id yang sama.
+    function logout(){
+      $this->session->sess_destroy();
+      redirect(base_url('login0'));
+    }
     
 }
