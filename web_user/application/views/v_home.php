@@ -55,24 +55,25 @@
 	</div>
 	<?php } ?>
 
-	<div class="main-wrapper-first">
-		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
-		<div class="hero-area relative">
-			<header>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<i class="fa fa-envelope fa-2x"></i>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+		<div class="main-wrapper-first">
+			<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
+			>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
+			<div class="hero-area relative">
+				<header>
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<i class="fa fa-envelope fa-2x"></i>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
-							</li>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item">
+									<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
+								</li>
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
@@ -94,12 +95,12 @@
 									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
 								</div>
 
-							<?php } else { ?>
-								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
-							<?php } ?>
-						</li>
-					</div>
-				</nav>
+								<?php } else { ?>
+									<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
+								<?php } ?>
+							</li>
+						</div>
+					</nav>
 
 			</header>
 			<div class="banner-area relative">
@@ -128,165 +129,138 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="main-wrapper">
+		<div class="main-wrapper">
 
 
-		<!-- Start feature-bottom Area -->
-		<section class="feature-bottom-area pt-100 pb-100 mr-5 ml-5">
+			<!-- Start feature-bottom Area -->
+			<section class="feature-bottom-area pt-100 pb-100 mr-5 ml-5">
 
-			<table class="table table-borderless container text-center ">
-				<thead>
-					<tr>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/cepat.png') ?>"></img></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Lebih Hemat Waktu</td>
-						<td>Live Tracking</td>
-						<td>Lebih Cepat</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-		<!-- End feature-bottom Area -->
-		<!-- Start Subscription Area -->
-		<section class="subscription-area pt-100 pb-100">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
-							</h3>
-							<!-- <span class="text-white">We won’t send any kind of spam</span> -->
+				<table class="table table-borderless container text-center ">
+					<thead>
+						<tr>
+							<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img></th>
+							<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img></th>
+							<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/cepat.png') ?>"></img></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Lebih Hemat Waktu</td>
+							<td>Live Tracking</td>
+							<td>Lebih Cepat</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<!-- End feature-bottom Area -->
+			<!-- Start Subscription Area -->
+			<section class="subscription-area pt-100 pb-100">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="section-title text-center">
+								<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
+								</h3>
+								<!-- <span class="text-white">We won’t send any kind of spam</span> -->
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-lg-6">
+							<div id="mc_embed_signup">
+								<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
+									<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
+									<div style="position: absolute; left: -5000px;">
+										<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
+									</div>
+									<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
+									<div class="info"></div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row justify-content-center">
-					<div class="col-lg-6">
-						<div id="mc_embed_signup">
-							<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-								<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
-								<div style="position: absolute; left: -5000px;">
-									<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
-								</div>
-								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
-								<div class="info"></div>
-							</form>
+			</section>
+			<!-- End Subscription Area -->
+			<!-- Start Footer Widget Area -->
+			<section class="footer-area pt-60 pb-60">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<ul class="footer-menu">
+							<li>
+								<<<<<<< HEAD <a href="index.html">Beranda</a>
+									=======
+									<a href="<?= base_url('home') ?>">Beranda</a>
+									>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
+							</li>
+							<li>
+								<a href="elements.html">Author</a>
+							</li>
+						</ul>
+					</div>
+					<footer>
+						<div class="footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Subscription Area -->
-		<!-- Start Footer Widget Area -->
-		<section class="footer-area pt-60 pb-60">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<ul class="footer-menu">
-						<li>
-							<a href="<?= base_url('home') ?>">Beranda</a>
-						</li>
-						<li>
-							<a href="elements.html">Author</a>
-						</li>
-					</ul>
-				</div>
-				<footer>
-					<div class="footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-dribbble"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
-					</div>
-					<div class="footer-content">
-						<div class="text-center">
-							Copyright © 2020
+						<div class="footer-content">
+							<div class="text-center">
+								Copyright © 2020
+							</div>
 						</div>
-					</div>
-				</footer>
-		</section>
-		<!-- End Footer Widget Area -->
-	</div>
-	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.nice-select.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/main.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+					</footer>
+			</section>
+			<!-- End Footer Widget Area -->
+		</div>
+		<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/jquery.nice-select.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+		<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
-	<!-- modal -->
-	<!-- modal login -->
-	<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Masuk</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- form login -->
-					<form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
-						<div class="form-group">
-							<label for="nim">NIM</label>
-							<input type="text" name="nim" placeholder="NIM" class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
-						</div>
-						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
-						<div class="text-right">
-							<button class="btn btn-primary" type="submit">Masuk</button>
-						</div>
-					</form>
-					<!-- end form login -->
+		<!-- modal -->
+		<!-- modal login -->
+		<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Masuk</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- form login -->
+						<form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
+							<div class="form-group">
+								<label for="nim">NIM</label>
+								<input type="text" name="nim" placeholder="NIM" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" name="password" placeholder="Password" class="form-control" />
+							</div>
+							<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
+							<div class="text-right">
+								<button class="btn btn-primary" type="submit">Masuk</button>
+							</div>
+						</form>
+						<!-- end form login -->
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- modal Register -->
-	<div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Daftar</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="<?php echo base_url() . 'crud/register'; ?>" method="post">
-						<div class="form-group">
-							<label for="username">Username</label>
-							<input type="text" name="username" placeholder="Username" class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
-						</div>
-						<div class="text-right">
-							<button class="btn btn-primary" type="submit">Daftar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -305,7 +279,23 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<<<<<<< HEAD=======<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin keluar?</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Pilih "Keluar" jika ingin mengakhirinya.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+						<a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Keluar</a>
+					</div>
+				</div>
+			</div>
+			</div>
 
 	<!-- modal selamat datang daftar -->
 	<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

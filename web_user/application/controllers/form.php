@@ -24,6 +24,7 @@ class Form extends CI_Controller
 		$status			= $this->input->post('STATUS_SURAT');
 		$tracking		= $this->input->post('TRAKING_SURAT');
 
+
 		$data = array(
 			'NIP'  				=> $nip,
 			'ID_JENIS_SURAT'  	=> $jenis_surat,

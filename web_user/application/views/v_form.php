@@ -116,77 +116,84 @@
                             <?php endforeach ?>
                           </select>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Jenis Surat</label>
-                          <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
-                            <option selected disabled>Pilih Jenis Surat</option>
-                            <?php
-                            $no2 = 1;
-                            foreach ($jenis as $js) :
-                            ?> <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
-                              <?php $no2++ ?>
-                            <?php endforeach ?>
-                          </select>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">NIM Pengaju</label>
-                          <?php
-                          if (isset($_SESSION["status"])) {
-                            $nim = $_SESSION['nim'];
-                          } ?>
-                          <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM" value="<?= $nim ?>">
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Kepada</label>
-                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Alamat </label>
-                          <input type="text" name="ALAMAT_MITRA" placeholder="Alamat Instansi / Mitra" class="form-control col-md-8 mr-2">
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Tanggal Survei</label>
-                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
-                        </div>
-                        <input type="hidden" name="STATUS" value="Menunggu">
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">No HP Mahasiswa</label>
-                          <input type="text" placeholder="No HP Mahasiswa Pengaju" class="form-control col-md-8 mr-2">
-                        </div>
-                        <input type="hidden" name="STATUS_SURAT" value="0">
-                        <input type="hidden" name="TRAKING_SURAT" value="Menunggu Dosen">
-                        <div class="form-group row">
-                          <label class="col-md-3 ml-4">Data Mahasiswa Anggota</label>
-                          <div>
-                            <div class="form-group fieldGroup">
-                              <div class="input-group">
-                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
-                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
-                                <div class="input-group-addon ml-3">
-                                  <a href="javascript:void(0)" class="btn btn-success addMore"><i class="fa fa-plus"></i></a>
-                                </div>
-                              </div>
-                            </div>
+                        <<<<<<< HEAD <?php
+                                      $tanggal = date("Y-m-d H:i:s");
+                                      ?> <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
+                          <input type="hidden" name="STATUS_SURAT" value="Menunggu">
 
-                            <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Simpan Data Anggota" />
-                            <div class="form-group fieldGroupCopy" style="display: none;">
-                              <div class="input-group">
-                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
-                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
-                                <div class="input-group-addon ml-3">
-                                  <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fa fa-trash"></i></a>
+                          =======
+                          >>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">Jenis Surat</label>
+                            <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
+                              <option selected disabled>Pilih Jenis Surat</option>
+                              <?php
+                              $no2 = 1;
+                              foreach ($jenis as $js) :
+                              ?> <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
+                                <?php $no2++ ?>
+                              <?php endforeach ?>
+                            </select>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">NIM Pengaju</label>
+                            <?php
+                            if (isset($_SESSION["status"])) {
+                              $nim = $_SESSION['nim'];
+                            } ?>
+                            <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM" value="<?= $nim ?>">
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">Kepada</label>
+                            <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">Alamat </label>
+                            <input type="text" name="ALAMAT_MITRA" placeholder="Alamat Instansi / Mitra" class="form-control col-md-8 mr-2">
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">Tanggal Survei</label>
+                            <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                          </div>
+                          <input type="hidden" name="STATUS" value="Menunggu">
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">No HP Mahasiswa</label>
+                            <input type="text" placeholder="No HP Mahasiswa Pengaju" class="form-control col-md-8 mr-2">
+                          </div>
+                          <input type="hidden" name="STATUS_SURAT" value="0">
+                          <input type="hidden" name="TRAKING_SURAT" value="Menunggu Dosen">
+                          <div class="form-group row">
+                            <label class="col-md-3 ml-4">Data Mahasiswa Anggota</label>
+                            <div>
+                              <div class="form-group fieldGroup">
+                                <div class="input-group">
+                                  <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                  <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                  <div class="input-group-addon ml-3">
+                                    <a href="javascript:void(0)" class="btn btn-success addMore"><i class="fa fa-plus"></i></a>
+                                  </div>
                                 </div>
                               </div>
+
+                              <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Simpan Data Anggota" />
+                              <div class="form-group fieldGroupCopy" style="display: none;">
+                                <div class="input-group">
+                                  <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                  <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                  <div class="input-group-addon ml-3">
+                                    <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fa fa-trash"></i></a>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
                             </div>
-                            <br>
                           </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                          <label class="col-md-3 my-2"></label>
-                          <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
-                        </div>
-                        <!-- /.card-body -->
+                          <br>
+                          <div class="form-group row">
+                            <label class="col-md-3 my-2"></label>
+                            <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
+                          </div>
+                          <!-- /.card-body -->
                     </form>
                   </div>
                   <!-- /.row -->
