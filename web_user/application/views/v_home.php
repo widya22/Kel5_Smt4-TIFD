@@ -35,9 +35,25 @@
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-	<?php
+	
+	<a href="#" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#modalSelamat" id="mdtr"></a>
 
-	?>
+<!-- alert masuk atau daftar -->
+	<?php if(isset($_SESSION["status"])){ ?>
+	<div class="alert alert-info alert-dismissible fade show">
+		<strong>Halo!</strong> Selamat anda berhasil Masuk.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php }else if(isset($_SESSION["daftar"])){ ?>
+		<div class="alert alert-warning alert-dismissible fade show">
+		<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php } ?>
 
 	<div class="main-wrapper-first">
 		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
@@ -60,9 +76,10 @@
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
+						
 							<?php
 							if (isset($_SESSION["status"])) {
-								$nama = $_SESSION['nama'];
+								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;
 								}
@@ -74,7 +91,7 @@
 									<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
 									<a class="dropdown-item" href="#">Ubah Akun</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal">Keluar</a>
+									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
 								</div>
 
 							<?php } else { ?>
@@ -91,14 +108,20 @@
 					<div class="row height align-items-center justify-content-center">
 						<div class="col-lg-7">
 							<div class="banner-content text-center">
-								<h1 class="text-uppercase text-white"><span>E-Surat JTI POLIJE</span> <br>
+								<h1 class="text-uppercase text-white"><span>JTI-Surat</span> <br>
 									<!--diisi kalo butuh-->
 								</h1>
-								<p class="text-white p-2 mb-30">
-									inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.
+								<p class="text-justify text-white mb-30">
+								JTI-Surat adalah website untuk melakukan pengajuan pembuatan surat kepada Admin jurusan jurusan Teknologi Informasi seperti
+								 surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
+								 admin jurusan dalam transaksi pembuatan surat. <strong>Klik tombol dibawah untuk mulai mengajukan surat</strong>
 								</p>
-								<a class="btn btn-primary btn-lg" href="<?php echo base_url('form') ?>">Buat Surat Sekarang <i class="fa fa-chevron-circle-right text-light"></i></a>
+								<?php if(isset($_SESSION["status"])){ ?>
+								<a class="btn btn-light rounded-pill btn-lg" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
 								<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
+							<?php }else{ ?>
+								<a class="btn btn-light rounded-pill btn-lg" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
+							<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -265,6 +288,7 @@
 		</div>
 	</div>
 
+	<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -283,7 +307,34 @@
 		</div>
 	</div>
 
+	<!-- modal selamat datang daftar -->
+	<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+					
+				<div class="modal-body">
+				<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
+				<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
+				<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
+				<br>
+				<div class="text-center">
+				<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">Aku Semangat</span>
+					</button>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- modal -->
+	<script>
+	var button=document.getElementById("mdtr");
+	<?php if (isset($_SESSION["daftar"])){ ?>
+        button.click();
+		<?php } ?>
+	</script>
+
 </body>
 
 </html>

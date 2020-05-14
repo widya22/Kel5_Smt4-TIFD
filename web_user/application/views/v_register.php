@@ -48,38 +48,49 @@
             <div class="modal-dialog pt-60" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title">Buat akun</h4>
+                <h4 class="modal-title">Buat akun JTI-Surat</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url().'crud/register'; ?>" method="post">
+                    <form action="<?php echo base_url().'crud/register'; ?>" method="post" class="form">
                     <div class="form-group">
-                        <label for="username">NIM</label>
-                        <input type="text" name="nim" placeholder="Masukkan NIM" class="form-control" />
+                        <!-- <label for="username">NIM</label> -->
+                        <div class="input-group ">
+
+                        <!-- <input type="text" name="nim" placeholder="Kode Jurusan" class="form-control" required onkeyup="this.value = this.value.toUpperCase()" maxlength = "1"
+                        id="inputGroup-sizing-sm"/> -->
+                        <div class="input-group-prepend">   
+                            <span class="input-group-text" id="inputGroup-sizing-default">E</span>
+                        </div>
+                        <input type="text" name="nim" id="nim" placeholder="Masukkan NIM" class="form-control" required onkeypress="return hanyaAngka(event)" maxlength = "8"/>
+                        </div>
+                        <div id="result" class="font-italic"></div>
                     </div>
                     <div class="form-group">
-                        <label for="username">Nama</label>
-                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" />
+                        <!-- <label for="username">Nama Lengkap</label> -->
+                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"/>
+                        <p class="font-italic">*Anda dapat menggunakan huruf, angka dan titik</p>
                     </div>
-                    <div class="form-group">
-                        <label for="username">Prodi :</label><br>
+                    <div class="form-group border rounded">
+                        <!-- <label for="username">Prodi :</label><br> -->
+                        <p class="text-center">pilih prodi anda</p>
                         <div class="text-center">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="tif" value="TIF>
+                        <div class="form-check form-check-inline" required>
+                            <input class="form-check-input" type="radio" name="prodi" id="tif" value="TIF" required>
                             <label class="form-check-label" for="tif">
                                 TIF
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="mif" value="MIF">
+                            <input class="form-check-input" type="radio" name="prodi" id="mif" value="MIF" required>
                             <label class="form-check-label" for="mif">
                                 MIF
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tkk" id="tkk" value="TKK">
+                            <input class="form-check-input" type="radio" name="prodi" id="tkk" value="TKK" required>
                             <label class="form-check-label" for="tkk">
                                 TKK
                             </label>
@@ -87,12 +98,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Kata Sandi</label>
-                        <input type="password" name="sandi" placeholder="Kata Sandi" class="form-control" />
+                        <!-- <label for="password">Kata Sandi</label> -->
+                        <input type="password" name="sandi" placeholder="Kata Sandi" class="form-control" required minlength="8"/>
+                        <p class="font-italic">*gunakan minimal 8 karakter dengan campuran huruf, angka dan simbol</p>
                     </div>
                     <div class="form-group">
-                        <label for="password">Konfirmasi Kata Sandi</label>
-                        <input type="password" name="k_sandi" placeholder="Konfirmasi" class="form-control" />
+                        <!-- <label for="password">Konfirmasi Kata Sandi</label> -->
+                        <input type="password" name="k_sandi" placeholder="Konfirmasi Kata Sandi" class="form-control" required minlength="8"/>
+                        <p class="font-italic">*silahkan ketik ulang password anda</p>
                     </div>
 					<a href="<?php echo base_url(); ?>" class="text-center ml-2">kembali ke beranda?</a>
                     <div class="text-right">
@@ -104,4 +117,63 @@
             </div>
 <!-- modal -->
 	</body>
+
+<!-- Script hanya angka di sebelah kirim NIM  -->
+    <script>
+      function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57 ))
+          return false;
+        return true;
+      }
+    </script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.form').submit(function() {
+			var nim = $('#nim').val();
+            var e = "E";
+            var enim = e+nim;
+
+            <?php
+            echo enim;
+            $where = array(
+			'NIM' => $enim,
+		);
+        $cek = $this->m_login->cek_login("user", $where)->num_rows();
+        ?>
+        var cek = <?php $cek; ?>;
+
+			if (cek == 0) {				
+				$("#result").text(enim);
+				return false;
+			}
+				return false;
+				$("#result").text(enim);
+		});
+	});
+</script>
+
+<!-- script untuk ceck database -->
+<!-- <script type="text/javascript">
+	$(document).ready(function() {
+		$('#nim').keyup(function() {
+			var unim = $('#nim').val();
+            var e = "E";
+            var unim2 = e + unim;
+			if(unim == 0) {
+				$('#result').text('');
+			}
+			else {
+						if(0 > 0) {
+							$('#result').text('Username tidak tersedia');
+						}
+						else {
+							$('#result').text('Username tersedia');
+						}
+			}
+		});
+	});
+</script> -->
+
 </html>
