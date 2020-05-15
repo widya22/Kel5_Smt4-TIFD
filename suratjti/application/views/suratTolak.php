@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | SURAT DITOLAK</title>
+  <title>JTI SURAT | Surat Ditolak</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.php" class="nav-link">Home</a>
+        <a href="<?php echo base_url('admin');?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"></a>
@@ -178,7 +178,7 @@
             </a>
             <ul class="nav nav-treeview">              
               <li class="nav-item">
-                <a href="./index.php" class="nav-link">
+                <a href="<?php echo base_url('admin');?>"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Home</p>
                 </a>
@@ -190,7 +190,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="dataMahasiswa.php" class="nav-link">
+                <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
                 </a>
@@ -205,19 +205,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtPd" class="nav-link">
+                <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Menunggu Persetujuan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtTlk" class="nav-link active">
+                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link active">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p>Surat Ditolak</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/suratadmin/crud/dtSrtSls" class="nav-link">
+                <a href="<?php echo base_url('admin/dtSrtSls');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-info"></i>
                   <p>Surat Selesai</p>
                 </a>
@@ -240,12 +240,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Surat Ditolak</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
+              <li class="breadcrumb-item active">Surat Ditolak</li>
             </ol>
           </div>
         </div>
@@ -257,7 +257,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <h3 class="card-title">Surat Ditolak</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
