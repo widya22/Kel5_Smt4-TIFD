@@ -38,12 +38,9 @@
 	<?php
 
 	?>
-	<<<<<<< HEAD <div class="main-wrapper-first">
-		=======
-
+	<div class="main-wrapper-first">
 		<div class="main-wrapper-first">
 			<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
-			>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
 			<div class="hero-area relative">
 				<header>
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -77,10 +74,8 @@
 										<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
 										<a class="dropdown-item" href="#">Ubah Akun</a>
 										<div class="dropdown-divider"></div>
-										<<<<<<< HEAD <a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>">Keluar?</a>
-											=======
-											<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal">Keluar</a>
-											>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
+										<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>">Keluar?</a>
+										<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal">Keluar</a>
 									</div>
 
 								<?php } else { ?>
@@ -171,10 +166,8 @@
 					<div class="row d-flex justify-content-center">
 						<ul class="footer-menu">
 							<li>
-								<<<<<<< HEAD <a href="index.html">Beranda</a>
-									=======
-									<a href="<?= base_url('home') ?>">Beranda</a>
-									>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
+								<a href="index.html">Beranda</a>
+								<a href="<?= base_url('home') ?>">Beranda</a>
 							</li>
 							<li>
 								<a href="elements.html">Author</a>
@@ -273,7 +266,7 @@
 				</div>
 			</div>
 		</div>
-		<<<<<<< HEAD=======<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -289,10 +282,9 @@
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 
-			>>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
-			<!-- modal -->
+		<!-- modal -->
 </body>
 
 </html>

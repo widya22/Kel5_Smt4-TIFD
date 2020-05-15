@@ -48,7 +48,9 @@
               <li class="nav-item">
                 <a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
               </li>
-
+              <li class="nav-item">
+                <a class="nav-link ml-2 mr-2" href="<?php echo base_url('form2') ?>">Surat Mitra</a>
+              </li>
             </ul>
             <li class="nav-item dropdown list-unstyled border border-primary text primary">
               <?php
@@ -96,6 +98,7 @@
                   <div class="">
                     <div class="card-header mt-2">
                       <h3 class="card-title ">Formulir Pengajuan Surat</h3>
+
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -103,6 +106,7 @@
                       <div class="card-body">
                         <?php date_default_timezone_set('Asia/Jakarta'); ?>
                         <input type="hidden" readonly name="TANGGAL" value="<?= date("Y-m-d"); ?>">
+                        <input type="hidden" id="id_surat" name="id_surat" value="SRT<?php echo sprintf("%04s", $ID_SURAT) ?>">
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Nama Dosen</label>
                           <select class="custom-select col-md-8 mr-2" name="NIP">
@@ -116,84 +120,80 @@
                             <?php endforeach ?>
                           </select>
                         </div>
-                        <<<<<<< HEAD <?php
-                                      $tanggal = date("Y-m-d H:i:s");
-                                      ?> <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
-                          <input type="hidden" name="STATUS_SURAT" value="Menunggu">
+                        <?php
+                        $tanggal = date("Y-m-d H:i:s");
+                        ?> <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
+                        <input type="hidden" name="STATUS_SURAT" value="Menunggu">
 
-                          =======
-                          >>>>>>> 30f613fd710e53bcb36914179a34056e74dd2490
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">Jenis Surat</label>
-                            <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
-                              <option selected disabled>Pilih Jenis Surat</option>
-                              <?php
-                              $no2 = 1;
-                              foreach ($jenis as $js) :
-                              ?> <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
-                                <?php $no2++ ?>
-                              <?php endforeach ?>
-                            </select>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">NIM Pengaju</label>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Jenis Surat</label>
+                          <select class="custom-select col-md-8 mr-2" name="ID_JENIS_SURAT">
+                            <option selected disabled>Pilih Jenis Surat</option>
                             <?php
-                            if (isset($_SESSION["status"])) {
-                              $nim = $_SESSION['nim'];
-                            } ?>
-                            <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM" value="<?= $nim ?>">
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">Kepada</label>
-                            <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">Alamat </label>
-                            <input type="text" name="ALAMAT_MITRA" placeholder="Alamat Instansi / Mitra" class="form-control col-md-8 mr-2">
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">Tanggal Survei</label>
-                            <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
-                          </div>
-                          <input type="hidden" name="STATUS" value="Menunggu">
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">No HP Mahasiswa</label>
-                            <input type="text" placeholder="No HP Mahasiswa Pengaju" class="form-control col-md-8 mr-2">
-                          </div>
-                          <input type="hidden" name="STATUS_SURAT" value="0">
-                          <input type="hidden" name="TRAKING_SURAT" value="Menunggu Dosen">
-                          <div class="form-group row">
-                            <label class="col-md-3 ml-4">Data Mahasiswa Anggota</label>
-                            <div>
-                              <div class="form-group fieldGroup">
-                                <div class="input-group">
-                                  <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
-                                  <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
-                                  <div class="input-group-addon ml-3">
-                                    <a href="javascript:void(0)" class="btn btn-success addMore"><i class="fa fa-plus"></i></a>
-                                  </div>
+                            $no2 = 1;
+                            foreach ($jenis as $js) :
+                            ?> <option value="<?= $js->ID_JENIS_SURAT ?>"><?= $js->JENIS_SURAT ?></option>
+                              <?php $no2++ ?>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">NIM Pengaju</label>
+                          <?php
+                          if (isset($_SESSION["status"])) {
+                            $nim = $_SESSION['nim'];
+                          } ?>
+                          <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM" value="<?= $nim ?>">
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Kepada</label>
+                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Alamat </label>
+                          <input type="text" name="ALAMAT_MITRA" placeholder="Alamat Instansi / Mitra" class="form-control col-md-8 mr-2">
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Tanggal Survei</label>
+                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">No HP Mahasiswa</label>
+                          <input type="text" placeholder="No HP Mahasiswa Pengaju" class="form-control col-md-8 mr-2">
+                        </div>
+                        <input type="hidden" name="TRAKING_SURAT" value="Menunggu Dosen">
+                        <div class="form-group row">
+                          <label class="col-md-3 ml-4">Data Mahasiswa Anggota</label>
+                          <div>
+                            <div class="form-group fieldGroup">
+                              <div class="input-group">
+                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                <div class="input-group-addon ml-3">
+                                  <a href="javascript:void(0)" class="btn btn-success addMore"><i class="fa fa-plus"></i></a>
                                 </div>
                               </div>
-
-                              <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Simpan Data Anggota" />
-                              <div class="form-group fieldGroupCopy" style="display: none;">
-                                <div class="input-group">
-                                  <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
-                                  <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
-                                  <div class="input-group-addon ml-3">
-                                    <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fa fa-trash"></i></a>
-                                  </div>
-                                </div>
-                              </div>
-                              <br>
                             </div>
+
+                            <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Simpan Data Anggota" />
+                            <div class="form-group fieldGroupCopy" style="display: none;">
+                              <div class="input-group">
+                                <input type="text" name="NIM_ANGGOTA" class="form-control" placeholder="NIM Mahasiswa" />
+                                <input type="text" name="ANGGOTA_MHS" class="form-control" placeholder="Nama Mahasiswa" />
+                                <div class="input-group-addon ml-3">
+                                  <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fa fa-trash"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                            <br>
                           </div>
-                          <br>
-                          <div class="form-group row">
-                            <label class="col-md-3 my-2"></label>
-                            <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
-                          </div>
-                          <!-- /.card-body -->
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                          <label class="col-md-3 my-2"></label>
+                          <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
+                        </div>
+                        <!-- /.card-body -->
                     </form>
                   </div>
                   <!-- /.row -->
@@ -253,43 +253,6 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 
-  <!-- Modal -->
-  <!-- <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="card-body">
-              <div class="form-group row">
-                <label class="col-md-3 ml-4">Nama</label>
-                <input type="text" class="form-control col-md-8 mr-2">
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 ml-4">NIM</label>
-                <input type="text" class="form-control col-md-8 mr-2">
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 ml-4">HP</label>
-                <input type="text" class="form-control col-md-8 mr-2">
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 my-2"></label>
-                <button class="btn btn-primary ml-4">Simpan</button>
-                <button class="btn btn-danger ml-2">Batal</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <!--Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -309,60 +272,62 @@
     </div>
   </div>
 
-</body>
 
-<script>
-  $(function() {
-    $('#addmaha').click(function(e) {
-      e.preventDefault();
-      $('#exampleModal').modal({
-        backdrop: 'static',
-        show: true
+
+  <script>
+    $(function() {
+      $('#addmaha').click(function(e) {
+        e.preventDefault();
+        $('#exampleModal').modal({
+          backdrop: 'static',
+          show: true
+        });
       });
     });
-  });
-</script>
+  </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script>
-  $(document).ready(function() {
-    // membatasi jumlah inputan
-    var maxGroup = 10;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // membatasi jumlah inputan
+      var maxGroup = 10;
 
-    //melakukan proses multiple input 
-    $(".addMore").click(function() {
-      if ($('body').find('.fieldGroup').length < maxGroup) {
-        var fieldHTML = '<div class="form-group fieldGroup">' + $(".fieldGroupCopy").html() + '</div>';
-        $('body').find('.fieldGroup:last').after(fieldHTML);
-      } else {
-        alert('Maximum ' + maxGroup + ' groups are allowed.');
-      }
+      //melakukan proses multiple input 
+      $(".addMore").click(function() {
+        if ($('body').find('.fieldGroup').length < maxGroup) {
+          var fieldHTML = '<div class="form-group fieldGroup">' + $(".fieldGroupCopy").html() + '</div>';
+          $('body').find('.fieldGroup:last').after(fieldHTML);
+        } else {
+          alert('Maximum ' + maxGroup + ' groups are allowed.');
+        }
+      });
+
+      //remove fields group
+      $("body").on("click", ".remove", function() {
+        $(this).parents(".fieldGroup").remove();
+      });
     });
+  </script>
 
-    //remove fields group
-    $("body").on("click", ".remove", function() {
-      $(this).parents(".fieldGroup").remove();
-    });
-  });
-</script>
+  <?php
+  if (isset($_POST['submit'])) {
+    $nama = $_POST['ANGGOTA_MHS'];
+    $nim = $_POST['NIM_ANGGOTA'];
+    if (!empty($nama)) {
+      for ($a = 0; $a < count($nama); $a++) {
+        if (!empty($nama[$a])) {
+          $nama = $nama[$a];
+          $nim = $nim[$a];
 
-<?php
-if (isset($_POST['submit'])) {
-  $nama = $_POST['ANGGOTA_MHS'];
-  $nim = $_POST['NIM_ANGGOTA'];
-  if (!empty($nama)) {
-    for ($a = 0; $a < count($nama); $a++) {
-      if (!empty($nama[$a])) {
-        $nama = $nama[$a];
-        $nim = $nim[$a];
-
-        //membuat insert data sementara
-        echo 'Data ke -' . ($a + 1) . '=> Nama: ' . $nama . '; NIM: ' . $nim . '</br>';
+          //membuat insert data sementara
+          echo 'Data ke -' . ($a + 1) . '=> Nama: ' . $nama . '; NIM: ' . $nim . '</br>';
+        }
       }
     }
   }
-}
-?>
+  ?>
+
+</body>
 
 </html>
