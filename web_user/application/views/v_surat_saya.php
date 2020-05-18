@@ -35,33 +35,12 @@
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-	
-	<a href="#" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#modalSelamat" id="mdtr"></a>
 
-<!-- alert masuk atau daftar -->
-	<?php if(isset($_SESSION["status"])){ ?>
-	<div class="alert alert-info alert-dismissible fade show">
-		<i class="fa fa-check-circle text-success"></i>
-		<strong>Halo!</strong> Selamat login anda berhasil.
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<?php }else if(isset($_SESSION["daftar"])){ ?>
-		<div class="alert alert-warning alert-dismissible fade show">
-		<i class="fa fa-check-circle text-success"></i>
-		<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<?php } ?>
-
-	<div class="main-wrapper-first">
+	<div class="main-wrapper-first pb-5">
 		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
 		<div class="hero-area relative">
 			<header>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<nav class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
 					<i class="fa fa-envelope fa-2x"></i>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -70,18 +49,11 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Beranda</a>
 							</li>
-							<?php if (isset($_SESSION["status"])) { ?>
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="<?php echo base_url().'home/surat_saya' ?>">Surat Saya</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Surat Saya</a>
 							</li>
-							<?php } else { ?>
-							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
-							</li>
-							<?php } ?>
-							
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
@@ -103,123 +75,110 @@
 									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
 								</div>
 
-							<?php } else { ?>
-								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
-							<?php } ?>
+							<?php } else { 
+								redirect('home', 'location');
+							 } ?>
 						</li>
 					</div>
 				</nav>
-
 			</header>
-			<div class="banner-area relative">
-				<div class="overlay hero-overlay-bg"></div>
-				<div class="container">
-					<div class="row height align-items-center justify-content-center">
-						<div class="col-lg-7">
-							<div class="banner-content text-center">
-								<h1 class="text-uppercase text-white"><span>JTI-Surat</span> <br>
-									<!--diisi kalo butuh-->
-								</h1>
-								<p class="text-justify text-white mb-30">
-								JTI-Surat adalah website untuk melakukan pengajuan pembuatan surat kepada Admin jurusan jurusan Teknologi Informasi seperti
-								 surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
-								 admin jurusan dalam transaksi pembuatan surat. <strong>Klik tombol dibawah untuk mulai mengajukan surat</strong>
-								</p>
-								<?php if(isset($_SESSION["status"])){ ?>
-								<a class="btn btn-light rounded-pill btn-lg" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
-								<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
-							<?php }else{ ?>
-								<a class="btn btn-light rounded-pill btn-lg" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
-							<?php } ?>
+
+			<div class="banner-area relative pb-5 border-top  border-secondary">
+				<div class="bg-light"></div>
+					<div class="row justify-content-center bg-light pl-5 pr-5 pb-2">
+								<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border"><span> Surat Saya </span></h1>
+						</div>
+
+					<div class="row justify-content-center bg-light pl-5 pr-5">
+						<!-- tombol pilhan -->
+						<div class="btn-group btn-group-toggle mb-2 modal-body border shadow-sm" data-toggle="buttons">
+							<label class="btn btn-outline-primary border border-primary active border ml-1 mr-1 rounded">
+								<input type="radio" name="options" id="option1" autocomplete="off" checked> Semua
+							</label>
+							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
+								<input type="radio" name="options" id="option2" autocomplete="off"> Diproses
+							</label>
+							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
+								<input type="radio" name="options" id="option3" autocomplete="off"> Bisa Diambil
+							</label>
+							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
+								<input type="radio" name="options" id="option2" autocomplete="off"> Selesai
+							</label>
+							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
+								<input type="radio" name="options" id="option2" autocomplete="off"> Gagal
+							</label>
+						</div>
+					</div>
+
+					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
+						<!-- table surat saya -->
+							<div class="rounded bg-white border row modal-body shadow p-3 mb-5">
+									<table class="table table-bordered">
+									<thead>
+										<tr>
+										<th scope="col">1</th>
+										<th scope="col">Surat Survey</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										<th scope="col"></th>
+										<td>Tanggal Pengajuan : <span>18 Mei 2020</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td>Nama Mitra : <span>Surabaya45</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td class="bg-success text-light">Alamat Mitra : <span>Jember Jawa Timur</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td>
+											Status :
+											<label class="btn btn-info " disabled>DiProses</label>
+										</td>
+										</tr>
+									</tbody>
+									</table>
+
+									<table class="table table-bordered">
+									<thead>
+										<tr>
+										<th scope="col">2</th>
+										<th scope="col">Surat Survey</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										<th scope="col"></th>
+										<td>Tanggal Pengajuan : <span>20 Mei 2020</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td>Nama Mitra : <span>Surabaya46</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td class="bg-success text-light">Alamat Mitra : <span>Jember Jawa Timur</span></td>
+										</tr>
+										<tr>
+										<th scope="col"></th>
+										<td>
+											Status :
+											<label class="btn btn-success " disabled>Bisa Diambil</label>
+										</td>
+										</tr>
+									</tbody>
+									</table>
+									
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="main-wrapper">
-
-
-		<!-- Start feature-bottom Area -->
-		<section class="feature-bottom-area pt-100 pb-100 mr-5 ml-5">
-
-			<table class="table table-borderless container text-center ">
-				<thead>
-					<tr>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/cepat.png') ?>"></img></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Lebih Hemat Waktu</td>
-						<td>Live Tracking</td>
-						<td>Lebih Cepat</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-		<!-- End feature-bottom Area -->
-		<!-- Start Subscription Area -->
-		<section class="subscription-area pt-100 pb-100">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
-							</h3>
-							<!-- <span class="text-white">We won’t send any kind of spam</span> -->
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center">
-					<div class="col-lg-6">
-						<div id="mc_embed_signup">
-							<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-								<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
-								<div style="position: absolute; left: -5000px;">
-									<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
-								</div>
-								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Subscription Area -->
-		<!-- Start Footer Widget Area -->
-		<section class="footer-area pt-60 pb-60">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<ul class="footer-menu">
-						<li>
-							<a href="<?= base_url('home') ?>">Beranda</a>
-						</li>
-						<li>
-							<a href="elements.html">Author</a>
-						</li>
-					</ul>
-				</div>
-				<footer>
-					<div class="footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-dribbble"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
-					</div>
-					<div class="footer-content">
-						<div class="text-center">
-							Copyright © 2020
-						</div>
-					</div>
-				</footer>
-		</section>
-		<!-- End Footer Widget Area -->
-	</div>
+	
 	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>

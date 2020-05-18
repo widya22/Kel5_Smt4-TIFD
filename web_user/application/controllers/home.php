@@ -23,4 +23,8 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('v_register2');
 	}
+
+	public function surat_saya(){
+		$this->load->view('v_surat_saya');
+	}
 }
