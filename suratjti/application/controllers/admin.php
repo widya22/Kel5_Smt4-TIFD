@@ -67,7 +67,11 @@ class Admin extends CI_Controller{
     }
     //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan melalui model
     //kemudian data tersebut disimpan kembali dengan id yang sama.
-
+    function detailSurat0($id)
+    {
+    $data['detailnilai'] = $this->m_data->detaildata($id);
+    $this->load->view('detailsurat0', $data);
+    }
     function update($id){
         //$id = $this->input->post('id');
         //$nama = $this->input->post('nama');
@@ -85,8 +89,27 @@ class Admin extends CI_Controller{
         );
     
         $this->m_data->update_data($where,$data,'surat');
-        redirect('http://localhost/suratadmin/crud/dtSrtPd');
+        redirect('http://localhost/suratjti/admin/dtSrtPd');
     }
+    function updateTolak($id){
+      //$id = $this->input->post('id');
+      //$nama = $this->input->post('nama');
+      //$alamat = $this->input->post('alamat');
+      //$pekerjaan = $this->input->post('pekerjaan');
+  
+      $data = array(
+          'TRAKING_SURAT' => "DiTolak"
+          //'alamat' => $alamat,
+          //'pekerjaan' => $pekerjaan
+      );
+  
+      $where = array(
+          'ID_SURAT' => $id
+      );
+  
+      $this->m_data->update_data($where,$data,'surat');
+      redirect('http://localhost/suratjti/admin/dtSrtPd');
+  }
     //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan pada array
     // melalui model
     //kemudian data tersebut disimpan kembali dengan id yang sama.
