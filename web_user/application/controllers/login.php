@@ -11,7 +11,9 @@ class Login extends CI_Controller
 
 	function index()
 	{
+		$this->load->view('templates/header');
 		$this->load->view('v_home' . '#modalLogin');
+		$this->load->view('templates/footer');
 	}
 
 	function aksi_login()
