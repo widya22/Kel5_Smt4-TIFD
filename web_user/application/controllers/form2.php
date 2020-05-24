@@ -8,6 +8,7 @@ class Form2 extends CI_Controller
     {
         $data['dosen'] = $this->m_form2->get_dosen()->result();
         $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
         $this->load->view('v_form2', $data);
         $this->load->view('templates/footer');
     }

@@ -14,6 +14,7 @@ class Home extends CI_Controller
 	{
 		$data['user'] = $this->m_data->tampil_data()->result();
 		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
 		$this->load->view('v_home');
 		$this->load->view('templates/footer');
 	}
