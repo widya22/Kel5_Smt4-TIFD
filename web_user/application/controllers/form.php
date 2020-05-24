@@ -30,7 +30,7 @@ class Form extends CI_Controller
 		$tracking		= $this->input->post('TRAKING_SURAT');
 		$nim_anggota	= $this->input->post('NIM_ANGGOTA');
 		$anggota_mhs	= $this->input->post('ANGGOTA_MHS');
-		$id_surat		= $this->input->post('id_surat');
+		$id_surat		= $this->input->post('ID_SURAT');
 
 		$data = array(
 			'ID_SURAT'			=> $id_surat,

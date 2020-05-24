@@ -55,7 +55,7 @@
             <li class="nav-item dropdown list-unstyled border border-primary text primary">
               <?php
               if (isset($_SESSION["status"])) {
-                $nama = $_SESSION['nama'];
+                $nama = $_SESSION['hasil_db'];
                 foreach ($nama as $u) {
                   $nama_user = $u->NAMA_MHS;
                 }
