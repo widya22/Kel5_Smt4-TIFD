@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
     RequestQueue requestQueue;
     String NIMHolder, PasswordHolder;
     ProgressDialog progressDialog;
-    String HttpUrl = "http://192.168.43.251/surat/UserLogin.php";
+    String HttpUrl = "http://192.168.43.34/suratcode/UserLogin.php";
     Boolean CheckEditText;
     String TempServerResponseMatchedValue = "Data Matched";
 

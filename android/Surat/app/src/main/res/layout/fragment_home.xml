@@ -41,10 +41,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="match_parent"
+                    <ImageButton
+                        android:id="@+id/btn_survei"
+                        android:layout_width="69dp"
                         android:layout_height="50dp"
-                        android:src="@mipmap/ic_survei"/>
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_survei" />
 
                     <TextView
                         android:layout_width="match_parent"
