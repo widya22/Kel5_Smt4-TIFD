@@ -35,31 +35,37 @@
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
+	
 	<a href="#" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#modalSelamat" id="mdtr"></a>
 
-	<!-- alert masuk atau daftar -->
-	<?php if (isset($_SESSION["status"])) { ?>
-		<div class="alert alert-info alert-dismissible fade show">
-			<strong>Halo!</strong> Selamat anda berhasil Masuk.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-	<?php } else if (isset($_SESSION["daftar"])) { ?>
+<!-- alert masuk atau daftar -->
+	<?php  
+	if (isset($_SESSION["status"])){ //jika status ada isinya
+
+	if($_SESSION["status"]=="login"){ ?>
+	<div class="alert alert-info alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+		<strong>Halo!</strong> Selamat login anda berhasil.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php }else if($_SESSION["status"]=="daftar"){ ?>
 		<div class="alert alert-warning alert-dismissible fade show">
-			<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-	<?php } ?>
+		<i class="fa fa-check-circle text-success"></i>
+		<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php }} ?>
+<!-- alert masuk atau daftar -->
 
 	<div class="main-wrapper-first">
 		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
 		<div class="hero-area relative">
 			<header>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light col-lg-12 ml-1 row">
 					<i class="fa fa-envelope fa-2x"></i>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -70,15 +76,22 @@
 							<li class="nav-item">
 								<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
 							</li>
+							<?php if (isset($_SESSION["status"])) { ?>
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Surat Saya</a>
+								<a class="nav-link ml-2 mr-2" href="<?php echo base_url().'home/surat_saya'?>">Surat Saya</a>
 							</li>
+							<?php } else { ?>
+							<li class="nav-item">
+								<a class="nav-link ml-2 mr-2" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
+							</li>
+							<?php } ?>
+							
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
-
+						
 							<?php
-							if (isset($_SESSION["status"])) {
+							if (isset($_SESSION["status"]) or isset($_SESSION["daftar"])) {
 								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;
@@ -112,16 +125,16 @@
 									<!--diisi kalo butuh-->
 								</h1>
 								<p class="text-justify text-white mb-30">
-									JTI-Surat adalah website untuk melakukan pengajuan pembuatan surat kepada Admin jurusan jurusan Teknologi Informasi seperti
-									surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
-									admin jurusan dalam transaksi pembuatan surat. <strong>Klik tombol dibawah untuk mulai mengajukan surat</strong>
+								JTI-Surat adalah website untuk melakukan pengajuan pembuatan surat kepada Admin jurusan jurusan Teknologi Informasi seperti
+								 surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
+								 admin jurusan dalam transaksi pembuatan surat. <strong>Klik tombol dibawah untuk mulai mengajukan surat</strong>
 								</p>
-								<?php if (isset($_SESSION["status"])) { ?>
-									<a class="btn btn-light rounded-pill btn-lg" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
-									<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
-								<?php } else { ?>
-									<a class="btn btn-light rounded-pill btn-lg" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
-								<?php } ?>
+								<?php if(isset($_SESSION["status"])){ ?>
+								<a class="btn btn-light rounded-pill btn-lg" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
+								<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
+							<?php }else{ ?>
+								<a class="btn btn-light rounded-pill btn-lg" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
+							<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -307,33 +320,37 @@
 		</div>
 	</div>
 
-			<!-- modal selamat datang daftar -->
-			<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-
-						<div class="modal-body">
-							<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
-							<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
-							<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
-							<br>
-							<div class="text-center">
-								<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">Aku Semangat</span>
-								</button>
-							</div>
-						</div>
-					</div>
+	<!-- modal selamat datang daftar -->
+	<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+					
+				<div class="modal-body">
+				<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
+				<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
+				<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
+				<br>
+				<div class="text-center">
+				<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">Aku Semangat</span>
+					</button>
+				</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<!-- modal -->
-			<script>
-				var button = document.getElementById("mdtr");
-				<?php if (isset($_SESSION["daftar"])) { ?>
-					button.click();
-				<?php } ?>
-			</script>
+	<!-- modal selamat daftar  -->
+	<script>
+	var button=document.getElementById("mdtr");
+	<?php if (isset($_SESSION["popup"])){ ?>
+        button.click();
+		<?php } ?>
+	</script>
+
+		<?php //untuk hapus session
+		$this->session->unset_userdata('popup');
+		?>
 
 </body>
 

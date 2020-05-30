@@ -47,16 +47,13 @@
             <!-- modal Register -->
             <div class="modal-dialog pt-60" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title">Selamat, anda sudah terdaftar di JTI-Surat</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="modal-header justify-content-center">
+                <h5 class="modal-title ">Selamat, anda sudah terdaftar di JTI-Surat</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url().'login/home'; ?>" method="post">
+                    <form action="<?php echo base_url().'login/home_regis'; ?>" method="post">
                     <div class="text-center">
-                    <input type="hidden" name="NIM1" value="<?php echo $_SESSION["nim"] ?>">
+                    <input type="hidden" name="NIM2" value="E<?php echo $_SESSION["nim"] ?>">
                    <button class="btn btn-outline-primary rounded-pill" disabled>@ E<?php echo $_SESSION["nim"] ?> - <?php echo $_SESSION["name"] ?></button>
                    </div>
                    <div>

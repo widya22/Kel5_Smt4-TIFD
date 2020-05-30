@@ -39,17 +39,32 @@ class Login extends CI_Controller
 		}
 	}
 
-	function home()
-	{
-		$nim = $this->input->post('NIM1');
+	// function home()
+	// {
+	// 	$nim = $this->input->post('NIM1');
+	// 	$where = array(
+	// 		'NIM' => $nim,
+	// 	);
+	// 	$hasil_db = $this->m_login->cek_login("user", $where)->result();
+	// 	$data_session = array(
+	// 		'hasil_db' => $hasil_db,
+	// 		'status' => "login"
+	// 	);
+	// 	$this->session->set_userdata($data_session);
+	// 	redirect(base_url());
+	// }
+
+	function home_regis(){
+		$nim = $this->input->post('NIM2');
+		print_r($nim);
 		$where = array(
 			'NIM' => $nim,
 		);
 		$hasil_db = $this->m_login->cek_login("user", $where)->result();
 		$data_session = array(
 			'hasil_db' => $hasil_db,
-			'status' => "login",
-			'daftar' => "daftar"
+			'popup' => "oke",
+			'status' => "daftar"
 		);
 		$this->session->set_userdata($data_session);
 		redirect(base_url());

@@ -40,7 +40,7 @@
 		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
 		<div class="hero-area relative">
 			<header>
-				<nav class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
+				<na class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
 					<i class="fa fa-envelope fa-2x"></i>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Beranda</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url() ?>">Beranda</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Surat Saya</a>
@@ -85,99 +85,98 @@
 
 			<div class="banner-area relative pb-5 border-top  border-secondary">
 				<div class="bg-light"></div>
-					<div class="row justify-content-center bg-light pl-5 pr-5 pb-2">
-								<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border"><span> Surat Saya </span></h1>
+					<div class="row justify-content-center bg-light  pl-5 pr-5 pb-2 ">
+								<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border text-center"><span> Surat Saya </span></h1>
 						</div>
 
-					<div class="row justify-content-center bg-light pl-5 pr-5">
-						<!-- tombol pilhan -->
-						<div class="btn-group btn-group-toggle mb-2 modal-body border shadow-sm" data-toggle="buttons">
-							<label class="btn btn-outline-primary border border-primary active border ml-1 mr-1 rounded">
-								<input type="radio" name="options" id="option1" autocomplete="off" checked> Semua
-							</label>
-							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
-								<input type="radio" name="options" id="option2" autocomplete="off"> Diproses
-							</label>
-							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
-								<input type="radio" name="options" id="option3" autocomplete="off"> Bisa Diambil
-							</label>
-							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
-								<input type="radio" name="options" id="option2" autocomplete="off"> Selesai
-							</label>
-							<label class="btn btn-outline-primary border border-primary border ml-1 mr-1 rounded">
-								<input type="radio" name="options" id="option2" autocomplete="off"> Gagal
-							</label>
-						</div>
+						<?php $var=1;//untuk mengecek variabel class di button bawah ?>
+					<div class="row  bg-light pl-5 pr-5">
+					<div class="mb-2 modal-body border shadow-sm text-center">
+					<form method="post" class="text-center">
+							 <a href="<?php echo base_url()."home/surat_saya" ?>" class="btn mb-1 
+							 		<?php if(isset($_SESSION["semua"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>" flex-wrap>Semua</a>
+
+							 <a href="<?php echo base_url()."home/surat_diproses" ?>" class="btn mb-1 
+									<?php if(isset($_SESSION["diproses"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Diproses</a>
+
+							 <a href="<?php echo base_url()."home/surat_diambil" ?>" class="btn mb-1
+							 		<?php if(isset($_SESSION["diambil"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Bisa Diambil</a>
+
+							 <a href="<?php echo base_url()."home/surat_selesai" ?>" class="btn mb-1 
+							 		<?php if(isset($_SESSION["selesai"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Selesai</a>
+
+							 <a href="<?php echo base_url()."home/surat_gagal" ?>" class="btn mb-1 
+							 		<?php if(isset($_SESSION["gagal"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Gagal</a>
+
+					</form>
+					</div>
 					</div>
 
+					<script>
+					$(document).ready(function(){
+					$(".options_c").click(function(){ //Memberikan even ketika class detail di klik (class detail ialah class radio button)
+						if ($("input[name='options']:checked").val() == "diproses" ) { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
+					redirect("home/surat_saya");
+					} 
+					});
+					});
+					</script>
+			
 					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
 						<!-- table surat saya -->
 							<div class="rounded bg-white border row modal-body shadow p-3 mb-5">
-									<table class="table table-bordered">
-									<thead>
-										<tr>
-										<th scope="col">1</th>
-										<th scope="col">Surat Survey</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-										<th scope="col"></th>
-										<td>Tanggal Pengajuan : <span>18 Mei 2020</span></td>
-										</tr>
-										<tr>
-										<th scope="col"></th>
-										<td>Nama Mitra : <span>Surabaya45</span></td>
-										</tr>
-										<tr>
-										<th scope="col"></th>
-										<td class="bg-success text-light">Alamat Mitra : <span>Jember Jawa Timur</span></td>
-										</tr>
-										<tr>
-										<th scope="col"></th>
-										<td>
-											Status :
-											<label class="btn btn-info " disabled>DiProses</label>
-										</td>
-										</tr>
-									</tbody>
-									</table>
 
-									<table class="table table-bordered">
+					<?php
+					$i=1;
+					foreach($database  as $i) : endforeach;
+					if ($i != 1){ //jika database ada isinya
+					$no = 1;
+					foreach($database  as $u) :  //ubah variabel user ke u 
+						$id_su=$u['ID_JENIS_SURAT'];
+						$jen_su=$u['JENIS_SURAT'];
+						$tgl_aju=$u['TANGGAL_PENGAJUAN'];
+						$nama=$u['NAMA_MITRA'];
+						$alamat=$u['ALAMAT_MITRA'];
+						$status=$u['STATUS_SURAT'];
+						?>
+									<table class="table table-bordered table-primary">
 									<thead>
 										<tr>
-										<th scope="col">2</th>
-										<th scope="col">Surat Survey</th>
+										<th scope="col justify-content-center"><h2><?php echo $no++; ?></h2></th>
+										<th scope="col"><h2 class="text-bold"><?php echo $jen_su; ?></h2></th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-										<th scope="col"></th>
-										<td>Tanggal Pengajuan : <span>20 Mei 2020</span></td>
-										</tr>
-										<tr>
-										<th scope="col"></th>
-										<td>Nama Mitra : <span>Surabaya46</span></td>
-										</tr>
-										<tr>
-										<th scope="col"></th>
-										<td class="bg-success text-light">Alamat Mitra : <span>Jember Jawa Timur</span></td>
-										</tr>
-										<tr>
 										<th scope="col"></th>
 										<td>
+										
+												<label>Tanggal Pengajuan : <span><?php echo $tgl_aju ?></span> </label>
+												<label class="border-secondary border-left pl-1">Nama Mitra : <span><?php echo $nama ?></span></label>
+												<p>Alamat Mitra : <?php echo $alamat ?></p>
+												
+												
 											Status :
-											<label class="btn btn-success " disabled>Bisa Diambil</label>
+											<label class="btn btn-success " disabled><?php echo $status ?></label>
 										</td>
 										</tr>
-									</tbody>
 									</table>
+					<?php endforeach; 
+				}else{ //jika database kosong
+					?>
+						<table class="table table-bordered table-primary">
+									<thead>
+										<tr class="text-center">
+										<th scope="col"><h6 class="text-secondary">Surat Tidak Tersedia</h6></th>
+										</tr>
+									</thead>
+									</table>
+					<?php }?>
 									
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 	
 	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>

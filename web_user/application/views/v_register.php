@@ -44,6 +44,30 @@
 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
+<!-- alert jika nim sama atau password tidak sama -->
+
+<?php 
+if(isset($_SESSION["sama_nim"])){ ?>
+	<div class="alert alert-info alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+		NIM yang anda masukkan telah Terdaftar, tolong daftarkan NIM asli anda sendiri
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+    <?php } 
+    
+if(isset($_SESSION["sama_password"])){ //tinggal cara hilangkan session ?> 
+		<div class="alert alert-warning alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+		Password yang anda masukkan tidak sama, tolong periksa kembali password dan konfirmasi password anda
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php } ?>
+<!-- alert jika nim sama atau password tidak sama -->
+
             <!-- modal Register -->
             <div class="modal-dialog pt-60" role="document">
                 <div class="modal-content">
@@ -64,13 +88,17 @@
                         <div class="input-group-prepend">   
                             <span class="input-group-text" id="inputGroup-sizing-default">E</span>
                         </div>
-                        <input type="text" name="nim" id="nim" placeholder="Masukkan NIM" class="form-control" required onkeypress="return hanyaAngka(event)" maxlength = "8"/>
+                                <input type="text" name="nim" id="nim" placeholder="Masukkan NIM" class="form-control" 
+                                required onkeypress="return hanyaAngka(event)" maxlength = "8" 
+                                value="<?php if(isset($_SESSION['nim_reload'])){echo $_SESSION["nim_reload"];} ?>"/> <!-- isi input otomatis */ -->
                         </div>
                         <div id="result" class="font-italic"></div>
                     </div>
                     <div class="form-group">
                         <!-- <label for="username">Nama Lengkap</label> -->
-                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"/>
+                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"
+                        value="<?php if(isset($_SESSION['nama'])){echo $_SESSION["nama"];} ?>"/> <!-- isi input otomatis -->
+
                         <p class="font-italic">*Anda dapat menggunakan huruf, angka dan titik</p>
                     </div>
                     <div class="form-group border rounded">
@@ -99,12 +127,14 @@
                     </div>
                     <div class="form-group">
                         <!-- <label for="password">Kata Sandi</label> -->
-                        <input type="password" name="sandi" placeholder="Kata Sandi" class="form-control" required minlength="8"/>
+                        <input type="password" name="sandi" placeholder="Kata Sandi" class="form-control" required minlength="8"
+                        value="<?php if(isset($_SESSION['sandi'])){echo $_SESSION["sandi"];} ?>"/>
                         <p class="font-italic">*gunakan minimal 8 karakter dengan campuran huruf, angka dan simbol</p>
                     </div>
                     <div class="form-group">
                         <!-- <label for="password">Konfirmasi Kata Sandi</label> -->
-                        <input type="password" name="k_sandi" placeholder="Konfirmasi Kata Sandi" class="form-control" required minlength="8"/>
+                        <input type="password" name="k_sandi" placeholder="Konfirmasi Kata Sandi" class="form-control" required minlength="8"
+                        value="<?php if(isset($_SESSION['k_sandi'])){echo $_SESSION["k_sandi"];} ?>"/>
                         <p class="font-italic">*silahkan ketik ulang password anda</p>
                     </div>
 					<a href="<?php echo base_url(); ?>" class="text-center ml-2">kembali ke beranda?</a>
