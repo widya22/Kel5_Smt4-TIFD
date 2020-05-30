@@ -72,7 +72,7 @@ class Crud extends CI_Controller{
 					'NIM' => $nim2,
 					'NAMA_MHS' => $nama,
 					'PRODI' => $prodi,
-					'PASSWORD_MHS' => $sandi,
+					'PASSWORD_MHS' => md5($sandi)
 					);
 					
 					$data_session = array(

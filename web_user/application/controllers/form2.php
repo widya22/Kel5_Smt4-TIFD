@@ -6,18 +6,15 @@ class Form2 extends CI_Controller
 
     public function index()
     {
-        $data['dosen'] = $this->m_form2->get_dosen()->result();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $data['dosen'] = $this->m_form->get_dosen()->result();
         $this->load->view('v_form2', $data);
-        $this->load->view('templates/footer');
     }
 
     public function tambahsurat()
     {
         $id_surat       = $this->input->post('ID_SURAT');
         $nip            = $this->input->post('NIP');
-        $nim_u          = $this->input->post('NIM_U');
+        $nim_u            = $this->input->post('NIM_U');
         $nama_mitra     = $this->input->post('NAMA_MITRA');
         $alm_mitra      = $this->input->post('ALAMAT_MITRA');
         $tgl            = $this->input->post('TANGGAL');
@@ -34,7 +31,6 @@ class Form2 extends CI_Controller
             'TANGGAL'           => $tgl,
             'TANGGAL_PENGAJUAN' => $tgl_pengajuan,
             'TRAKING_SURAT'     => $tracking,
-            'NAMA_USER'         => $nama_user,
         );
 
         $nim    = $_POST['nim'];
