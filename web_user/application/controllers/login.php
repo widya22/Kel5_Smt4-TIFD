@@ -11,7 +11,10 @@ class Login extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('home' . '#modalLogin');
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('v_home' . '#modalLogin');
+		$this->load->view('templates/footer');
 	}
 
 	function aksi_login()
@@ -20,7 +23,7 @@ class Login extends CI_Controller
 		$password = $this->input->post('password');
 		$where = array(
 			'NIM' => $nim,
-			'PASSWORD_MHS' => $password
+			'PASSWORD_MHS' => md5($password)
 		);
 		$cek = $this->m_login->cek_login("user", $where)->num_rows();
 		$hasil_db = $this->m_login->cek_login("user", $where)->result();

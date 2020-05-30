@@ -266,13 +266,12 @@
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
                 <tr>
 			<th>No</th>      
-			<th>Surat</th>
-			<th>NIP</th>
+			<th>Surat</th>			
 			<th>NIM</th>
 			<th>Nama Mitra</th>
       <th>Tanggal</th>
 			<th>Traking Surat</th>
-			<th colspan="2">Action</th>
+			<th colspan="3">Action</th>
 		</tr>
 		<?php 
 		$no = 1;
@@ -282,14 +281,14 @@
 		<tr>
 			<td><?php echo $no++ ?></td>
       
-			<td><?php echo $u->ID_JENIS_SURAT ?></td>
-			<td><?php echo $u->NIP ?></td>
+			<td><?php echo $u->ID_JENIS_SURAT ?></td>			
 			<td><?php echo $u->NIM ?></td>
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->TRAKING_SURAT ?></td>
-			<td><a class="btn btn-info btn-sm" <?php echo anchor('crud/update/'.$u->NIM,'Detail'); ?></a> </td>
-      <td><a class="btn btn-info btn-sm" <?php echo anchor('crud/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a>
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+      <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>
+      <td><a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak/'.$u->ID_SURAT,'Tolak'); ?></a>
                             
 			      
                               <?php //echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>
@@ -302,13 +301,12 @@
                 <tfoot>
                 <tr>
                 <th>No</th>
-			<th>Surat</th>
-			<th>NIP</th>
+			<th>Surat</th>			
 			<th>NIM</th>
 			<th>Nama Mitra</th>
       <th>Tanggal</th>
 			<th>Traking Surat</th>
-			<th colspan="2">Action</th>
+			<th colspan="3">Action</th>
                 </tr>
                 </tfoot>
               </table>
