@@ -73,7 +73,7 @@
                                 </div>
 
                             <?php } else { ?>
-                                <a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
+                                <a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk</a>
                             <?php } ?>
                         </li>
                     </div>

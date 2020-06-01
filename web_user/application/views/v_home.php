@@ -107,7 +107,7 @@
 								</div>
 
 							<?php } else { ?>
-								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
+								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk</a>
 							<?php } ?>
 						</li>
 					</div>
@@ -264,7 +264,7 @@
 							<label for="password">Password</label>
 							<input type="password" name="password" placeholder="Password" class="form-control" />
 						</div>
-						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
+						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
 						<div class="text-right">
 							<button class="btn btn-primary" type="submit">Masuk</button>
 						</div>
@@ -276,7 +276,7 @@
 	</div>
 
 	<!-- modal Register -->
-	<div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
+	<!-- <div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -302,7 +302,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

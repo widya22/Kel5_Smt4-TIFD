@@ -57,7 +57,7 @@
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
-						
+
 							<?php
 							if (isset($_SESSION["status"])) {
 								$nama = $_SESSION['hasil_db'];
@@ -75,109 +75,116 @@
 									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
 								</div>
 
-							<?php } else { 
+							<?php } else {
 								redirect('home', 'location');
-							 } ?>
+							} ?>
 						</li>
 					</div>
-				</nav>
+					</nav>
 			</header>
 
 			<div class="banner-area relative pb-5 border-top  border-secondary">
 				<div class="bg-light"></div>
-					<div class="row justify-content-center bg-light  pl-5 pr-5 pb-2 ">
-								<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border text-center"><span> Surat Saya </span></h1>
-						</div>
+				<div class="row justify-content-center bg-light  pl-5 pr-5 pb-2 ">
+					<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border text-center"><span> Surat Saya </span></h1>
+				</div>
 
-						<?php $var=1;//untuk mengecek variabel class di button bawah ?>
-					<div class="row  bg-light pl-5 pr-5">
+				<?php $var = 1; //untuk mengecek variabel class di button bawah 
+				?>
+				<div class="row  bg-light pl-5 pr-5">
 					<div class="mb-2 modal-body border shadow-sm text-center">
-					<form method="post" class="text-center">
-							 <a href="<?php echo base_url()."home/surat_saya" ?>" class="btn mb-1 
-							 		<?php if(isset($_SESSION["semua"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>" flex-wrap>Semua</a>
+						<form method="post" class="text-center">
+							<a href="<?php echo base_url() . "home/surat_saya" ?>" class="btn mb-1 
+							 		<?php if (isset($_SESSION["semua"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>" flex-wrap>Semua</a>
 
-							 <a href="<?php echo base_url()."home/surat_diproses" ?>" class="btn mb-1 
-									<?php if(isset($_SESSION["diproses"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Diproses</a>
+							<a href="<?php echo base_url() . "home/surat_diproses" ?>" class="btn mb-1 
+									<?php if (isset($_SESSION["diproses"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Diproses</a>
 
-							 <a href="<?php echo base_url()."home/surat_diambil" ?>" class="btn mb-1
-							 		<?php if(isset($_SESSION["diambil"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Bisa Diambil</a>
+							<a href="<?php echo base_url() . "home/surat_diambil" ?>" class="btn mb-1
+							 		<?php if (isset($_SESSION["diambil"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Bisa Diambil</a>
 
-							 <a href="<?php echo base_url()."home/surat_selesai" ?>" class="btn mb-1 
-							 		<?php if(isset($_SESSION["selesai"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Selesai</a>
+							<a href="<?php echo base_url() . "home/surat_selesai" ?>" class="btn mb-1 
+							 		<?php if (isset($_SESSION["selesai"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Selesai</a>
 
-							 <a href="<?php echo base_url()."home/surat_gagal" ?>" class="btn mb-1 
-							 		<?php if(isset($_SESSION["gagal"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Gagal</a>
+							<a href="<?php echo base_url() . "home/surat_gagal" ?>" class="btn mb-1 
+							 		<?php if (isset($_SESSION["gagal"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Gagal</a>
 
-					</form>
+						</form>
 					</div>
-					</div>
+				</div>
 
-					<script>
-					$(document).ready(function(){
-					$(".options_c").click(function(){ //Memberikan even ketika class detail di klik (class detail ialah class radio button)
-						if ($("input[name='options']:checked").val() == "diproses" ) { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
-					redirect("home/surat_saya");
-					} 
+				<script>
+					$(document).ready(function() {
+						$(".options_c").click(function() { //Memberikan even ketika class detail di klik (class detail ialah class radio button)
+							if ($("input[name='options']:checked").val() == "diproses") { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
+								redirect("home/surat_saya");
+							}
+						});
 					});
-					});
-					</script>
-			
-					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
-						<!-- table surat saya -->
-							<div class="rounded bg-white border row modal-body shadow p-3 mb-5">
+				</script>
 
-					<?php
-					$i=1;
-					foreach($database  as $i) : endforeach;
-					if ($i != 1){ //jika database ada isinya
-					$no = 1;
-					foreach($database  as $u) :  //ubah variabel user ke u 
-						$id_su=$u['ID_JENIS_SURAT'];
-						$jen_su=$u['JENIS_SURAT'];
-						$tgl_aju=$u['TANGGAL_PENGAJUAN'];
-						$nama=$u['NAMA_MITRA'];
-						$alamat=$u['ALAMAT_MITRA'];
-						$status=$u['STATUS_SURAT'];
+				<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
+					<!-- table surat saya -->
+					<div class="rounded bg-white border row modal-body shadow p-3 mb-5">
+
+						<?php
+						$i = 1;
+						foreach ($database  as $i) : endforeach;
+						if ($i != 1) { //jika database ada isinya
+							$no = 1;
+							foreach ($database  as $u) :  //ubah variabel user ke u 
+								$id_su = $u['ID_JENIS_SURAT'];
+								$jen_su = $u['JENIS_SURAT'];
+								$tgl_aju = $u['TANGGAL_PENGAJUAN'];
+								$nama = $u['NAMA_MITRA'];
+								$alamat = $u['ALAMAT_MITRA'];
+								$status = $u['STATUS_SURAT'];
 						?>
-									<table class="table table-bordered table-primary">
+								<table class="table table-bordered table-primary">
 									<thead>
 										<tr>
-										<th scope="col justify-content-center"><h2><?php echo $no++; ?></h2></th>
-										<th scope="col"><h2 class="text-bold"><?php echo $jen_su; ?></h2></th>
+											<th scope="col justify-content-center">
+												<h2><?php echo $no++; ?></h2>
+											</th>
+											<th scope="col">
+												<h2 class="text-bold"><?php echo $jen_su; ?></h2>
+											</th>
 										</tr>
 									</thead>
-										<th scope="col"></th>
-										<td>
-										
-												<label>Tanggal Pengajuan : <span><?php echo $tgl_aju ?></span> </label>
-												<label class="border-secondary border-left pl-1">Nama Mitra : <span><?php echo $nama ?></span></label>
-												<p>Alamat Mitra : <?php echo $alamat ?></p>
-												
-												
-											Status :
-											<label class="btn btn-success " disabled><?php echo $status ?></label>
-										</td>
-										</tr>
-									</table>
-					<?php endforeach; 
-				}else{ //jika database kosong
-					?>
-						<table class="table table-bordered table-primary">
-									<thead>
-										<tr class="text-center">
-										<th scope="col"><h6 class="text-secondary">Surat Tidak Tersedia</h6></th>
-										</tr>
-									</thead>
-									</table>
-					<?php }?>
-									
-							</div>
-						</div>
+									<th scope="col"></th>
+									<td>
+
+										<label>Tanggal Pengajuan : <span><?php echo $tgl_aju ?></span> </label>
+										<label class="border-secondary border-left pl-1">Nama Mitra : <span><?php echo $nama ?></span></label>
+										<p>Alamat Mitra : <?php echo $alamat ?></p>
+
+
+										Status :
+										<label class="btn btn-success " disabled><?php echo $status ?></label>
+									</td>
+									</tr>
+								</table>
+							<?php endforeach;
+						} else { //jika database kosong
+							?>
+							<table class="table table-bordered table-primary">
+								<thead>
+									<tr class="text-center">
+										<th scope="col">
+											<h6 class="text-secondary">Surat Tidak Tersedia</h6>
+										</th>
+									</tr>
+								</thead>
+							</table>
+						<?php } ?>
+
 					</div>
 				</div>
 			</div>
-			
-	
+		</div>
+	</div>
+
+
 	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
@@ -227,7 +234,7 @@
 	</div>
 
 	<!-- modal Register -->
-	<div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
+	<!-- <div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -253,7 +260,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -278,17 +285,17 @@
 	<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-					
+
 				<div class="modal-body">
-				<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
-				<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
-				<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
-				<br>
-				<div class="text-center">
-				<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">Aku Semangat</span>
-					</button>
-				</div>
+					<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
+					<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
+					<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
+					<br>
+					<div class="text-center">
+						<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">Aku Semangat</span>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -296,9 +303,9 @@
 
 	<!-- modal -->
 	<script>
-	var button=document.getElementById("mdtr");
-	<?php if (isset($_SESSION["daftar"])){ ?>
-        button.click();
+		var button = document.getElementById("mdtr");
+		<?php if (isset($_SESSION["daftar"])) { ?>
+			button.click();
 		<?php } ?>
 	</script>
 
