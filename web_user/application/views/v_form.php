@@ -48,7 +48,7 @@
                 <a class="nav-link ml-2 mr-2" href="<?= base_url('home') ?>">Beranda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?= base_url('surat_saya') ?>">Surat Saya</a>
+                <a class="nav-link ml-2 mr-2" href="<?= base_url('home/surat_saya') ?>">Surat Saya</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ml-2 mr-2" href="<?php echo base_url('form') ?>">Formulir Surat</a>
@@ -167,7 +167,7 @@
                         </div>
                         <div class="form-group row text-center">
                           <label class="col-md-3 ml-4"></label>
-                          <label class="col-md-8 ml-4 mt-2">Data Anggota Kelompok</label>
+                          <label class="col-md-8 ml-4 mt-2"><b>Data Anggota Kelompok</b></label>
                         </div>
                         <b>Anggota ke-1</b>
                         <br>
