@@ -21,9 +21,4 @@ class M_form extends CI_Model
   {
     return $this->db->insert_batch('detail_surat', $data2);
   }
-
-  function tambahketua($data3, $table)
-  {
-    $this->db->insert($table, $data3);
-  }
 }

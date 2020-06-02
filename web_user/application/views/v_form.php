@@ -98,10 +98,6 @@
                 <div class="col-md-12">
                   <!-- general form elements -->
                   <div class="">
-                    <div class="card-header mt-2">
-                      <h3 class="card-title ">Formulir Pengajuan Surat</h3>
-
-                    </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" action="<?= base_url() ?>form2/tambahsurat" method="post">
@@ -141,15 +137,6 @@
                           </select>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 ml-4">NIM Pengaju</label>
-                          <?php
-                          if (isset($_SESSION["status"])) {
-                            $nim = $_SESSION['nim'];
-                          } ?>
-                          <input readonly type="text" class="form-control col-md-8 mr-2" name="NIM_U" value="<?= $nim ?>">
-                          <input type="hidden" name="NAMA_USER" value="<?= $nama_user ?>">
-                        </div>
-                        <div class="form-group row">
                           <label class="col-md-3 ml-4">Kepada</label>
                           <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
                         </div>
@@ -173,9 +160,14 @@
                         <br>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">NIM</label>
-                          <input type="text" name="nim[]" class="form-control col-md-8 mr-2 mb-2">
+                          <?php
+                          if (isset($_SESSION["status"])) {
+                            $nim = $_SESSION['nim'];
+                          } ?>
+                          <input type="hidden" name="NIM_U" value="<?= $nim ?>">
+                          <input type="text" readonly name="nim[]" value="<?= $nim ?>" class="form-control col-md-8 mr-2 mb-2">
                           <label class="col-md-3 ml-4">Nama</label>
-                          <input type="text" name="nama[]" class="form-control col-md-8 mr-2 mb-2">
+                          <input type="text" readonly name="nama[]" value="<?= $nama_user ?>" class="form-control col-md-8 mr-2 mb-2">
                         </div>
                         <div id="insert-form"></div>
                         <label class="col-md-3 ml-4"></label>
@@ -183,9 +175,9 @@
                         <button type="button" id="btn-reset-form" class="btn btn-secondary">Reset Form</button>
                       </div>
                       <br>
-                      <div class="form-group row">
-                        <label class="col-md-3 my-2"></label>
-                        <button type="submit" class="btn btn-primary ml-4">Ajukan Surat</button>
+                      <hr>
+                      <div class="form-group row justify-content-center">
+                        <button type="submit" class="btn btn-primary">Ajukan Surat</button>
                       </div>
                       <!-- /.card-body -->
                     </form>
@@ -279,16 +271,23 @@
 
         // Kita akan menambahkan form dengan menggunakan append
         // pada sebuah tag div yg kita beri id insert-form
-        $("#insert-form").append(
-          "<b>Anggota ke-" + nextform + "</b>" +
-          "<div class='form-group row'>" +
-          "<label class='col-md-3 ml-4'> NIM </label>" +
-          "<input type='text' name = 'nim[]' class='form-control col-md-8 mr-2 mb-2'>" +
-          "<label class='col-md-3 ml-4'> Nama </label>" +
-          "<input type='text' name = 'nama[]' class='form-control col-md-8 mr-2 mb-2'>" +
+        if (nextform <= 6) {
+          $("#insert-form").append(
+            "<b>Anggota ke-" + nextform + "</b>" +
+            "<div class='form-group row'>" +
+            "<label class='col-md-3 ml-4'> NIM </label>" +
+            "<input type='text' name = 'nim[]' class='form-control col-md-8 mr-2 mb-2'>" +
+            "<label class='col-md-3 ml-4'> Nama </label>" +
+            "<input type='text' name = 'nama[]' class='form-control col-md-8 mr-2 mb-2'>" +
+            "</div>"
+          );
+          $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+        } else {
+          "<div class = 'alert alert-danger'role = 'alert' >" +
+          "This is a danger alert— check it out!" +
           "</div>"
-        );
-        $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+        }
+
       });
 
       // Buat fungsi untuk mereset form ke semula
@@ -302,43 +301,3 @@
 </body>
 
 </html>
-
-<!-- <div class="form-group row">
-    <div class="form-group row">
-        <label class="col-md-3 ml-4">NIM</label>
-        <input type="text" name="nim[]" class="form-control col-md-8 mr-2 mb-1">
-        <label class="col-md-3 ml-4">Nama</label>
-        <input type="text" name="nama[]" class="form-control col-md-8 mr-2 mb-1">
-    </div>
-</div> -->
-
-<!-- <script>
-    $(document).ready(function() { // Ketika halaman sudah diload dan siap
-        $("#btn-tambah-form").click(function() { // Ketika tombol Tambah Data Form di klik
-            var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
-            var nextform = jumlah + 1; // Tambah 1 untuk jumlah form nya
-
-            // Kita akan menambahkan form dengan menggunakan append
-            // pada sebuah tag div yg kita beri id insert-form
-            $("#insert-form").append("<b>Data ke " + nextform + " :</b>" +
-                "<table>" +
-                "<tr>" +
-                "<td>NIM</td>" +
-                "<td><input type='text' class='form-control col-md-12 mb-1' name='nim[]' required></td>" +
-                "</tr>" +
-                "<tr>" +
-                "<td>Nama</td>" +
-                "<td><input type='text' class='form-control col-md-12 mb-1' name='nama[]' required></td>" +
-                "</tr>" +
-                "</table>" +
-                "<br><br>");
-            $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
-        });
-
-        // Buat fungsi untuk mereset form ke semula
-        $("#btn-reset-form").click(function() {
-            $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
-            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
-        });
-    });
-</script> -->

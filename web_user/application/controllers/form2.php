@@ -14,7 +14,7 @@ class Form2 extends CI_Controller
     public function tambahsurat()
     {
         $id_surat       = $this->input->post('ID_SURAT');
-        $js              = $this->input->post('ID_JS');
+        $js             = $this->input->post('ID_JS');
         $nip            = $this->input->post('NIP');
         $nim_u          = $this->input->post('NIM_U');
         $nama_mitra     = $this->input->post('NAMA_MITRA');
@@ -52,15 +52,9 @@ class Form2 extends CI_Controller
             $index++;
         }
 
-        $data3 = array(
-            'ID_SURAT'      => $id_surat,
-            'NIM_ANGGOTA'   => $nim_u,
-            'ANGGOTA_MHS'  => $nama_user,
-        );
-
         $sql = $this->m_form2->save_batch($data2);
         $this->m_form2->tambahsurat($data, 'surat');
-        $this->m_form2->tambahketua($data3, 'detail_surat');
+
 
         redirect('form2');
     }
