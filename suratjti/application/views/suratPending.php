@@ -190,6 +190,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?php echo base_url('admin/jnSrt');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jenis Surat</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
@@ -270,7 +276,7 @@
 			<th>NIM</th>
 			<th>Nama Mitra</th>
       <th>Tanggal</th>
-			<th>Traking Surat</th>
+			<th>Status Surat</th>
 			<th colspan="3">Action</th>
 		</tr>
 		<?php 
@@ -285,14 +291,16 @@
 			<td><?php echo $u->NIM ?></td>
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
-			<td><?php echo $u->TRAKING_SURAT ?></td>
+			<td><?php echo $u->STATUS_SURAT ?></td>
 			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
       <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>
-      <td><a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak/'.$u->ID_SURAT,'Tolak'); ?></a>
-                            
+      <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalTolak">Tolak</a>
+      
+                                  
 			      
                               <?php //echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>
 			</td>
+      
 		</tr>
 		<?php } ?>
                 
@@ -305,7 +313,7 @@
 			<th>NIM</th>
 			<th>Nama Mitra</th>
       <th>Tanggal</th>
-			<th>Traking Surat</th>
+			<th>Status Surat</th>
 			<th colspan="3">Action</th>
                 </tr>
                 </tfoot>
@@ -314,6 +322,7 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+          
         </div>
         <!-- /.col -->
       </div>
@@ -338,6 +347,39 @@
 </div>
 <!-- ./wrapper -->
 
+<div id="modalTolak" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Tolak</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- form login -->
+					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">						
+            <div class="form-group">
+                        <label class="control-label col-xs-3" >Alasan</label>
+                        <div class="col-xs-8">
+                             <select name="alasan" class="form-control" required>
+                                <option value="">-Pilih Alasan-</option>
+                                <option value="Data Surat Tidak Lengkap">Data Surat Tidak Lengkap</option>
+                                <option value="Data Surat Tidak Valid">Data Surat Tidak Valid</option>
+                                <option value="Identitas Tidak Lengkap">Identitas Tidak Lengkap</option>                                
+                             </select>
+                        </div>
+                    </div>
+						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
+						<div class="text-right">
+							<button class="btn btn-primary" type="submit">Simpan</button>
+						</div>
+					</form>
+					<!-- end form login -->
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
 <!-- Bootstrap 4 -->
