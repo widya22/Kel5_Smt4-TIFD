@@ -7,7 +7,7 @@ class Admin extends CI_Controller{
 		$this->load->model('m_data');
     $this->load->helper('url');
 
-    if($this->session->userdata('status') != "login"){
+    if($this->session->userdata('status') != "login0"){
     redirect(base_url("login0"));             
   }
 }
@@ -43,8 +43,8 @@ class Admin extends CI_Controller{
     //function tambah diatas berfungsi untuk menampilkan v_input agar dapat memasukan data.
     
     function tambahJS_aksi(){ // Tambah Jenis Surat
-		$id_jenis_surat = $this->input->post('id_jenis_surat');
-		$jenis_surat = $this->input->post('jenis_surat');
+		$id_jenis_surat = $this->input->post('ijs');
+		$jenis_surat = $this->input->post('js');
  
 		$data = array(
 			'id_jenis_surat' => $id_jenis_surat,
@@ -78,14 +78,12 @@ class Admin extends CI_Controller{
         //$id = $this->input->post('id');
         //$nama = $this->input->post('nama');
         //$alamat = $this->input->post('alamat');
-        //$pekerjaan = $this->input->post('pekerjaan');
-    
+        //$pekerjaan = $this->input->post('pekerjaan');    
         $data = array(
             'STATUS_SURAT' => "Selesai"
             //'alamat' => $alamat,
             //'pekerjaan' => $pekerjaan
-        );
-    
+        );    
         $where = array(
             'ID_SURAT' => $id
         );
@@ -94,10 +92,9 @@ class Admin extends CI_Controller{
         redirect('http://localhost/suratjti/admin/dtSrtPd');
     }
     function updateTolak($id){
-      $alasan = $this->input->post('alasan');
-       
+      $alasantolak = $this->input->post('alasan');       
       $data = array(
-          'STATUS_SURAT' => $alasan
+          'STATUS_SURAT' => $alasantolak
           //'alamat' => $alamat,
           //'pekerjaan' => $pekerjaan
       );  
@@ -116,6 +113,45 @@ class Admin extends CI_Controller{
       redirect(base_url('login0'));
     }
         
+
+    function simpan_js(){
+      $id_jenis_surat=$this->input->post('id_jenis_surat');
+      $jenis_surat=$this->input->post('jenis_surat');      
+      $this->m_data->simpan_js($id_jenis_surat,$jenis_surat);
+      redirect('admin/JnSrt');
+  } 
+  function tambah_aksiJs(){
+		$ijs = $this->input->post('ijs');
+		$js = $this->input->post('js');
+		
+ 
+		$data = array(
+			'ID_JENIS_SURAT' => $ijs,
+			'JENIS_SURAT' => $js
+			
+			);
+		$this->m_data->input_data($data,'jenis_surat');
+		redirect('admin/JnSrt');
+    }
+
+
+    function updateTolak1($id){
+      //$id = $this->input->post('id');
+      //$nama = $this->input->post('nama');
+      //$alamat = $this->input->post('alamat');
+      //$pekerjaan = $this->input->post('pekerjaan');    
+      $data = array(
+          'STATUS_SURAT' => "DiTolak - Data Surat Tidak Lengkap"
+          //'alamat' => $alamat,
+          //'pekerjaan' => $pekerjaan
+      );    
+      $where = array(
+          'ID_SURAT' => $id
+      );
+  
+      $this->m_data->update_data($where,$data,'surat');
+      redirect('http://localhost/suratjti/admin/dtSrtPd');
+  }
 }
 
 

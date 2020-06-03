@@ -93,5 +93,11 @@ class M_data extends CI_Model{
   
   function input_jenisSurat($data,$table){
 		$this->db->insert($table,$data);
-    }   
+    }
+  function simpan_js($id_jenis_surat,$jenis_surat){
+        $hasil=$this->db->query("INSERT INTO jenis_surat (ID_JENIS_SURAT,JENIS_SURAT) VALUES ('$id_jenis_surat','$jenis_surat')");
+        return $hasil;
+    }
+    
+    
 }

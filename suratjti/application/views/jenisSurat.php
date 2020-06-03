@@ -265,6 +265,10 @@
             <div class="card-header">
               <h3 class="card-title">Jenis Surat </h3>
             </div>
+            <div class="container">
+   
+        <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>       
+    
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -307,20 +311,20 @@
                 <h3 class="card-title">Tambah Jenis Surat</h3>
               </div>
             <div>
-            <form action="<?php echo base_url(). 'admin/tambahJS_aksi'; ?>" method="post">
+            <form role="form" action="<?php echo base_url(). 'admin/tambah_aksiJs'; ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="idjenisSurat">ID Jenis Surat</label>
-                    <input type="text" class="form-control" id="id_jenis_surat" placeholder="ID Jenis Surat">
+                    <label for="ijs">Id Jenis Surat</label>
+                    <input type="text" class="form-control" id="judul" name="ijs" placeholder="Masukan ID Jenis Surat">
                   </div>
                   <div class="form-group">
-                    <label for="jenisSurat">Jenis Surat</label>
-                    <input type="text" class="form-control" id="jenis_surat" placeholder="Jenis Surat">
-                  </div>              
+                    <label for="js">Jenis Surat</label>
+                    <input type="text" class="form-control" id="fasilitas" name="js" placeholder="Masukan Jenis Surat">
+                  </div>            
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" value="Tambah"  class="btn btn-primary">Submit</button>
+                  <button type="Tambah" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
@@ -350,6 +354,48 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+
+<!-- ============ MODAL ADD BARANG =============== -->
+<div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title" id="myModalLabel">Add New Barang</h3>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/simpan_js'?>">
+                <div class="modal-body">
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >IJS</label>
+                        <div class="col-xs-8">
+                            <input id="id_jenis_surat" name="id_jenis_surat" class="form-control" type="text" placeholder="Id Jenis Surat" required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >JS</label>
+                        <div class="col-xs-8">
+                            <input id="jenis_surat" name="jenis_surat" class="form-control" type="text" placeholder="Jenis Surat" required>
+                        </div>
+                    </div>                    
+ 
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info">Simpan</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL ADD BARANG-->
+
+
+
+
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
