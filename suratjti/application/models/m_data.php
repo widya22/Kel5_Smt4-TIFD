@@ -7,7 +7,7 @@ class M_data extends CI_Model{
       //return $this->db->get('surat');
       $this->db->select('*');
     $this->db->from('surat');
-    $this->db->where("traking_surat", "Menunggu Dosen");
+    $this->db->where("status_surat", "Menunggu Dosen");
     //$this->db->where("traking_surat", "Menunggu Admin");
     //$this->db->where("usertype","admin");
     return $query=$this->db->get();
@@ -61,11 +61,14 @@ class M_data extends CI_Model{
   function tampil_data_mhs(){
 		return $this->db->get('user');
     }
+  function tampil_jenis_surat(){
+    return $this->db->get('jenis_surat');
+    }  
   function tampil_data_suratPending(){
     //return $this->db->get('surat');
     $this->db->select('*');
   $this->db->from('surat');
-  $this->db->like("traking_surat", 'Menunggu');
+  $this->db->like("status_surat", 'Menunggu');
   //$this->db->where("traking_surat", "Menunggu Admin");
   //$this->db->where("usertype","admin");
   return $query=$this->db->get();
@@ -74,7 +77,7 @@ class M_data extends CI_Model{
   //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
-  $this->db->where("traking_surat", "Ditolak");
+  $this->db->where("status_surat", "Ditolak");
   //$this->db->where("usertype","admin");
   return $query=$this->db->get();
       }
@@ -83,9 +86,12 @@ class M_data extends CI_Model{
   //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
-  $this->db->where("traking_surat", "Selesai");
+  $this->db->where("status_surat", "Selesai");
   //$this->db->where("usertype","admin");
   return $query=$this->db->get();
   }    
-    
+  
+  function input_jenisSurat($data,$table){
+		$this->db->insert($table,$data);
+    }   
 }
