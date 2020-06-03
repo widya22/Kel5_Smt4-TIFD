@@ -15,6 +15,10 @@ class Admin extends CI_Controller{
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
       $this->load->view('suratPending',$data);
       }
+    function jnSrt(){
+      $data['jenis_surat'] = $this->m_data->tampil_jenis_surat()->result();
+      $this->load->view('jenisSurat',$data);   
+      }  
 	  function dtMhs(){
 		  $data['user'] = $this->m_data->tampil_data_mhs()->result();
       $this->load->view('dataMahasiswa',$data);   
@@ -38,18 +42,16 @@ class Admin extends CI_Controller{
     }
     //function tambah diatas berfungsi untuk menampilkan v_input agar dapat memasukan data.
     
-    function tambah_aksi(){
-		$nama = $this->input->post('nama');
-		$alamat = $this->input->post('alamat');
-		$pekerjaan = $this->input->post('pekerjaan');
+    function tambahJS_aksi(){ // Tambah Jenis Surat
+		$id_jenis_surat = $this->input->post('id_jenis_surat');
+		$jenis_surat = $this->input->post('jenis_surat');
  
 		$data = array(
-			'nama' => $nama,
-			'alamat' => $alamat,
-			'pekerjaan' => $pekerjaan
+			'id_jenis_surat' => $id_jenis_surat,
+			'jenis_surat' => $jenis_surat
 			);
-		$this->m_data->input_data($data,'user');
-		redirect('crud/index');
+		$this->m_data->input_jenisSurat($data,'jenis_surat');
+		redirect('admin/index');
     }
     //Pada fungsi tambah_aksi data yang diinputkan akan dimasukkan kedalam array $data kemudia diparsing ke model m_data
 
@@ -79,7 +81,7 @@ class Admin extends CI_Controller{
         //$pekerjaan = $this->input->post('pekerjaan');
     
         $data = array(
-            'TRAKING_SURAT' => "Selesai"
+            'STATUS_SURAT' => "Selesai"
             //'alamat' => $alamat,
             //'pekerjaan' => $pekerjaan
         );
@@ -92,17 +94,13 @@ class Admin extends CI_Controller{
         redirect('http://localhost/suratjti/admin/dtSrtPd');
     }
     function updateTolak($id){
-      //$id = $this->input->post('id');
-      //$nama = $this->input->post('nama');
-      //$alamat = $this->input->post('alamat');
-      //$pekerjaan = $this->input->post('pekerjaan');
-  
+      $alasan = $this->input->post('alasan');
+       
       $data = array(
-          'TRAKING_SURAT' => "DiTolak"
+          'STATUS_SURAT' => $alasan
           //'alamat' => $alamat,
           //'pekerjaan' => $pekerjaan
-      );
-  
+      );  
       $where = array(
           'ID_SURAT' => $id
       );
@@ -117,5 +115,7 @@ class Admin extends CI_Controller{
       $this->session->sess_destroy();
       redirect(base_url('login0'));
     }
-    
+        
 }
+
+
