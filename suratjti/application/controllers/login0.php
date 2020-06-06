@@ -25,7 +25,7 @@ class Login0 extends CI_Controller{
 			$data_session = array(
 				'id_admin' => $ID_ADMIN,
 				'nama_admin' => $row->NAMA_ADMIN,
-				'status' => "login"
+				'status' => "login0"
 				);
 
 			$this->session->set_userdata($data_session);

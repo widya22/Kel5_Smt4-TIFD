@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Ditolak</title>
+  <title>JTI SURAT | Jenis Surat</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo base_url('admin');?>" class="nav-link">Home</a>
+        <a href="index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"></a>
@@ -146,7 +146,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" alt="logo jti" class="brand-image img-circle elevation-3"
+      <img src="dist/img/jti.png" alt="logo jti" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Surat JTI</span>
     </a>
@@ -156,7 +156,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/jti.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Nama Admin</a>
@@ -190,6 +190,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?php echo base_url('admin/jnSrt');?>" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jenis Surat</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
@@ -211,7 +217,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link active">
+                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p>Surat Ditolak</p>
                 </a>
@@ -240,12 +246,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Surat Ditolak</h1>
+            <h1>Data Mahasiswa</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Ditolak</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Jenis Surat</li>
             </ol>
           </div>
         </div>
@@ -255,61 +261,72 @@
     <!-- Main content -->
     
 
-          <div class="card">
+          <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Surat Ditolak</h3>
+              <h3 class="card-title">Jenis Surat </h3>
             </div>
+            <div class="container">
+   
+        <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>       
+    
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
+                <thead>
                 <tr>
 			<th>No</th>
-			<th>Surat</th>
-			<th>NIP</th>
-			<th>NIM</th>
-			<th>Nama Mitra</th>
-      <th>Tanggal</th>
-			<th>Traking Surat</th>
-			<th colspan="2">Action</th>
+			<th>ID Surat</th>
+      <th>Jenis Surat</th>			
+			<th>Action</th>
 		</tr>
 		<?php 
 		$no = 1;
-		foreach($surat as $u){ 
+		foreach($jenis_surat as $u){ 
 		?>
 		<tr>
 			<td><?php echo $no++ ?></td>
 			<td><?php echo $u->ID_JENIS_SURAT ?></td>
-			<td><?php echo $u->NIP ?></td>
-			<td><?php echo $u->NIM ?></td>
-			<td><?php echo $u->NAMA_MITRA ?></td>
-      <td><?php echo $u->TANGGAL ?></td>
-			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td><a class="btn btn-info btn-sm" <?php echo anchor('crud/edit/'.$u->NIM,'Detail'); ?></a> </td>
-      <td><a class="btn btn-info btn-sm" <?php echo anchor('crud/edit/'.$u->NIM,'Konfirmasi'); ?></a>
-                            
-			      
-                              <?php //echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>
+			<td><?php echo $u->JENIS_SURAT ?></td>			
+			<td>
+			      <?php echo anchor('crud/edit/'.$u->ID_JENIS_SURAT,'Edit'); ?>
+            <?php echo anchor('crud/hapus/'.$u->ID_JENIS_SURAT,'Hapus'); ?>
 			</td>
 		</tr>
 		<?php } ?>
                 
-                    
+                            
                 </tbody>
                 <tfoot>
                 <tr>
                 <th>No</th>
-			<th>Surat</th>
-			<th>NIP</th>
-			<th>NIM</th>
-			<th>Nama Mitra</th>
-      <th>Tanggal</th>
-			<th>Traking Surat</th>
-			<th colspan="2">Action</th>
+			<th>ID Surat</th>
+      <th>Jenis Surat</th>			
+			<th>Action</th>
                 </tr>
                 </tfoot>
               </table>
+            </div>
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah Jenis Surat</h3>
+              </div>
+            <div>
+            <form role="form" action="<?php echo base_url(). 'admin/tambah_aksiJs'; ?>" method="post">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="ijs">Id Jenis Surat</label>
+                    <input type="text" class="form-control" id="judul" name="ijs" placeholder="Masukan ID Jenis Surat">
+                  </div>
+                  <div class="form-group">
+                    <label for="js">Jenis Surat</label>
+                    <input type="text" class="form-control" id="fasilitas" name="js" placeholder="Masukan Jenis Surat">
+                  </div>            
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="Tambah" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
             <!-- /.card-body -->
           </div>
@@ -337,6 +354,48 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+
+<!-- ============ MODAL ADD BARANG =============== -->
+<div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title" id="myModalLabel">Add New Barang</h3>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/simpan_js'?>">
+                <div class="modal-body">
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >IJS</label>
+                        <div class="col-xs-8">
+                            <input id="id_jenis_surat" name="id_jenis_surat" class="form-control" type="text" placeholder="Id Jenis Surat" required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >JS</label>
+                        <div class="col-xs-8">
+                            <input id="jenis_surat" name="jenis_surat" class="form-control" type="text" placeholder="Jenis Surat" required>
+                        </div>
+                    </div>                    
+ 
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info">Simpan</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL ADD BARANG-->
+
+
+
+
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>

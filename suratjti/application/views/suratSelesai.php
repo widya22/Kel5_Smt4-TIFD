@@ -285,7 +285,7 @@
 			<td><?php echo $u->NIM ?></td>
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
-			<td><?php echo $u->TRAKING_SURAT ?></td>
+			<td><?php echo $u->STATUS_SURAT ?></td>
 			<td><a class="btn btn-info btn-sm" <?php echo anchor('crud/edit/'.$u->NIM,'Detail'); ?></a> </td>
      
 		</tr>
