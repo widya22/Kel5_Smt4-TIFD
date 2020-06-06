@@ -74,24 +74,17 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url() ?>">Beranda</a>
 							</li>
-							<?php if (isset($_SESSION["status"])) { ?>
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="<?php echo base_url().'home/surat_saya'?>">Surat Saya</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Surat Saya</a>
 							</li>
-							<?php } else { ?>
-							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
-							</li>
-							<?php } ?>
-							
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
 						
 							<?php
-							if (isset($_SESSION["status"]) or isset($_SESSION["daftar"])) {
+							if (isset($_SESSION["status"])) {
 								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;
@@ -101,20 +94,21 @@
 									User : @<?php echo $nama_user ?>
 								</a>
 								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
-									<a class="dropdown-item" href="#">Ubah Akun</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
+									<!-- <a class="dropdown-item" href="#"><i class="fa fa-2x fa-user-circle pr-2"></i>  <?php echo $nama_user ?> </a>
+									<a class="dropdown-item" href="#"><i class="fa fa-2x fa-edit pr-2"></i> Ubah Akun</a> -->
+									<!-- <div class="dropdown-divider"></div> -->
+									<a class="dropdown-item text-center" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">
+									Keluar<i class="fa fa-sign-out pl-2"></i></a>
 								</div>
 
-							<?php } else { ?>
-								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
-							<?php } ?>
+							<?php } else { 
+								redirect('home', 'location');
+							} ?>
 						</li>
 					</div>
 				</nav>
-
 			</header>
+
 			<div class="banner-area relative">
 				<div class="overlay hero-overlay-bg"></div>
 				<div class="container">
@@ -167,17 +161,19 @@
 		</section>
 		<!-- End feature-bottom Area -->
 
-		
-		<section class="subscription-area pt-100 pb-100">
-		<img src="<?php echo base_url().'assets/images/app.png' ?>" width='1000px' height='100px'></img>
+		<!-- apilkasi -->
+		<section class="subscription-area">
+		<img src="<?php echo base_url().'assets/images/app.png' ?>" width='1011px' ></img>
 		</section>
+		<!-- aplikasi -->
+
 		<!-- Start Subscription Area -->
-		<section class="subscription-area pt-100 pb-100">
+		<section class="footer-area pt-100 pb-100">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-8">
 						<div class="section-title text-center">
-							<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
+							<h3 class="text-uppercase text-primary"><span>Silahkan kirim masukan</span> <br>
 							</h3>
 							<!-- <span class="text-white">We won’t send any kind of spam</span> -->
 						</div>
@@ -186,24 +182,23 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6">
 						<div id="mc_embed_signup">
-							<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-								<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
+							<form target="_blank" action="" method="get" class="subscription relative text-center">
+							<div><textarea class="bg-primary text-white mb-4 pr-3 pl-3" rows="4" cols="50" placeholder="Tulis masukan disini"></textarea></div>
+							<button class="btn btn-outline-primary rounded-pill pl-5 pr-5"><span class="">Kirim</span></button>
+<!-- 
+								<input class="bg-info text-white" type="text" name="masukan" placeholder="Tulis Masukan" required>
 								<div style="position: absolute; left: -5000px;">
 									<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
 								</div>
-								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
-								<div class="info"></div>
+								<button class="primary-btn hover d-inline-flex align-items-center"><span class="">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
+								<div class="info"></div> -->
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- End Subscription Area -->
-		<!-- Start Footer Widget Area -->
-		<section class="footer-area pt-60 pb-60">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
+
+				<div class="row d-flex justify-content-center pt-5">
 					<ul class="footer-menu">
 						<li>
 							<a href="<?= base_url('home') ?>">Beranda</a>
@@ -213,8 +208,7 @@
 						</li>
 					</ul>
 				</div>
-				<footer>
-					<div class="footer-social">
+					<div class="footer-social ">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-instagram"></i></a>
@@ -224,9 +218,8 @@
 							Copyright © 2020
 						</div>
 					</div>
-				</footer>
 		</section>
-		<!-- End Footer Widget Area -->
+		<!-- End Subscription Area -->
 	</div>
 	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>

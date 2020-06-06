@@ -2443,3 +2443,21 @@ body:after {
 .text-orange{
   color: #fa630b;
 }
+
+/* tambahan */
+
+/* opacity */
+.opacity-50{
+  opacity: 0.5;
+}
+.opacity-100{
+  opacity: 1;
+}
+
+/* background */
+.bg-blue{
+  background-color: #BAD9FB;
+}
+.bg-surat{
+  background-image: url(../images/bg-surat2.jpg);
+}
