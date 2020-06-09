@@ -2,14 +2,21 @@
 
 class M_form extends CI_Model
 {
+  public function cekkodebarang()
+  {
+    $query = $this->db->query("SELECT MAX(ID_SURAT) as id_surat from surat");
+    $hasil = $query->row();
+    return $hasil->id_surat;
+  }
+
+  public function get_jenis()
+  {
+    return $this->db->get('jenis_surat');
+  }
+
   public function get_dosen()
   {
     return $this->db->get('dosen');
-  }
-
-  public function get_js()
-  {
-    return $this->db->get('jenis_surat');
   }
 
   function tambahsurat($data, $table)
@@ -17,8 +24,8 @@ class M_form extends CI_Model
     $this->db->insert($table, $data);
   }
 
-  public function save_batch($data2)
+  function tambahsurat2($data2, $table)
   {
-    return $this->db->insert_batch('detail_surat', $data2);
+    $this->db->insert($table, $data2);
   }
 }
