@@ -295,11 +295,9 @@
 			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
       <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>
       <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalTolak">Tolak</a>
-      
-                                  
-			      
-                              <?php //echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>
+      <?php //echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>                              
 			</td>
+      
       
 		</tr>
 		<?php } ?>
@@ -357,7 +355,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<!-- form login -->
+					<!-- form Tolak -->
 					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">						
             <div class="form-group">
                         <label class="control-label col-xs-3" >Alasan</label>
@@ -369,8 +367,7 @@
                                 <option value="Identitas Tidak Lengkap">Identitas Tidak Lengkap</option>                                
                              </select>
                         </div>
-                    </div>
-						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
+                    </div>						
 						<div class="text-right">
 							<button class="btn btn-primary" type="submit">Simpan</button>
 						</div>
