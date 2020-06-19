@@ -35,7 +35,7 @@
 		<div id="preloder">
 		<div class="loader"></div>
 	</div>
-	
+
 	<a href="#" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#modalSelamat" id="mdtr"></a>
 
 <!-- alert masuk atau daftar -->
@@ -76,13 +76,18 @@
 							<li class="nav-item">
 								<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url() ?>">Beranda</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url().'home/surat_saya' ?>">Surat Saya</a>
-							</li>
+							<?php if (isset($_SESSION["status"])) { ?>
+								<li class="nav-item">
+									<a class="nav-link ml-2 mr-2" href="<?php echo base_url() . 'home/surat_saya' ?>">Surat Saya</a>
+								</li>
+							<?php } else { ?>
+								<li class="nav-item">
+									<a class="nav-link ml-2 mr-2" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
+								</li>
+							<?php } ?>
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
-						
 							<?php
 							if (isset($_SESSION["status"])) {
 								$nama = $_SESSION['hasil_db'];
@@ -101,9 +106,9 @@
 									Keluar<i class="fa fa-sign-out pl-2"></i></a>
 								</div>
 
-							<?php } else { 
-								redirect('home', 'location');
-							} ?>
+							<?php } else { ?>
+								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk</a>
+							<?php } ?>
 						</li>
 					</div>
 				</nav>
