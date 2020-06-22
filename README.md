@@ -1,2 +1,2 @@
 # Kel5_Smt4-TIFD
-Membuat project untuk semester 4
+Web and Android Apps.
