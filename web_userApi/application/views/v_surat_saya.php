@@ -69,10 +69,11 @@
 									User : @<?php echo $nama_user ?>
 								</a>
 								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
-									<a class="dropdown-item" href="#">Ubah Akun</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
+									<!-- <a class="dropdown-item" href="#"><i class="fa fa-2x fa-user-circle pr-2"></i>  <?php echo $nama_user ?> </a>
+									<a class="dropdown-item" href="#"><i class="fa fa-2x fa-edit pr-2"></i> Ubah Akun</a> -->
+									<!-- <div class="dropdown-divider"></div> -->
+									<a class="dropdown-item text-center" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">
+									Keluar<i class="fa fa-sign-out pl-2"></i></a>
 								</div>
 
 							<?php } else {
@@ -93,21 +94,21 @@
 				?>
 				<div class="row  bg-light pl-5 pr-5">
 					<div class="mb-2 modal-body border shadow-sm text-center">
-						<form method="post" class="text-center">
-							<a href="<?php echo base_url() . "home/surat_saya" ?>" class="btn mb-1 
-							 		<?php if (isset($_SESSION["semua"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>" flex-wrap>Semua</a>
+					<form method="post" class="text-center">
+							 <a href="<?php echo base_url()."home/surat_saya" ?>" class="btn mb-1 rounded-pill
+							 		<?php if(isset($_SESSION["semua"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>" flex-wrap>Semua</a>
 
-							<a href="<?php echo base_url() . "home/surat_diproses" ?>" class="btn mb-1 
-									<?php if (isset($_SESSION["diproses"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Diproses</a>
+							 <a href="<?php echo base_url()."home/surat_diproses" ?>" class="btn mb-1  rounded-pill
+									<?php if(isset($_SESSION["diproses"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Diproses</a>
 
-							<a href="<?php echo base_url() . "home/surat_diambil" ?>" class="btn mb-1
-							 		<?php if (isset($_SESSION["diambil"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Bisa Diambil</a>
+							 <a href="<?php echo base_url()."home/surat_diambil" ?>" class="btn mb-1 rounded-pill
+							 		<?php if(isset($_SESSION["diambil"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Bisa Diambil</a>
 
-							<a href="<?php echo base_url() . "home/surat_selesai" ?>" class="btn mb-1 
-							 		<?php if (isset($_SESSION["selesai"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Selesai</a>
+							 <a href="<?php echo base_url()."home/surat_selesai" ?>" class="btn mb-1  rounded-pill
+							 		<?php if(isset($_SESSION["selesai"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Selesai</a>
 
-							<a href="<?php echo base_url() . "home/surat_gagal" ?>" class="btn mb-1 
-							 		<?php if (isset($_SESSION["gagal"])) { ?> btn-primary<?php } else { ?>btn-outline-primary<?php } ?>">Gagal</a>
+							 <a href="<?php echo base_url()."home/surat_gagal" ?>" class="btn mb-1  rounded-pill
+							 		<?php if(isset($_SESSION["gagal"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Gagal</a>
 
 						</form>
 					</div>
@@ -121,63 +122,64 @@
 							}
 						});
 					});
-				</script>
+					</script>
+			
+					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
+						<!-- table surat saya -->
 
-				<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
-					<!-- table surat saya -->
-					<div class="rounded bg-white border row modal-body shadow p-3 mb-5">
-
-						<?php
-						$i = 1;
-						foreach ($database  as $i) : endforeach;
-						if ($i != 1) { //jika database ada isinya
-							$no = 1;
-							foreach ($database  as $u) :  //ubah variabel user ke u 
-								$id_su = $u['ID_JENIS_SURAT'];
-								$jen_su = $u['JENIS_SURAT'];
-								$tgl_aju = $u['TANGGAL_PENGAJUAN'];
-								$nama = $u['NAMA_MITRA'];
-								$alamat = $u['ALAMAT_MITRA'];
-								$status = $u['STATUS_SURAT'];
+					<?php
+					$i=1;
+					foreach($database  as $i) : endforeach;
+					if ($i != 1){ //jika database ada isinya
+					$no = 1;
+					foreach($database  as $u) :  //ubah variabel user ke u 
+						$id_su=$u['ID_JENIS_SURAT'];
+						$jen_su=$u['JENIS_SURAT'];
+						$tgl_aju=$u['TANGGAL_PENGAJUAN'];
+						$nama=$u['NAMA_MITRA'];
+						$alamat=$u['ALAMAT_MITRA'];
+						$status=$u['STATUS_SURAT'];
 						?>
-								<table class="table table-bordered table-primary">
+						<!-- bagian atas dan status surat-->
+									<table class="table table-bordered shadow rounded bg-surat">
 									<thead>
-										<tr>
-											<th scope="col justify-content-center">
-												<h2><?php echo $no++; ?></h2>
-											</th>
-											<th scope="col">
-												<h2 class="text-bold"><?php echo $jen_su; ?></h2>
-											</th>
-										</tr>
-									</thead>
-									<th scope="col"></th>
-									<td>
-
-										<label>Tanggal Pengajuan : <span><?php echo $tgl_aju ?></span> </label>
-										<label class="border-secondary border-left pl-1">Nama Mitra : <span><?php echo $nama ?></span></label>
-										<p>Alamat Mitra : <?php echo $alamat ?></p>
-
-
-										Status :
-										<label class="btn btn-success " disabled><?php echo $status ?></label>
-									</td>
-									</tr>
-								</table>
-							<?php endforeach;
-						} else { //jika database kosong
-							?>
-							<table class="table table-bordered table-primary">
-								<thead>
-									<tr class="text-center">
-										<th scope="col">
-											<h6 class="text-secondary">Surat Tidak Tersedia</h6>
+									<tr class="bg-blue">
+										<th scope="col" class="pl-5 text-center">
+											<h5 class="text-secondary text-italic" disabled>Surat <?php echo $status ?></h5>
 										</th>
 									</tr>
-								</thead>
-							</table>
-						<?php } ?>
-
+						<!-- bagian tanggal dan nama surat -->
+									<tr>
+										<!-- <th scope="col justify-content-center"><h2><?php echo $no++; ?></h2></th> -->
+										<th scope="col" class="pl-5 pr-3">
+											<div class="d-flex">
+												<div class="p-2"><h2 class="d-inline-flex"><?php echo $jen_su; ?></h2></div>
+												<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex"><?php echo $tgl_aju ?></h5></div>
+											</div>
+										</th>
+									</tr>
+									</thead>
+						<!-- bagian nama dan alamat mitra -->
+									<tr>
+										<!-- <th scope="col"></th> -->
+										<td class="pl-5">
+												<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span><?php echo $nama ?></label>
+												<p><span class="text-secondary">Alamat Mitra : </span><?php echo $alamat ?></p>
+										</td>
+										</tr>
+									</table>
+					<?php endforeach; 
+				}else{ //jika database kosong
+					?>
+						<table class="table table-bordered table-primary">
+									<thead>
+										<tr class="text-center">
+										<th scope="col"><h6 class="text-secondary">Surat Tidak Tersedia</h6></th>
+										</tr>
+									</thead>
+									</table>
+					<?php }?>
+						</div>
 					</div>
 				</div>
 			</div>

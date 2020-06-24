@@ -28,7 +28,8 @@ class Login extends CI_Controller
 			$data_session = array(
 				'hasil_db' => $hasil_db,
 				'nim' => $nim,
-				'status' => "login"
+				'alert' => "login",
+				'status' => "terdaftar"
 			);
 
 			$this->session->set_userdata($data_session);
@@ -64,7 +65,8 @@ class Login extends CI_Controller
 		$data_session = array(
 			'hasil_db' => $hasil_db,
 			'popup' => "oke",
-			'status' => "daftar"
+			'alert' => "daftar",
+			'status' => "terdaftar"
 		);
 		$this->session->set_userdata($data_session);
 		redirect(base_url());
