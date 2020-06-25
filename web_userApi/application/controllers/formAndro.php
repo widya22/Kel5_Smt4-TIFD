@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Form2 extends CI_Controller
+class formandro extends CI_Controller
 {
 
     public function index()
     {
         $data['dosen'] = $this->m_form2->get_dosen()->result();
         $data['jenis_surat'] = $this->m_form2->get_js()->result();
-        $this->load->view('v_form2', $data);
+        $this->load->view('v_formA', $data);
     }
 
     public function tambahsurat()

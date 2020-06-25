@@ -31,42 +31,41 @@
 </head>
 
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder">
+		<!-- Page Preloder -->
+		<div id="preloder">
 		<div class="loader"></div>
 	</div>
 
 	<a href="#" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#modalSelamat" id="mdtr"></a>
 
-	<!-- alert masuk atau daftar -->
-	<?php
-	if (isset($_SESSION["status"])) { //jika status ada isinya
+<!-- alert masuk atau daftar -->
+	<?php  
+	if (isset($_SESSION["alert"])){ //jika status ada isinya
 
-		if ($_SESSION["status"] == "login") { ?>
-			<div class="alert alert-info alert-dismissible fade show">
-				<i class="fa fa-check-circle text-success"></i>
-				<strong>Halo!</strong> Selamat login anda berhasil.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-		<?php } else if ($_SESSION["status"] == "daftar") { ?>
-			<div class="alert alert-warning alert-dismissible fade show">
-				<i class="fa fa-check-circle text-success"></i>
-				<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-	<?php }
-	} ?>
-	<!-- alert masuk atau daftar -->
+	if($_SESSION["alert"]=="login"){ ?>
+	<div class="alert alert-info alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+		<strong>Halo!</strong> Selamat login anda berhasil.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php }else if($_SESSION["alert"]=="daftar"){ ?>
+		<div class="alert alert-warning alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+		<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php }} ?>
+<!-- alert masuk atau daftar -->
 
 	<div class="main-wrapper-first">
 		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
 		<div class="hero-area relative">
-			<header>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light col-lg-12 ml-1 row">
+		<header>
+				<na class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
 					<i class="fa fa-envelope fa-2x"></i>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -75,22 +74,22 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link ml-2 mr-2" href="#">Beranda</a>
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Beranda</a>
 							</li>
 							<?php if (isset($_SESSION["status"])) { ?>
 								<li class="nav-item">
-									<a class="nav-link ml-2 mr-2" href="<?php echo base_url() . 'home/surat_saya' ?>">Surat Saya</a>
+									<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url() . 'home/surat_saya' ?>">Surat Saya</a>
 								</li>
 							<?php } else { ?>
 								<li class="nav-item">
-									<a class="nav-link ml-2 mr-2" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
+									<a class="nav-link ml-2 mr-2 border-left border-right" href="#" data-toggle="modal" data-target="#modalLogin">Surat Saya</a>
 								</li>
 							<?php } ?>
 
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
 							<?php
-							if (isset($_SESSION["status"]) or isset($_SESSION["daftar"])) {
+							if (isset($_SESSION["status"])) {
 								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;
@@ -100,10 +99,8 @@
 									User : @<?php echo $nama_user ?>
 								</a>
 								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
-									<a class="dropdown-item" href="#">Ubah Akun</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">Keluar</a>
+									<a class="dropdown-item text-center" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">
+									Keluar<i class="fa fa-sign-out pl-2"></i></a>
 								</div>
 
 							<?php } else { ?>
@@ -112,83 +109,118 @@
 						</li>
 					</div>
 				</nav>
-
 			</header>
+
+
 			<div class="banner-area relative">
 				<div class="overlay hero-overlay-bg"></div>
-				<div class="container">
 					<div class="row height align-items-center justify-content-center">
-						<div class="col-lg-7">
+						<div class="col-lg-6">
 							<div class="banner-content text-center">
-								<h1 class="text-uppercase text-white"><span>JTI-Surat</span> <br>
+								<h1 class="text-white"><span class="shadow">Buat Surat JTI Online</span> <br>
 									<!--diisi kalo butuh-->
 								</h1>
-								<p class="text-justify text-white mb-30">
+								<p class="text-justify text-white mb-30 opacity-50 pl-5 pr-5">
 									JTI-Surat adalah website untuk melakukan pengajuan pembuatan surat kepada Admin jurusan jurusan Teknologi Informasi seperti
 									surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
-									admin jurusan dalam transaksi pembuatan surat. <strong>Klik tombol dibawah untuk mulai mengajukan surat</strong>
+									admin jurusan dalam transaksi pembuatan surat.
 								</p>
 								<?php if (isset($_SESSION["status"])) { ?>
-									<a class="btn btn-light rounded-pill btn-lg" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
-									<!-- <button type="button" class="btn btn-primary btn-lg">Buat Surat Sekarang  <i class="fa fa-chevron-circle-right text-light"></i></button> -->
+									<a class="btn btn-light rounded-pill btn-lg glow-blue mb-5" href="<?php echo base_url('form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
 								<?php } else { ?>
-									<a class="btn btn-light rounded-pill btn-lg" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
+									<a class="btn btn-light rounded-pill btn-lg glow-blue mb-5" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
 								<?php } ?>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="main-wrapper">
 
 
+	<div class="main-wrapper pt-5">
+			<div class="bg-primary text-center ml-5 mr-5 rounded-pill">
+				<h5 class="text-white pl-5 pr-5 pt-2 pb-2  justify-content-center">Kenapa JTI-Surat</h5>
+			</div>
 		<!-- Start feature-bottom Area -->
-		<section class="feature-bottom-area pt-100 pb-100 mr-5 ml-5">
-
-			<table class="table table-borderless container text-center ">
-				<thead>
-					<tr>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img></th>
-						<th scope="col"><img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/cepat.png') ?>"></img></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Lebih Hemat Waktu</td>
-						<td>Live Tracking</td>
-						<td>Lebih Cepat</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
+		
+	<section class="feature-bottom-area pt-20 pb-50 mr-5 ml-5">
+		<div class="pb-4 pt-4 pl-4 pr-4 ml-4 mr-4 b-radius">
+			<div class="row text-center justify-content-center pl-3 pr-3">
+				<div class="col-sm ">
+					<div class="card shadow mt-2">
+					<div class="card-body">
+						<img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/dimanasaja.png') ?>"></img>
+						<h5 class="card-title mt-2 text-info">PESAN DIMANA SAJA</h5>
+						<p class="text-center text-secondary" >
+							Dengan aplikasi ini kamu bisa bebas pesan dimana saja kapan saja, selama ada device dan koneksi internet suratmu akan berhasil diproses
+						</p>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm ">
+					<div class="card shadow mt-2">
+					<div class="card-body">
+						<img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/tracking.png') ?>"></img>
+						<h5 class="card-title mt-2 text-info">PELACAKAN LANGSUNG</h5>
+						<p class="text-center text-secondary" >
+							Kamu bisa memantau setiap proses surat kamu secara langsung sehingga kamu bisa memprediksi kapan suratmu akan selesai dan kamu juga akan mendapatkan notifikasi jika suratmu sudah siap untuk diambil 
+						</p>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm ">
+					<div class="card shadow mt-2">
+					<div class="card-body">
+						<img class="mt-2 mb-2 img-fluid" height="80px" src="<?php echo base_url('assets/icon/waktu.png') ?>"></img>
+						<h5 class="card-title mt-2 text-info">LEBIH HEMAT WAKTU</h5>
+						<p class="text-center text-secondary" >
+							Kamu juga bisa lebih menghemat waktumu dan menggunakannya untuk yang lain daripada kamu harus membuang beberapa menitmu hanya untuk menunggu dan memesan suratmu di Admin Jurusan
+						</p>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 		<!-- End feature-bottom Area -->
 
 
-		<section class="subscription-area pt-100 pb-100">
-			<img src="<?php echo base_url() . 'assets/images/app.png' ?>" width='1000px' height='100px'></img>
-		</section>
-		<!-- Start Subscription Area -->
-		<section class="subscription-area pt-100 pb-100">
+		<section class="subscription-area mt-5">
+			<!-- <img src="<?php echo base_url() . 'assets/images/app.png' ?>" width='1011px' height='385px'></img> -->
 			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<h3 class="text-uppercase text-white"><span>Silahkan kirim masukan</span> <br>
+				<div class="row">
+					<div class="col">
+						<img src="<?php echo base_url() . 'assets/images/logo.png' ?>" width='120px' class='mt-3 ml-3'></img>
+						<h2 class="text-primary shadow bg-light rounded text-center mt-3 ml-3 font-weight-bold">DAPATKAN APLIKASI MOBILENYA</h2>
+						<h6 class="ml-4 mt-4 pt-4 pl-3 pb-4 stroke-left-blue shadow">
+						Download sekarang juga dan dapatkan pengalaman menarik membuat surat secara online dengan aplikasi mobile JTI-Surat</h6>
+
+						<div class="text-right">
+							<button class="btn-lg btn-light text-primary rounded">Download</button>
+						</div>
+					</div>
+					<div class="col-sm-4 text-center">
+					<img src="<?php echo base_url() . 'assets/images/phone_r.png' ?>" width='280px' height='250px' class='mt-5'></img>
+				</div>
+			</div>
+
+		</section>
+
+		<!-- Start Footer Widget Area -->
+		<section class="footer-area pt-60 pb-60">
+		<div class="section-title text-center">
+							<h3 class="text-uppercase text-primary"><span>Silahkan kirim masukan</span> <br>
 							</h3>
 							<!-- <span class="text-white">We won’t send any kind of spam</span> -->
 						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center">
+		<div class="row justify-content-center pl-3 pr-3">
 					<div class="col-lg-6">
 						<div id="mc_embed_signup">
 							<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-								<input type="email" name="EMAIL" placeholder="Tulis Masukan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required>
+								<input type="email" name="EMAIL" placeholder="Tulis Masukan" class="border" required>
 								<div style="position: absolute; left: -5000px;">
-									<input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
+									<input type="text" name="masukan" tabindex="-1">
 								</div>
 								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
 								<div class="info"></div>
@@ -196,27 +228,13 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<!-- End Subscription Area -->
-		<!-- Start Footer Widget Area -->
-		<section class="footer-area pt-60 pb-60">
+
 			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<ul class="footer-menu">
-						<li>
-							<a href="<?= base_url('home') ?>">Beranda</a>
-						</li>
-						<li>
-							<a href="elements.html">Author</a>
-						</li>
-					</ul>
-				</div>
 				<footer>
 					<div class="footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-instagram"></i></a>
+						<a href="#"><i class="fa fa-facebook mt-5"></i></a>
+						<a href="#"><i class="fa fa-twitter mt-5"></i></a>
+						<a href="#"><i class="fa fa-instagram mt-5"></i></a>
 					</div>
 					<div class="footer-content">
 						<div class="text-center">
@@ -226,7 +244,7 @@
 				</footer>
 		</section>
 		<!-- End Footer Widget Area -->
-	</div>
+	</div></div></div>
 	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
@@ -274,35 +292,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- modal Register -->
-	<!-- <div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Daftar</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="<?php echo base_url() . 'crud/register'; ?>" method="post">
-						<div class="form-group">
-							<label for="username">Username</label>
-							<input type="text" name="username" placeholder="Username" class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
-						</div>
-						<div class="text-right">
-							<button class="btn btn-primary" type="submit">Daftar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
 
 	<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -353,6 +342,7 @@
 
 	<?php //untuk hapus session
 	$this->session->unset_userdata('popup');
+	$this->session->unset_userdata('alert');
 	?>
 
 </body>
