@@ -2461,3 +2461,25 @@ body:after {
 .bg-surat{
   background-image: url(../images/bg-surat2.jpg);
 }
+  /* the others */
+
+.stroke-tebal{
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: #00AFEF;
+  }
+
+  .b-radius{
+      border: 2px solid #00AFEF;
+      border-radius: 10px;
+  }
+
+  .glow-blue{
+    box-shadow: 0px 0px 15px #007BFF;
+  }
+
+  .stroke-left-blue{
+    border-left-style:solid ;
+    border-width: 10px;
+    border-color: white;
+  }

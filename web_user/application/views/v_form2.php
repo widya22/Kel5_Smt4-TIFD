@@ -45,13 +45,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link ml-2 mr-2" href="<?= base_url('home') ?>">Beranda</a>
+                                <a class="nav-link ml-2 mr-2 border-left border-right" href="<?= base_url('home') ?>">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link ml-2 mr-2" href="<?= base_url('home/surat_saya') ?>">Surat Saya</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link ml-2 mr-2" href="<?php echo base_url('form') ?>">Formulir Surat</a>
+                                <a class="nav-link ml-2 mr-2 border-left border-right   " href="<?php echo base_url('form') ?>">Formulir Surat</a>
                             </li>
                         </ul>
                         <li class="nav-item dropdown list-unstyled border border-primary text primary">
