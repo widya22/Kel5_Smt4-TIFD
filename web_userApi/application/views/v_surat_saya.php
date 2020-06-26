@@ -69,9 +69,6 @@
 									User : @<?php echo $nama_user ?>
 								</a>
 								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-									<!-- <a class="dropdown-item" href="#"><i class="fa fa-2x fa-user-circle pr-2"></i>  <?php echo $nama_user ?> </a>
-									<a class="dropdown-item" href="#"><i class="fa fa-2x fa-edit pr-2"></i> Ubah Akun</a> -->
-									<!-- <div class="dropdown-divider"></div> -->
 									<a class="dropdown-item text-center" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">
 									Keluar<i class="fa fa-sign-out pl-2"></i></a>
 								</div>
@@ -130,9 +127,10 @@
 					<?php
 					$i=1;
 					foreach($database  as $i) : endforeach;
-					if ($i != 1){ //jika database ada isinya
+					if ($i != 1){ //jik	a database ada isinya
 					$no = 1;
 					foreach($database  as $u) :  //ubah variabel user ke u 
+						$id=$u['ID_SURAT'];
 						$id_su=$u['ID_JENIS_SURAT'];
 						$jen_su=$u['JENIS_SURAT'];
 						$tgl_aju=$u['TANGGAL_PENGAJUAN'];
@@ -165,6 +163,16 @@
 										<td class="pl-5">
 												<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span><?php echo $nama ?></label>
 												<p><span class="text-secondary">Alamat Mitra : </span><?php echo $alamat ?></p>
+
+												<div class="text-right mr-5 mt-4">
+
+												<a href='#detail_modal' class='detail' id='<?php echo $data['ID_BANK']; ?>' data-toggle='modal'>
+													<button type="button" class="btn btn-primary">
+													lihat detail...
+													</button>
+												</a>   
+
+												</div>
 										</td>
 										</tr>
 									</table>
@@ -187,7 +195,8 @@
 	</div>
 
 
-	<script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script>
+	<!-- <script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script> -->
+	<script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.nice-select.min.js') ?>"></script>
@@ -203,7 +212,7 @@
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
 	<!-- modal -->
-	<!-- modal login -->
+<!-- modal login -->
 	<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -234,37 +243,9 @@
 			</div>
 		</div>
 	</div>
+<!-- modal login -->
 
-	<!-- modal Register -->
-	<!-- <div id="modalDaftar" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Daftar</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="<?php echo base_url() . 'crud/register'; ?>" method="post">
-						<div class="form-group">
-							<label for="username">Username</label>
-							<input type="text" name="username" placeholder="Username" class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
-						</div>
-						<div class="text-right">
-							<button class="btn btn-primary" type="submit">Daftar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-	<!-- modal keluar -->
+<!-- modal keluar -->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -282,34 +263,55 @@
 			</div>
 		</div>
 	</div>
+<!-- modal keluar -->
 
-	<!-- modal selamat datang daftar -->
-	<div class="modal fade" id="modalSelamat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
 
-				<div class="modal-body">
-					<img src="<?php echo base_url("assets/images/selamatdatang.png") ?>">
-					<h4 class="text-center">Selamat Datang di JTI-Surat</h4>
-					<p class="text-center text-secondary mt-4">Sekarang anda bisa melakukan pengajuan surat kepada admin jurusan yeayy. Buat harimu lebih semangat dengan mengatakan <strong>"Aku Semangat"</strong></p>
-					<br>
-					<div class="text-center">
-						<button class="hidden btn btn-outline-primary rounded-pill pr-5 pl-5 mb-3" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">Aku Semangat</span>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- modal -->
+<!-- untuk tampilkan modal daftar -->
 	<script>
 		var button = document.getElementById("mdtr");
 		<?php if (isset($_SESSION["daftar"])) { ?>
 			button.click();
 		<?php } ?>
 	</script>
+<!-- modal daftar -->
+
+	<!-- memulai modal nya. pada id="$myModal" harus sama dengan data-target="#myModal" pada tombol di atas -->
+	<div class="modal fade" id="detail_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Data siswa</h4>
+				</div>
+				<!-- memulai untuk konten dinamis -->
+				<!-- lihat id="data_siswa", ini yang di pangging pada ajax di bawah -->
+				<div class="modal-body" id="data_siswa">
+				</div>
+				<!-- selesai konten dinamis -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+            $('.detail').click(function(){
+                var id = $(this).attr('id');
+					// $('#data_siswa').html('yess');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    url : '<?php echo base_url().'assets/sub_detail.php' ?>',
+                    success : function(data){
+                    $('#data_siswa').html(data);//menampilkan data ke dalam modal
+					$('#data_siswa').html('yess');
+					console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

@@ -51,7 +51,7 @@
 		</button>
 	</div>
 	<?php }else if($_SESSION["alert"]=="daftar"){ ?>
-		<div class="alert alert-warning alert-dismissible fade show">
+	<div class="alert alert-warning alert-dismissible fade show">
 		<i class="fa fa-check-circle text-success"></i>
 		<strong>Halo!</strong> Selamat anda berhasil Mendaftar.
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -144,7 +144,7 @@
 			</div>
 		<!-- Start feature-bottom Area -->
 		
-	<section class="feature-bottom-area pt-20 pb-50 mr-5 ml-5">
+	<section class="feature-bottom-area pt-20 pb-50 ">
 		<div class="pb-4 pt-4 pl-4 pr-4 ml-4 mr-4 b-radius">
 			<div class="row text-center justify-content-center pl-3 pr-3">
 				<div class="col-sm ">
@@ -187,10 +187,9 @@
 
 
 		<section class="subscription-area mt-5">
-			<!-- <img src="<?php echo base_url() . 'assets/images/app.png' ?>" width='1011px' height='385px'></img> -->
 			<div class="container">
 				<div class="row">
-					<div class="col">
+					<div class="col-sm-8">
 						<img src="<?php echo base_url() . 'assets/images/logo.png' ?>" width='120px' class='mt-3 ml-3'></img>
 						<h2 class="text-primary shadow bg-light rounded text-center mt-3 ml-3 font-weight-bold">DAPATKAN APLIKASI MOBILENYA</h2>
 						<h6 class="ml-4 mt-4 pt-4 pl-3 pb-4 stroke-left-blue shadow">
@@ -217,14 +216,25 @@
 		<div class="row justify-content-center pl-3 pr-3">
 					<div class="col-lg-6">
 						<div id="mc_embed_signup">
-							<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01" method="get" class="subscription relative">
-								<input type="email" name="EMAIL" placeholder="Tulis Masukan" class="border" required>
+						<?php if (isset($_SESSION["status"])) { ?>
+							<form action="#" method="get" class="subscription relative">
+								<input type="text" name="masukan" placeholder="Tulis Masukan" class="border" required>
 								<div style="position: absolute; left: -5000px;">
 									<input type="text" name="masukan" tabindex="-1">
 								</div>
 								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
 								<div class="info"></div>
 							</form>
+						<?php } else { ?>
+							<form action="#" method="get" class="subscription relative">
+								<input placeholder="Silahkan login untuk mengirim masukan" class="border" disabled>
+								<div style="position: absolute; left: -5000px;">
+									<input type="text" name="masukan" tabindex="-1">
+								</div>
+								<button class="primary-btn hover d-inline-flex align-items-center"><span class="mr-10">Kirim</span><span class="lnr lnr-arrow-right"></span></button>
+								<div class="info"></div>
+							</form>
+						<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -282,7 +292,7 @@
 							<label for="password">Password</label>
 							<input type="password" name="password" placeholder="Password" class="form-control" />
 						</div>
-						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
+						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
 						<div class="text-right">
 							<button class="btn btn-primary" type="submit">Masuk</button>
 						</div>

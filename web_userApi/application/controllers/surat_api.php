@@ -26,7 +26,7 @@ class Surat extends REST_Controller {
         $this->response($surat, 200);
     }
 
-    //Masukan function selanjutnya disini
+    //function tambah data surat
     function index_post() {
         $data = array(
                     'id_surat'           => $this->post('id_surat'),
@@ -46,7 +46,7 @@ class Surat extends REST_Controller {
             $this->response(array('status' => 'fail', 502));
         }
     }
-    //Masukan function selanjutnya disini
+    //function tambah ubah surat
     function index_put() {
         $id = $this->put('id_surat');
         $data = array(
@@ -69,7 +69,7 @@ class Surat extends REST_Controller {
         }
     }
     //Masukan function selanjutnya disini
-     //Menghapus salah satu data kontak
+     //function hapus data surat
      function index_delete() {
         $id = $this->delete('id_surat');
         $this->db->where('id_surat', $id);

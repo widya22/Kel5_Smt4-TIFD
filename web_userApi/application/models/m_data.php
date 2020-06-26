@@ -12,10 +12,10 @@ class M_data extends CI_Model{
 	function tampil_surat(){		
 		$nim=$_SESSION["nim"];
 
-		$this->db->order_by('ID_SURAT', 'DESC');
+		$this->db->order_by('TANGGAL', 'DESC');
 		$this->db->where('NIM',$nim);
         return $query = $this->db->from('surat')
-		  ->join('jenis_surat', 'jenis_surat.ID_JENIS_SURAT=surat.ID_JENIS_SURAT')
+			->join('jenis_surat', 'jenis_surat.ID_JENIS_SURAT=surat.ID_JENIS_SURAT')	
 		->get();
 	}	
 

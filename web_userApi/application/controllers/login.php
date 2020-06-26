@@ -35,7 +35,12 @@ class Login extends CI_Controller
 			$this->session->set_userdata($data_session);
 			redirect(base_url());
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Username atau Password Anda Salah!</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show">
+															Username atau Password anda salah!
+															<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>');
 			redirect(base_url());
 		}
 	}
