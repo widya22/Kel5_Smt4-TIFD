@@ -30,5 +30,52 @@ class M_data extends CI_Model{
         return $query = $this->db->from('surat') //perintah join sql di ci
 		  ->join('jenis_surat', 'jenis_surat.ID_JENIS_SURAT=surat.ID_JENIS_SURAT')
 		->get(); //dapatkan hasil datanya
-    } 
+	} 
+
+
+	function surat_list(){
+		$nim=$_SESSION["nim"];
+		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
+								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
+								WHERE surat.NIM= '$nim'");
+		return $hasil->result();
+	}
+
+	function surat_diproses(){
+		$nim=$_SESSION["nim"];
+		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
+								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Diproses'");
+		return $hasil->result();
+	}
+
+	function surat_bisadiambil(){
+		$nim=$_SESSION["nim"];
+		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
+								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='BisaDiambil'");
+		return $hasil->result();
+	}
+
+	function surat_selesai(){
+		$nim=$_SESSION["nim"];
+		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
+								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Selesai'");
+		return $hasil->result();
+	}
+
+	function surat_gagal(){
+		$nim=$_SESSION["nim"];
+		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
+								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Gagal'");
+		return $hasil->result();
+	}
+
+	function get_surat_by_kode($kobar){
+		$hsl=$this->db->query("SELECT * FROM detail_surat WHERE ID_SURAT='$kobar'");
+		return $hsl->result();
+	}
+
 }

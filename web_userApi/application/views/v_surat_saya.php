@@ -26,10 +26,10 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/nice-select.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
-	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.css'?>"> -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/jquery.dataTables.css'?>">
 </head>
-
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -37,8 +37,8 @@
 	</div>
 
 	<div class="main-wrapper-first pb-5">
-		<div class="modal-body"><?= $this->session->flashdata('message') ?></div>
 		<div class="hero-area relative">
+<!-- header -->
 			<header>
 				<na class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
 					<i class="fa fa-envelope fa-2x"></i>
@@ -65,13 +65,9 @@
 									$nama_user = $u->NAMA_MHS;
 								}
 							?>
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									User : @<?php echo $nama_user ?>
 								</a>
-								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-center" href="<?php echo base_url('login/logout'); ?>" data-toggle="modal" data-target="#logoutModal" id="keluar">
-									Keluar<i class="fa fa-sign-out pl-2"></i></a>
-								</div>
 
 							<?php } else {
 								redirect('home', 'location');
@@ -80,6 +76,7 @@
 					</div>
 					</nav>
 			</header>
+<!-- header -->
 
 			<div class="banner-area relative pb-5 border-top  border-secondary">
 				<div class="bg-light"></div>
@@ -87,232 +84,398 @@
 					<h1 class="text-uppercase text-orange mt-4 pl-2 pr-2 border text-center"><span> Surat Saya </span></h1>
 				</div>
 
-				<?php $var = 1; //untuk mengecek variabel class di button bawah 
-				?>
+<!-- status -->
 				<div class="row  bg-light pl-5 pr-5">
 					<div class="mb-2 modal-body border shadow-sm text-center">
 					<form method="post" class="text-center">
-							 <a href="<?php echo base_url()."home/surat_saya" ?>" class="btn mb-1 rounded-pill
-							 		<?php if(isset($_SESSION["semua"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>" flex-wrap>Semua</a>
+							<a href="<?php echo base_url()."home/surat_saya" ?>" class="btn mb-1 rounded-pill
+								<?php if(isset($_SESSION["semua"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>" flex-wrap>Semua</a>
 
-							 <a href="<?php echo base_url()."home/surat_diproses" ?>" class="btn mb-1  rounded-pill
-									<?php if(isset($_SESSION["diproses"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Diproses</a>
+							<a href="<?php echo base_url()."home/surat_diproses" ?>" class="btn mb-1  rounded-pill
+								<?php if(isset($_SESSION["diproses"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Diproses</a>
 
-							 <a href="<?php echo base_url()."home/surat_diambil" ?>" class="btn mb-1 rounded-pill
-							 		<?php if(isset($_SESSION["diambil"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Bisa Diambil</a>
+							<a href="<?php echo base_url()."home/surat_diambil" ?>" class="btn mb-1 rounded-pill
+								<?php if(isset($_SESSION["diambil"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Bisa Diambil</a>
 
-							 <a href="<?php echo base_url()."home/surat_selesai" ?>" class="btn mb-1  rounded-pill
-							 		<?php if(isset($_SESSION["selesai"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Selesai</a>
+							<a href="<?php echo base_url()."home/surat_selesai" ?>" class="btn mb-1  rounded-pill
+								<?php if(isset($_SESSION["selesai"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Selesai</a>
 
-							 <a href="<?php echo base_url()."home/surat_gagal" ?>" class="btn mb-1  rounded-pill
-							 		<?php if(isset($_SESSION["gagal"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Gagal</a>
-
+							<a href="<?php echo base_url()."home/surat_gagal" ?>" class="btn mb-1  rounded-pill
+								<?php if(isset($_SESSION["gagal"])){?> btn-primary<?php } else {?>btn-outline-primary<?php }?>">Gagal</a>
 						</form>
 					</div>
 				</div>
+<!-- status -->
 
-				<script>
-					$(document).ready(function() {
-						$(".options_c").click(function() { //Memberikan even ketika class detail di klik (class detail ialah class radio button)
-							if ($("input[name='options']:checked").val() == "diproses") { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
-								redirect("home/surat_saya");
-							}
-						});
-					});
-					</script>
-			
-					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5 ">
-						<!-- table surat saya -->
+					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5" id="show_data">
+					</div>
+			</div>
+		</div>
+	</div>
 
-					<?php
-					$i=1;
-					foreach($database  as $i) : endforeach;
-					if ($i != 1){ //jik	a database ada isinya
-					$no = 1;
-					foreach($database  as $u) :  //ubah variabel user ke u 
-						$id=$u['ID_SURAT'];
-						$id_su=$u['ID_JENIS_SURAT'];
-						$jen_su=$u['JENIS_SURAT'];
-						$tgl_aju=$u['TANGGAL_PENGAJUAN'];
-						$nama=$u['NAMA_MITRA'];
-						$alamat=$u['ALAMAT_MITRA'];
-						$status=$u['STATUS_SURAT'];
-						?>
-						<!-- bagian atas dan status surat-->
-									<table class="table table-bordered shadow rounded bg-surat">
-									<thead>
+<!-- MODAL Detail -->
+	<div class="modal fade" id="ModalDetail" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h5 class="modal-title text-left ml-3" id="myModalLabel">Detail Pengaju</h5>
+                <button type="button" class="close text-right" data-dismiss="modal" aria-hidden="true">
+					<i class="fa fa-times-circle text-dark"></i>
+				</button>
+            </div>
+			<div class="modal-body ml-3 mr-3">
+					<table class="table table-bordered">
+					<thead>
+						<tr>
+						<th scope="col">No</th>
+						<th scope="col">Mahasiswa</th>
+						<th scope="col">NIM</th>
+						</tr>
+					</thead>
+					<tbody id="data">
+						<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+						</tr>
+					</tbody>
+					</table>
+			</div>
+            </div>
+            </div>
+        </div>
+<!--END MODAL Detail-->
+
+
+<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.js'?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.dataTables.js'?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		<?php
+		if(isset($_SESSION["semua"])){ ?> //menampilkan semua surat
+			tampil_data_surat();
+			$('#mydata').dataTable();
+		<?php }else if(isset($_SESSION["diproses"])){ ?> //menampilkan surat diproses
+			tampil_data_diproses();
+			$('#mydata').dataTable();
+		<?php }else if(isset($_SESSION['diambil'])) { ?> //menampilkan surat diambil
+			tampil_data_diambil();
+			$('#mydata').dataTable();
+		<?php }else if(isset($_SESSION['selesai'])) { ?> //menampilkan surat selesai
+			tampil_data_selesai();
+			$('#mydata').dataTable();
+		<?php }else if(isset($_SESSION['gagal'])) { ?> //menampilkan surat gagal
+			tampil_data_gagal();
+			$('#mydata').dataTable();
+		<?php } else { ?> //menampilkan semua surat
+			tampil_data_surat();
+			$('#mydata').dataTable();
+		<?php } ?>
+
+//fungsi tampil semua
+		function tampil_data_surat(){  
+		    $.ajax({
+		        type  : 'GET',
+		        url   : '<?php echo base_url()?>home/tampil_semua',
+		        async : true,
+		        dataType : 'json',
+		        success : function(data){
+		            var html = '';
+		            var i;
+		            for(i=0; i<data.length; i++){
+		                html += '<table class="table table-bordered shadow rounded bg-surat">'+
+								'<thead>'+
+									'<tr class="bg-blue">'+
+										'<th scope="col" class="pl-5 text-center">'+
+											'<h5 class="text-secondary text-italic" disabled>Surat '+data[i].STATUS_SURAT+'</h5>'+
+										'</th>'+
+									'</tr>'+
+									
+									'<tr>'+
+										'<th scope="col" class="pl-5 pr-3">'+
+											'<div class="d-flex">'+
+												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
+												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+											'</div>'+
+										'</th>'+
+									'</tr>'+
+								'</thead>'+
+
+								'<tr>'+
+									'<td class="pl-5">'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
+										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<div class="text-right mr-5 mt-4">'+
+										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
+										'</div>'+
+									'</td>'+
+								'</tr>'+
+								'</table>'
+								
+								;
+		            }
+		            $('#show_data').html(html);
+		        }
+
+		    });
+		}
+//fungsi tampil semua
+
+//fungsi tampil diproses
+	function tampil_data_diproses(){  
+		    $.ajax({
+		        type  : 'GET',
+		        url   : '<?php echo base_url()?>home/tampil_diproses',
+		        async : true,
+		        dataType : 'json',
+		        success : function(data){
+
+					if( data ==""){ 
+						$('#show_data').html(`
+						<table class="table table-bordered shadow rounded bg-surat">
+								<thead>
 									<tr class="bg-blue">
 										<th scope="col" class="pl-5 text-center">
-											<h5 class="text-secondary text-italic" disabled>Surat <?php echo $status ?></h5>
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Tersedia </h5>
 										</th>
 									</tr>
-						<!-- bagian tanggal dan nama surat -->
-									<tr>
-										<!-- <th scope="col justify-content-center"><h2><?php echo $no++; ?></h2></th> -->
-										<th scope="col" class="pl-5 pr-3">
-											<div class="d-flex">
-												<div class="p-2"><h2 class="d-inline-flex"><?php echo $jen_su; ?></h2></div>
-												<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex"><?php echo $tgl_aju ?></h5></div>
-											</div>
-										</th>
-									</tr>
-									</thead>
-						<!-- bagian nama dan alamat mitra -->
-									<tr>
-										<!-- <th scope="col"></th> -->
-										<td class="pl-5">
-												<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span><?php echo $nama ?></label>
-												<p><span class="text-secondary">Alamat Mitra : </span><?php echo $alamat ?></p>
+								</thead>
+								
+								`);
+					} else {
 
-												<div class="text-right mr-5 mt-4">
+		            var html = '';
+		            var i;
+		            for(i=0; i<data.length; i++){
+		                html += '<table class="table table-bordered shadow rounded bg-surat">'+
+								'<thead>'+
+									'<tr class="bg-blue">'+
+										'<th scope="col" class="pl-5 text-center">'+
+											'<h5 class="text-secondary text-italic" disabled>Surat '+data[i].STATUS_SURAT+'</h5>'+
+										'</th>'+
+									'</tr>'+
+									
+									'<tr>'+
+										'<th scope="col" class="pl-5 pr-3">'+
+											'<div class="d-flex">'+
+												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
+												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+											'</div>'+
+										'</th>'+
+									'</tr>'+
+								'</thead>'+
 
-												<a href='#detail_modal' class='detail' id='<?php echo $data['ID_BANK']; ?>' data-toggle='modal'>
-													<button type="button" class="btn btn-primary">
-													lihat detail...
-													</button>
-												</a>   
+								'<tr>'+
+									'<td class="pl-5">'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
+										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<div class="text-right mr-5 mt-4">'+
+										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
+										'</div>'+
+									'</td>'+
+								'</tr>'+
+								'</table>'
+								
+								;
+		            }
+		            $('#show_data').html(html);
+		        } 
+				}
 
-												</div>
-										</td>
-										</tr>
-									</table>
-					<?php endforeach; 
-				}else{ //jika database kosong
-					?>
-						<table class="table table-bordered table-primary">
-									<thead>
-										<tr class="text-center">
-										<th scope="col"><h6 class="text-secondary">Surat Tidak Tersedia</h6></th>
-										</tr>
-									</thead>
-									</table>
-					<?php }?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		    });
+		}
+//fungsi tampil diproses
+
+//fungsi tampil bisadiambil
+	function tampil_data_bisadiambil(){
+		    $.ajax({
+		        type  : 'GET',
+		        url   : '<?php echo base_url()?>home/tampil_bisadiambil',
+		        async : true,
+		        dataType : 'json',
+		        success : function(data){
+		            var html = '';
+		            var i;
+		            for(i=0; i<data.length; i++){
+		                html += '<table class="table table-bordered shadow rounded bg-surat">'+
+								'<thead>'+
+									'<tr class="bg-blue">'+
+										'<th scope="col" class="pl-5 text-center">'+
+											'<h5 class="text-secondary text-italic" disabled>Surat '+data[i].STATUS_SURAT+'</h5>'+
+										'</th>'+
+									'</tr>'+
+									
+									'<tr>'+
+										'<th scope="col" class="pl-5 pr-3">'+
+											'<div class="d-flex">'+
+												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
+												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+											'</div>'+
+										'</th>'+
+									'</tr>'+
+								'</thead>'+
+
+								'<tr>'+
+									'<td class="pl-5">'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
+										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<div class="text-right mr-5 mt-4">'+
+										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
+										'</div>'+
+									'</td>'+
+								'</tr>'+
+								'</table>'
+								
+								;
+		            }
+		            $('#show_data').html(html);
+		        }
+
+		    });
+		}
+//fungsi tampil bisadiambil
+
+//fungsi tampil selesai
+	function tampil_data_selesai(){
+		    $.ajax({
+		        type  : 'GET',
+		        url   : '<?php echo base_url()?>home/tampil_selesai',
+		        async : true,
+		        dataType : 'json',
+		        success : function(data){
+		            var html = '';
+		            var i;
+		            for(i=0; i<data.length; i++){
+		                html += '<table class="table table-bordered shadow rounded bg-surat">'+
+								'<thead>'+
+									'<tr class="bg-blue">'+
+										'<th scope="col" class="pl-5 text-center">'+
+											'<h5 class="text-secondary text-italic" disabled>Surat '+data[i].STATUS_SURAT+'</h5>'+
+										'</th>'+
+									'</tr>'+
+									
+									'<tr>'+
+										'<th scope="col" class="pl-5 pr-3">'+
+											'<div class="d-flex">'+
+												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
+												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+											'</div>'+
+										'</th>'+
+									'</tr>'+
+								'</thead>'+
+
+								'<tr>'+
+									'<td class="pl-5">'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
+										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<div class="text-right mr-5 mt-4">'+
+										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
+										'</div>'+
+									'</td>'+
+								'</tr>'+
+								'</table>'
+								
+								;
+		            }
+		            $('#show_data').html(html);
+		        }
+
+		    });
+		}
+//fungsi tampil selesai
 
 
-	<!-- <script src="<?php echo base_url('assets/js/vendor/jquery-2.2.4.min.js') ?>"></script> -->
-	<script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-	<script src="<?php echo base_url('assets/js/vendor/bootstrap.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.nice-select.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/main.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+//fungsi tampil gagal
+	function tampil_data_gagal(){
+		    $.ajax({
+		        type  : 'GET',
+		        url   : '<?php echo base_url()?>home/tampil_gagal',
+		        async : true,
+		        dataType : 'json',
+		        success : function(data){
+		            var html = '';
+		            var i;
+		            for(i=0; i<data.length; i++){
+		                html += '<table class="table table-bordered shadow rounded bg-surat">'+
+								'<thead>'+
+									'<tr class="bg-blue">'+
+										'<th scope="col" class="pl-5 text-center">'+
+											'<h5 class="text-secondary text-italic" disabled>Surat '+data[i].STATUS_SURAT+'</h5>'+
+										'</th>'+
+									'</tr>'+
+									
+									'<tr>'+
+										'<th scope="col" class="pl-5 pr-3">'+
+											'<div class="d-flex">'+
+												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
+												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+											'</div>'+
+										'</th>'+
+									'</tr>'+
+								'</thead>'+
 
-	<!-- modal -->
-<!-- modal login -->
-	<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Masuk</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- form login -->
-					<form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
-						<div class="form-group">
-							<label for="nim">NIM</label>
-							<input type="text" name="nim" placeholder="NIM" class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
-						</div>
-						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
-						<div class="text-right">
-							<button class="btn btn-primary" type="submit">Masuk</button>
-						</div>
-					</form>
-					<!-- end form login -->
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- modal login -->
+								'<tr>'+
+									'<td class="pl-5">'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
+										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<div class="text-right mr-5 mt-4">'+
+										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
+										'</div>'+
+									'</td>'+
+								'</tr>'+
+								'</table>'
+								
+								;
+		            }
+		            $('#show_data').html(html);
+		        }
 
-<!-- modal keluar -->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin keluar?</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Pilih "Keluar" jika ingin mengakhirinya.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-					<a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Keluar</a>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- modal keluar -->
+		    });
+		}
+//fungsi tampil gagal
 
 
-<!-- untuk tampilkan modal daftar -->
-	<script>
-		var button = document.getElementById("mdtr");
-		<?php if (isset($_SESSION["daftar"])) { ?>
-			button.click();
-		<?php } ?>
-	</script>
-<!-- modal daftar -->
 
-	<!-- memulai modal nya. pada id="$myModal" harus sama dengan data-target="#myModal" pada tombol di atas -->
-	<div class="modal fade" id="detail_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Data siswa</h4>
-				</div>
-				<!-- memulai untuk konten dinamis -->
-				<!-- lihat id="data_siswa", ini yang di pangging pada ajax di bawah -->
-				<div class="modal-body" id="data_siswa">
-				</div>
-				<!-- selesai konten dinamis -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script type="text/javascript">
-        $(document).ready(function(){
-            $('.detail').click(function(){
-                var id = $(this).attr('id');
-					// $('#data_siswa').html('yess');
-                //menggunakan fungsi ajax untuk pengambilan data
-                $.ajax({
-                    url : '<?php echo base_url().'assets/sub_detail.php' ?>',
-                    success : function(data){
-                    $('#data_siswa').html(data);//menampilkan data ke dalam modal
-					$('#data_siswa').html('yess');
-					console.log(data);
-                    }
-                });
+//GET detail
+	$('#show_data').on('click','.item_edit',function(){
+            var id=$(this).attr('data');
+            $.ajax({
+                type : "GET",
+                url  : "<?php echo base_url('home/get_surat_kode')?>",
+                dataType : "JSON",
+                data : {id:id},
+                success: function(data){
+					var hasil = '';
+		            var a;
+		            for(a=0; a<data.length; a++){
+						var n = a+1;
+		                hasil +=
+						'<tr>'+
+						'<th scope="row">'+n+'</th>'+
+						'<td>'+data[a].ANGGOTA_MHS+'</td>'+
+						'<td>'+data[a].NIM_ANGGOTA+'</td>'+
+						'</tr>'
+						
+						;
+		            $('#data').html(hasil);
+					$('#ModalDetail').modal('show');
+					}
+                }
             });
+            return false;
         });
-    </script>
+//GET detail
 
+
+	});
+
+</script>
 </body>
-
 </html>
