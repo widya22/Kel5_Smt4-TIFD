@@ -106,7 +106,6 @@
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Jenis Surat</label>
                                                     <select class="custom-select col-md-8 mr-2" name="ID_JS">
-                                                        <option selected disabled>Pilih Jenis Surat</option>
                                                         <?php
                                                         $no = 1;
                                                         foreach ($jenis_surat as $j) :
@@ -119,7 +118,6 @@
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Nama Dosen</label>
                                                     <select class="custom-select col-md-8 mr-2" name="NIP">
-                                                        <option selected disabled>Pilih Nama Dosen</option>
                                                         <?php
                                                         $no1 = 1;
                                                         foreach ($dosen as $d) :
@@ -131,19 +129,19 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Kepada</label>
-                                                    <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
+                                                    <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2" required>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Tanggal Survei</label>
-                                                    <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                                                    <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2" required>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Alamat </label>
-                                                    <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2"></textarea>
+                                                    <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2"  placeholder="Alamat Instansi/Mitra" required></textarea>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 ml-4">Keterangan </label>
-                                                    <textarea name="KETERANGAN" class="form-control col-md-8 mr-2"></textarea>
+                                                    <textarea name="KETERANGAN" class="form-control col-md-8 mr-2"  placeholder="Informasi Tambahan Untuk Admin Jurusan"></textarea>
                                                 </div>
                                                 <div class="form-group row text-center">
                                                     <label class="col-md-3 ml-4"></label>
@@ -191,23 +189,11 @@
 
         <!-- Start Footer Widget Area -->
         <section class="footer-area pt-60 pb-60">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <ul class="footer-menu">
-                        <li>
-                            <a href="index.html">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="elements.html">Author</a>
-                        </li>
-                    </ul>
-                </div>
                 <footer>
                     <div class="footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
                     </div>
                     <div class="footer-content">
                         <div class="text-center">

@@ -49,11 +49,11 @@ class M_data extends CI_Model{
 		return $hasil->result();
 	}
 
-	function surat_bisadiambil(){
+	function surat_diambil(){
 		$nim=$_SESSION["nim"];
 		$hasil=$this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='BisaDiambil'");
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Diambil'");
 		return $hasil->result();
 	}
 

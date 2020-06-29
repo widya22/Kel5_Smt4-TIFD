@@ -36,6 +36,22 @@
 		<div class="loader"></div>
 	</div>
 
+<!-- alert surat baru -->
+	<?php  
+	if(isset($_SESSION['surat_baru'])){ ?>
+	<div class="alert alert-info alert-dismissible fade show">
+		<i class="fa fa-check-circle text-success"></i>
+			Surat Baru Berhasil Diajukan.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php } ?>
+	<?php 
+	$this->session->unset_userdata('surat_baru');
+	?>
+<!-- alert surat baru -->
+
 	<div class="main-wrapper-first pb-5">
 		<div class="hero-area relative">
 <!-- header -->
@@ -65,9 +81,13 @@
 									$nama_user = $u->NAMA_MHS;
 								}
 							?>
-								<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									User : @<?php echo $nama_user ?>
 								</a>
+								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item text-center keluar" data-toggle="modal" href="<?php echo base_url("login/logout") ?>">
+									Keluar<i class="fa fa-sign-out pl-2"></i></a>
+								</div>
 
 							<?php } else {
 								redirect('home', 'location');
@@ -76,6 +96,8 @@
 					</div>
 					</nav>
 			</header>
+
+		
 <!-- header -->
 
 			<div class="banner-area relative pb-5 border-top  border-secondary">
@@ -108,6 +130,7 @@
 <!-- status -->
 
 					<div class="row justify-content-center bg-light pl-5 pr-5 pb-5" id="show_data">
+							<!-- untuk menampilkan data surat saya -->
 					</div>
 			</div>
 		</div>
@@ -133,21 +156,46 @@
 						</tr>
 					</thead>
 					<tbody id="data">
-						<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-						</tr>
+						<!-- menampilkan detail dari ajax -->
 					</tbody>
 					</table>
+			</div>
+
+			<div class="modal-footer text-right mr-3">
+					<a href="">cetak bukti pembuatan surat</a>
 			</div>
             </div>
             </div>
         </div>
 <!--END MODAL Detail-->
 
+<!-- modal keluar -->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin keluar?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Pilih "Keluar" jika ingin mengakhirinya.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+					<a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Keluar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- modal keluar -->
 
+	<script>
+	$(document).ready(function(){
+		$('#keluar').on(click,function(){
+			$('#ModalDetail').modal('show');
+		});
+	});
+		</script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.js'?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.dataTables.js'?>"></script>
@@ -156,8 +204,10 @@
 
 
 <script type="text/javascript">
+
 	$(document).ready(function(){
 
+// function if else
 		<?php
 		if(isset($_SESSION["semua"])){ ?> //menampilkan semua surat
 			tampil_data_surat();
@@ -178,6 +228,8 @@
 			tampil_data_surat();
 			$('#mydata').dataTable();
 		<?php } ?>
+// function if else
+
 
 //fungsi tampil semua
 		function tampil_data_surat(){  
@@ -187,6 +239,21 @@
 		        async : true,
 		        dataType : 'json',
 		        success : function(data){
+
+					if( data ==""){ 
+						$('#show_data').html(`
+						<table class="table table-bordered shadow rounded bg-surat">
+								<thead>
+									<tr class="bg-blue">
+										<th scope="col" class="pl-5 text-center">
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Ditemukan </h5>
+										</th>
+									</tr>
+								</thead>
+								
+								`);
+					} else {
+
 		            var html = '';
 		            var i;
 		            for(i=0; i<data.length; i++){
@@ -220,7 +287,7 @@
 								'</table>'
 								
 								;
-		            }
+		            }}
 		            $('#show_data').html(html);
 		        }
 
@@ -243,7 +310,7 @@
 								<thead>
 									<tr class="bg-blue">
 										<th scope="col" class="pl-5 text-center">
-											<h5 class="text-secondary text-italic" disabled>Surat Tidak Tersedia </h5>
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Ditemukan </h5>
 										</th>
 									</tr>
 								</thead>
@@ -294,13 +361,28 @@
 //fungsi tampil diproses
 
 //fungsi tampil bisadiambil
-	function tampil_data_bisadiambil(){
+	function tampil_data_diambil(){
 		    $.ajax({
 		        type  : 'GET',
-		        url   : '<?php echo base_url()?>home/tampil_bisadiambil',
+		        url   : '<?php echo base_url()?>home/tampil_diambil',
 		        async : true,
 		        dataType : 'json',
 		        success : function(data){
+
+					if( data ==""){ 
+						$('#show_data').html(`
+						<table class="table table-bordered shadow rounded bg-surat">
+								<thead>
+									<tr class="bg-blue">
+										<th scope="col" class="pl-5 text-center">
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Ditemukan </h5>
+										</th>
+									</tr>
+								</thead>
+								
+								`);
+					} else {
+
 		            var html = '';
 		            var i;
 		            for(i=0; i<data.length; i++){
@@ -334,7 +416,7 @@
 								'</table>'
 								
 								;
-		            }
+		            }}
 		            $('#show_data').html(html);
 		        }
 
@@ -350,6 +432,21 @@
 		        async : true,
 		        dataType : 'json',
 		        success : function(data){
+
+					if( data ==""){ 
+						$('#show_data').html(`
+						<table class="table table-bordered shadow rounded bg-surat">
+								<thead>
+									<tr class="bg-blue">
+										<th scope="col" class="pl-5 text-center">
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Ditemukan </h5>
+										</th>
+									</tr>
+								</thead>
+								
+								`);
+					} else {
+
 		            var html = '';
 		            var i;
 		            for(i=0; i<data.length; i++){
@@ -383,7 +480,7 @@
 								'</table>'
 								
 								;
-		            }
+		            }}
 		            $('#show_data').html(html);
 		        }
 
@@ -400,6 +497,21 @@
 		        async : true,
 		        dataType : 'json',
 		        success : function(data){
+
+					if( data ==""){ 
+						$('#show_data').html(`
+						<table class="table table-bordered shadow rounded bg-surat">
+								<thead>
+									<tr class="bg-blue">
+										<th scope="col" class="pl-5 text-center">
+											<h5 class="text-secondary text-italic" disabled>Surat Tidak Ditemukan </h5>
+										</th>
+									</tr>
+								</thead>
+								
+								`);
+					} else {
+
 		            var html = '';
 		            var i;
 		            for(i=0; i<data.length; i++){
@@ -433,7 +545,7 @@
 								'</table>'
 								
 								;
-		            }
+		            }}
 		            $('#show_data').html(html);
 		        }
 
@@ -475,6 +587,7 @@
 
 
 	});
+
 
 </script>
 </body>

@@ -55,7 +55,11 @@ class Form2 extends CI_Controller
         $sql = $this->m_form2->save_batch($data2);
         $this->m_form2->tambahsurat($data, 'surat');
 
-
-        redirect('form2');
+        $data_session = array( //menginset session
+			'surat_baru' => "surat_baru"
+		);
+        $this->session->set_userdata($data_session);
+        
+        redirect('home/surat_saya');
     }
 }

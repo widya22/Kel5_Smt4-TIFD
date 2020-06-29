@@ -138,9 +138,9 @@ class Home extends CI_Controller {
 		echo json_encode($data);
 	}
 
-//menampilkan surat bisadiambil
-	function tampil_bisadiambil(){
-		$data=$this->m_data->surat_bisadiambil();
+//menampilkan surat diambil
+	function tampil_diambil(){
+		$data=$this->m_data->surat_diambil();
 		echo json_encode($data);
 	}
 

@@ -199,7 +199,7 @@
 							<button class="btn-lg btn-light text-primary rounded">Download</button>
 						</div>
 					</div>
-					<div class="col-sm-4 text-center">
+					<div class="col-sm-4 text-center d-flex">
 					<img src="<?php echo base_url() . 'assets/images/phone_r.png' ?>" width='280px' height='250px' class='mt-5'></img>
 				</div>
 			</div>
@@ -207,13 +207,13 @@
 		</section>
 
 		<!-- Start Footer Widget Area -->
-		<section class="footer-area pt-60 pb-60">
+		<section class="footer-area pb-60">
 		<div class="section-title text-center">
-							<h3 class="text-uppercase text-primary"><span>Silahkan kirim masukan</span> <br>
-							</h3>
+							<!-- <h3 class="text-uppercase text-primary"><span>Silahkan kirim masukan</span> <br>
+							</h3> -->
 							<!-- <span class="text-white">We won’t send any kind of spam</span> -->
 						</div>
-		<div class="row justify-content-center pl-3 pr-3">
+		<!-- <div class="row justify-content-center pl-3 pr-3">
 					<div class="col-lg-6">
 						<div id="mc_embed_signup">
 						<?php if (isset($_SESSION["status"])) { ?>
@@ -237,7 +237,7 @@
 						<?php } ?>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 			<div class="container">
 				<footer>
@@ -292,7 +292,7 @@
 							<label for="password">Password</label>
 							<input type="password" name="password" placeholder="Password" class="form-control" />
 						</div>
-						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
+						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
 						<div class="text-right">
 							<button class="btn btn-primary" type="submit">Masuk</button>
 						</div>
