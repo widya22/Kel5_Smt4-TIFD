@@ -26,7 +26,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 //$config['base_url'] = "http://localhost/Kel5_Smt4-TIFD/web_user/";
 
 // Lucas
-$config['base_url'] = "http://localhost/Github/Kel5_Smt4-TIFD/web_userApi/";
+$config['base_url'] = "http://localhost/Kel5_Smt4-TIFD/web_userApi/";
 
 
 

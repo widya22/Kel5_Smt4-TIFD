@@ -6,9 +6,9 @@ class Form extends CI_Controller
 
 	public function index()
 	{
-		$data['dosen'] = $this->m_form2->get_dosen()->result();
-		$data['jenis_surat'] = $this->m_form2->get_js()->result();
-		$this->load->view('v_form2', $data);
+		$data['dosen'] = $this->m_form->get_dosen()->result();
+		$data['jenis_surat'] = $this->m_form->get_js()->result();
+		$this->load->view('v_form', $data);
 	}
 
 	public function tambahsurat()
@@ -52,10 +52,10 @@ class Form extends CI_Controller
 			$index++;
 		}
 
-		$sql = $this->m_form2->save_batch($data2);
-		$this->m_form2->tambahsurat($data, 'surat');
+		$sql = $this->m_form->save_batch($data2);
+		$this->m_form->tambahsurat($data, 'surat');
 
 
-		redirect('form2');
+		redirect('home/surat_saya');
 	}
 }

@@ -100,14 +100,12 @@
                   <div class="">
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="<?= base_url() ?>form2/tambahsurat" method="post">
+                    <form role="form" action="<?= base_url() ?>form/tambahsurat" method="post">
                       <div class="card-body">
                         <?php date_default_timezone_set('Asia/Jakarta'); ?>
                         <?php
                         $tanggal = date("Y-m-d H:i:s");
-                        $id_surat = date("Y-m-d H:i:s");
                         ?>
-                        <input type="hidden" name="ID_SURAT" value="<?= $id_surat ?>">
                         <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
                         <input type="hidden" name="STATUS_SURAT" value="Menunggu">
                         <div class="form-group row">

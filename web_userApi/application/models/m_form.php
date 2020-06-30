@@ -7,6 +7,11 @@ class M_form extends CI_Model
     return $this->db->get('dosen');
   }
 
+  public function get_surat()
+  {
+    return $this->db->get('surat');
+  }
+
   public function get_js()
   {
     return $this->db->get('jenis_surat');
