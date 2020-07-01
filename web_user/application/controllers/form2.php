@@ -56,6 +56,6 @@ class Form2 extends CI_Controller
         $this->m_form2->tambahsurat($data, 'surat');
 
 
-        redirect('form2');
+        redirect('home/surat_saya');
     }
 }
