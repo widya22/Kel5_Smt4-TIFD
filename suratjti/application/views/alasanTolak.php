@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Ditolak</title>
+  <title>JTI SURAT | Surat Pending</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,6 +19,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+  
+  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -37,7 +40,7 @@
           <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nama Admin</a>
+          <a href="#" class="d-block"><?php echo $this->session->userdata("NAMA_ADMIN"); ?></a>
         </div>
       </div>
 
@@ -101,13 +104,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtDapatDiambil');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Dapat Diambil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link active">
+                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p>Surat Ditolak</p>
                 </a>
@@ -136,12 +133,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Surat Ditolak</h1>
+            <h1>Detail Surat</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Ditolak</li>
+              <li class="breadcrumb-item"><a href="http://localhost/suratdosen/admin/crud/list">Home</a></li>
+              <li class="breadcrumb-item active">Detail Surat</li>
             </ol>
           </div>
         </div>
@@ -149,67 +146,129 @@
     </section>
 
     <!-- Main content -->
-    
+    <section class="content">
 
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Surat Ditolak</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-			<th width="20">No</th>      
-			<th width="30">Surat</th>			
-			<th width="100">NIM</th>
-			<th width="300">Nama Mitra</th>
-      <th width="100">Tanggal</th>
-			<th width="180">Status Surat</th>
-			<th>Action</th>
-		</tr>
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Detail Surat</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+        <table class="table table-bordered table-hover">		
 		<?php 
-		$no = 1;
-		foreach($surat as $u){ 
+		//$no = 1;
+		foreach($detailnilai as $u){ 
       $u->ID_SURAT 
 		?>
-		<tr>
-			<td><?php echo $no++ ?></td>      
-			<td><?php echo $u->ID_JENIS_SURAT ?></td>			
+
+    <tr ><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
+    <tr>
+      <td><?php echo "NIM" ?></td>
 			<td><?php echo $u->NIM ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Nama Mahasiswa" ?></td>
+			<td><?php echo $u->NAMA_MHS ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Prodi" ?></td>
+			<td><?php echo $u->PRODI ?></td>
+    </tr>
+
+    <tr ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
+    <tr>
+      <td><?php echo "NIP Dosen" ?></td>
+			<td><?php echo $u->NIP ?></td>
+    </tr>    
+    <tr>
+      <td><?php echo "Nama Dosen" ?></td>
+			<td><?php echo $u->NAMA_DOSEN ?></td>
+    </tr>
+
+    <tr ><td colspan="2"><b>Data Surat</b></td></tr>
+    <tr>
+			<td><?php echo "Jenis Surat"//$no++ ?></td>			
+      <td><?php echo $u->JENIS_SURAT ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Nama Mitra" ?></td>
 			<td><?php echo $u->NAMA_MITRA ?></td>
-      <td><?php echo $u->TANGGAL ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Alamat" ?></td>
+			<td><?php echo $u->ALAMAT_MITRA ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Tanggal Pelaksanaan" ?></td>
+			<td><?php echo $u->TANGGAL ?></td>
+    </tr>  
+		<tr>
+      <td><?php echo "Tanggal Pengajuan" ?></td>
+			<td><?php echo $u->TANGGAL_PENGAJUAN ?></td>
+    </tr>
+    <tr>
+      <td><?php echo "Status Surat" ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>             
-		</tr>    
-		<?php } ?>              
-                    
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>No</th>
-			<th>Surat</th>			
-			<th>NIM</th>
-			<th>Nama Mitra</th>
-      <th>Tanggal</th>
-			<th>Status Surat</th>
-			<th>Action</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+    </tr>    	
+		<?php } ?>
+	</table>
+  <table class="table table-bordered table-hover">
+  <thead>
+  <tr ><td colspan="3"><b>Data Anggota</b></td></tr> 
+    <tr>
+			<th>No</th>      
+			<th>Nama Anggota</th>			
+			<th>NIM</th>		
+		</tr>
+		<?php 
+		$noA = 1;
+		foreach($detailAnggota as $DA){ 
+      $DA->ID_SURAT 
+		?>
+		<tr>
+			<td><?php echo $noA++ ?></td>      
+			<td><?php echo $DA->ANGGOTA_MHS ?></td>			
+			<td><?php echo $DA->NIM_ANGGOTA ?></td>                            
+		</tr>
+		<?php } ?>
+    </tbody>
+     <tfoot>
+     <tr>
+      <th>No</th>
+			<th>Nama Anggota</th>			
+			<th>NIM</th>			
+     </tr>
+     </tfoot>
+    </table>  
         </div>
-        <!-- /.col -->
+        <!-- /.card-body -->
+        <div class="card-footer">
+        <a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfimasi'); ?></a>        
+        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin');?>">Kembali</a>
+        <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
+        </div>
+        <div class="card-footer">
+        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a>
+        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a>
+        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a>
+        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a></div>
+        <!-- /.card-footer-->
       </div>
-      <!-- /.row -->
+      <!-- /.card -->
+      
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.0
@@ -230,26 +289,9 @@
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url('assets/asetadmin/plugins/datatables/jquery.dataTables.js');?>"></script>
-<script src="<?php echo base_url('assets/asetadmin/plugins/datatables-bs4/js/dataTables.bootstrap4.js');?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
-</script>
 </body>
 </html>

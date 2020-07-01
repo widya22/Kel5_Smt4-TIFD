@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Ditolak</title>
+  <title>JTI SURAT | Surat Dapat Diambil</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -78,7 +79,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
                 </a>
-              </li>
+              </li>              
               <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-circle"></i>
@@ -101,13 +102,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtDapatDiambil');?>" class="nav-link">
+                <a href="<?php echo base_url('admin/dtSrtDapatDiambil');?>" class="nav-link active">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Dapat Diambil</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link active">
+                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
                   <p>Surat Ditolak</p>
                 </a>
@@ -136,12 +137,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Surat Ditolak</h1>
+            <h1>Surat Dapat Diambil</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Ditolak</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Surat Dapat Diambil</li>
             </ol>
           </div>
         </div>
@@ -153,7 +154,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Surat Ditolak</h3>
+              <h3 class="card-title">Surat Dapat Diambil</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -167,7 +168,7 @@
 			<th width="300">Nama Mitra</th>
       <th width="100">Tanggal</th>
 			<th width="180">Status Surat</th>
-			<th>Action</th>
+			<th colspan="2">Action</th>
 		</tr>
 		<?php 
 		$no = 1;
@@ -181,9 +182,12 @@
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>             
-		</tr>    
-		<?php } ?>              
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+      <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus3/'.$u->ID_SURAT,'Selesai'); ?></a> </td>             
+		</tr>
+    
+		<?php } ?>
+                
                     
                 </tbody>
                 <tfoot>
@@ -194,7 +198,7 @@
 			<th>Nama Mitra</th>
       <th>Tanggal</th>
 			<th>Status Surat</th>
-			<th>Action</th>
+			<th colspan="2">Action</th>
                 </tr>
                 </tfoot>
               </table>
