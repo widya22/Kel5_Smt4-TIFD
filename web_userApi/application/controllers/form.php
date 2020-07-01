@@ -26,7 +26,7 @@ class Form extends CI_Controller
 		$ket            = $this->input->post('KETERANGAN');
 
 		$data = array(
-			'ID_SURAT'          => $id_surat,
+			'ID_SURAT'          => md5($id_surat),
 			'NIP'               => $nip,
 			'NIM'               => $nim_u,
 			'NAMA_MITRA'        => $nama_mitra,
@@ -45,7 +45,7 @@ class Form extends CI_Controller
 		$index = 0; // Set index array awal dengan 0
 		foreach ($nim as $datanim) { // Kita buat perulangan berdasarkan nim sampai data terakhir
 			array_push($data2, array(
-				'ID_SURAT'    => $id_surat,
+				'ID_SURAT'    => md5($id_surat),
 				'NIM_ANGGOTA' => $datanim,
 				'ANGGOTA_MHS' => $nama[$index],  // Ambil dan set data nama sesuai index array dari $index
 			));
