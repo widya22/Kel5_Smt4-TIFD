@@ -90,7 +90,9 @@ class M_data extends CI_Model
 
 	function bukti_surat1($id_sur){
 		$this->db->where('ID_SURAT', $id_sur);
-		return $this->db->from('surat')->get();
+		return $this->db->from('surat')
+		->join('jenis_surat', 'jenis_surat.ID_JENIS_SURAT=surat.ID_JENIS_SURAT')
+		->get();
 	}
 
 	function bukti_surat2($id_sur){

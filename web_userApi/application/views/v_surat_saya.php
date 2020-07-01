@@ -161,7 +161,11 @@
 					</tbody>
 					</table>
 			</div>
-					<button type="submit">cetak bukti pembuatan surat</button>
+			<div class="text-center">
+					<button type="submit" class="btn btn-outline-primary ">cetak bukti pembuatan surat
+					<i class="fa fa-2x fa-print text-primary ml-2"></i>
+					</button>
+			</div>
 			</form>
 
 			<div class="modal-footer text-right mr-3">
@@ -575,7 +579,7 @@
 						'<th scope="row">'+n+'</th>'+
 						'<td>'+data[a].ANGGOTA_MHS+'</td>'+
 						'<td>'+data[a].NIM_ANGGOTA+'</td>'+
-						'<td><input name="id_surat" value='+id+' /></td>'+
+						'<td><input name="id_surat" value='+id+' hidden/></td>'+
 						'</tr>'
 						
 						

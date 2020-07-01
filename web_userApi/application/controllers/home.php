@@ -166,9 +166,9 @@ class Home extends CI_Controller {
 	public function cetak_bukti(){
 		$id_sur=$this->input->post('id_surat');
 
-		$data1['database1'] = $this->m_data->bukti_surat1($id_sur)->result();
-		$data2['database2'] = $this->m_data->bukti_surat2($id_sur)->result();
-		$this->load->view('v_bukti_pengajuan_surat', $data1, $data2);
+		$data['database1'] = $this->m_data->bukti_surat1($id_sur)->result();
+		$data['database2'] = $this->m_data->bukti_surat2($id_sur)->result();
+		$this->load->view('v_bukti_pengajuan_surat', $data);
 	}
 
 }
