@@ -49,8 +49,16 @@ class M_data extends CI_Model{
     $this->db->select('*');
     $this->db->from('surat');
     $this->db->join('user', 'user.nim = surat.nim');
-    $this->db->join('dosen', 'dosen.nip = surat.nip');
+    $this->db->join('dosen', 'dosen.nip = surat.nip');    
     $this->db->join('jenis_surat', 'jenis_surat.id_jenis_surat = surat.id_jenis_surat');
+    $this->db->where('surat.id_surat', $id);
+    return $this->db->get()->result();
+  }
+  public function detailanggota($id) {
+    $this->db->select('*');
+    $this->db->from('surat');
+    $this->db->join('user', 'user.nim = surat.nim');    
+    $this->db->join('detail_surat', 'detail_surat.id_surat = surat.id_surat');    
     $this->db->where('surat.id_surat', $id);
     return $this->db->get()->result();
   }
@@ -66,8 +74,9 @@ class M_data extends CI_Model{
     }  
   function tampil_data_suratPending(){
     //return $this->db->get('surat');
-    $this->db->select('*');
+  $this->db->select('*');
   $this->db->from('surat');
+  $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", 'Menunggu');
   //$this->db->where("traking_surat", "Menunggu Admin");
   //$this->db->where("usertype","admin");
@@ -77,7 +86,8 @@ class M_data extends CI_Model{
   //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
-  $this->db->where("status_surat", "Ditolak");
+  $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+  $this->db->like("status_surat", "Ditolak");
   //$this->db->where("usertype","admin");
   return $query=$this->db->get();
       }
@@ -86,11 +96,29 @@ class M_data extends CI_Model{
   //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
-  $this->db->where("status_surat", "Selesai");
+  $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+  $this->db->like("status_surat", "Dapat Diambil");
   //$this->db->where("usertype","admin");
   return $query=$this->db->get();
   }    
-  
+  function tampil_data_suratDiProses(){
+    //return $this->db->get('surat');
+    $this->db->select('*');
+    $this->db->from('surat');
+    $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+    $this->db->like("status_surat", "Sedang Dalam Proses");
+    //$this->db->where("usertype","admin");
+    return $query=$this->db->get();
+    }
+    function tampil_data_suratDapatDiambil(){
+      //return $this->db->get('surat');
+      $this->db->select('*');
+      $this->db->from('surat');
+      $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+      $this->db->like("status_surat", "Dapat Diambil");
+      //$this->db->where("usertype","admin");
+      return $query=$this->db->get();
+      }
   function input_jenisSurat($data,$table){
 		$this->db->insert($table,$data);
     }
@@ -100,4 +128,8 @@ class M_data extends CI_Model{
     }
     
     
+  function update_tolak($alasan,$ids){
+        $hasil=$this->db->query("UPDATE `surat` SET `STATUS_SURAT` = '$alasan' WHERE `surat`.`ID_SURAT` = '$ids';");
+        return $hasil;
+    }        
 }
