@@ -286,11 +286,11 @@
 					<form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
 						<div class="form-group">
 							<label for="nim">NIM</label>
-							<input type="text" name="nim" placeholder="NIM" class="form-control" />
+							<input type="text" name="nim" placeholder="NIM" class="form-control" required/>
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input type="password" name="password" placeholder="Password" class="form-control" />
+							<input type="password" name="password" placeholder="Password" class="form-control" required/>
 						</div>
 						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
 						<div class="text-right">

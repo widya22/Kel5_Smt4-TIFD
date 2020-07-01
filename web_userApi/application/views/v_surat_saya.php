@@ -146,6 +146,7 @@
 					<i class="fa fa-times-circle text-dark"></i>
 				</button>
             </div>
+			<form action="<?php echo base_url("home/cetak_bukti") ?>" method="post">
 			<div class="modal-body ml-3 mr-3">
 					<table class="table table-bordered">
 					<thead>
@@ -160,9 +161,10 @@
 					</tbody>
 					</table>
 			</div>
+					<button type="submit">cetak bukti pembuatan surat</button>
+			</form>
 
 			<div class="modal-footer text-right mr-3">
-					<a href="">cetak bukti pembuatan surat</a>
 			</div>
             </div>
             </div>
@@ -573,7 +575,9 @@
 						'<th scope="row">'+n+'</th>'+
 						'<td>'+data[a].ANGGOTA_MHS+'</td>'+
 						'<td>'+data[a].NIM_ANGGOTA+'</td>'+
+						'<td><input name="id_surat" value='+id+' /></td>'+
 						'</tr>'
+						
 						
 						;
 		            $('#data').html(hasil);

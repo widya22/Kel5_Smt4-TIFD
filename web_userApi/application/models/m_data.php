@@ -78,4 +78,14 @@ class M_data extends CI_Model{
 		return $hsl->result();
 	}
 
+	function bukti_surat1($id_sur){
+		$this->db->where('ID_SURAT', $id_sur);
+		return $this->db->from('surat')->get();
+	}
+
+	function bukti_surat2($id_sur){
+		$this->db->where('ID_SURAT', $id_sur);
+		return $this->db->from('detail_surat')->get();
+	}
+
 }

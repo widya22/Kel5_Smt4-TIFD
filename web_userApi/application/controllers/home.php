@@ -120,10 +120,10 @@ class Home extends CI_Controller {
 		$nim=$_SESSION["nim"];
 		$status = 'gagal';
 		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		//variabel database dibungkus denan $data dikirim ke v surat saya seteleah di proses
-		//di m data tampil surat 2 lalu data ditampilkan dan dijadikan array
 		$this->load->view('v_surat_saya', $data);
 	}
+
+
 
 
 // menampilkan semua surat
@@ -161,6 +161,14 @@ class Home extends CI_Controller {
 		$kobar=$this->input->get('id');
 		$data=$this->m_data->get_surat_by_kode($kobar);
 		echo json_encode($data);
+	}
+
+	public function cetak_bukti(){
+		$id_sur=$this->input->post('id_surat');
+
+		$data1['database1'] = $this->m_data->bukti_surat1($id_sur)->result();
+		$data2['database2'] = $this->m_data->bukti_surat2($id_sur)->result();
+		$this->load->view('v_bukti_pengajuan_surat', $data1, $data2);
 	}
 
 }
