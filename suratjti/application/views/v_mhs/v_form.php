@@ -16,7 +16,7 @@
   <meta charset="UTF-8">
   <!-- Site Title -->
   <title>JTI-Surat</title>
-  <script src="<?php echo base_url("assets/asetmhs/assets/js/jquery.min.js"); ?>" type="text/javascript"></script>
+  <script src="<?php echo base_url("js/jquery.min.js"); ?>" type="text/javascript"></script>
 
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,300,500,600" rel="stylesheet">
@@ -105,7 +105,9 @@
                         <?php date_default_timezone_set('Asia/Jakarta'); ?>
                         <?php
                         $tanggal = date("Y-m-d H:i:s");
+                        $id_surat = date("Y-m-d H:i:s");
                         ?>
+                        <input type="hidden" name="ID_SURAT" value="<?= $id_surat ?>">
                         <input type="hidden" name="TANGGAL" value="<?= $tanggal ?>">
                         <input type="hidden" name="STATUS_SURAT" value="Menunggu">
                         <div class="form-group row">
