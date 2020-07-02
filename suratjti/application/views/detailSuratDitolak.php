@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Pending</title>
+  <title>JTI SURAT | Detail Surat</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -143,7 +143,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="http://localhost/suratdosen/admin/crud/list">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Detail Surat</li>
             </ol>
           </div>
@@ -255,17 +255,10 @@
     </table>  
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-        <a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfimasi'); ?></a>        
-        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin');?>">Kembali</a>
-        <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
+        <div class="card-footer">              
+        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/dtSrtDapatDiambil');?>">Kembali</a>                   
         </div>
-        <div class="card-footer">
-        <p>tolak surat :</br>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a></div>
+        
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->

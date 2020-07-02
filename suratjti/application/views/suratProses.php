@@ -183,7 +183,7 @@
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDiproses/'.$u->ID_SURAT,'Detail'); ?></a> </td>
             <td><a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a> </td>
             <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus2/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
 		</tr>

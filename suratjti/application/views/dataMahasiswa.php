@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Mahasiswa</title>
+  <title>JTI SURAT | Data Mahasiswa</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -280,8 +280,8 @@
 			<td><?php echo $u->NAMA_MHS ?></td>
 			<td><?php echo $u->PRODI ?></td>
 			<td>
-			      <?php echo anchor('crud/edit/'.$u->NIM,'Edit'); ?>
-                              <?php echo anchor('crud/hapus/'.$u->NIM,'Hapus'); ?>
+			     <?php echo anchor('admin/resetPwd/'.$u->NIM,'Reset Password'); ?>
+           <?php echo anchor('admin/hapus/'.$u->NIM,'Hapus'); ?>
 			</td>
 		</tr>
 		<?php } ?>

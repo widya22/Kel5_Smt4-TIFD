@@ -72,9 +72,9 @@ class Admin extends CI_Controller{
     //Pada fungsi tambah_aksi data yang diinputkan akan dimasukkan kedalam array $data kemudia diparsing ke model m_data
 
     function hapus($id){
-		$where = array('id' => $id);
+		$where = array('nim' => $id);
 		$this->m_data->hapus_data($where,'user');
-		redirect('crud/index');
+		redirect('admin');
     }
     //fungsi hapus menghapus data pada table dengan parameter id
 
@@ -98,6 +98,20 @@ class Admin extends CI_Controller{
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
     $this->load->view('alasanTolak', $data);
+    }
+    //Tampil Detail Surat Diproses
+    function dsDiproses($id)
+    {
+    $data['detailnilai'] = $this->m_data->detaildata($id);
+    $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $this->load->view('detailSuratDiproses.php', $data);
+    }
+    //Tampil Detail Surat Diproses
+    function dsDapatDiambil($id)
+    {
+    $data['detailnilai'] = $this->m_data->detaildata($id);
+    $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $this->load->view('detailSuratDapatDiambil.php', $data);
     }
 
     //Update Status Surat Menjadi Sedang Dalam Proses
@@ -264,6 +278,21 @@ class Admin extends CI_Controller{
       $this->m_data->update_data($where,$data,'surat');
       redirect('admin/dtSrtPd');
       }
+
+
+
+     //Reset Password Mahasiswa
+    function resetPwd($id){   
+      $data = array(
+          'PASSWORD_MHS' => "456c287de5f3a47c4c32903fd0ac45df"          
+      );    
+      $where = array(
+          'NIM' => $id
+      );
+
+      $this->m_data->update_data($where,$data,'user');
+      redirect('admin/dtMhs');
+      } 
     function print($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
