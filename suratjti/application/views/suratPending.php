@@ -39,8 +39,9 @@
           <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $this->session->userdata("NAMA_ADMIN"); ?></a>
+          <a href="#" class="d-block"><?php echo $this->session->userdata("nama_admin"); ?></a>
         </div>
+        
       </div>
 
       <!-- Sidebar Menu -->

@@ -255,10 +255,10 @@
         <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
         </div>
         <div class="card-footer">
-        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a>
-        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a>
-        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a>
-        <a class="btn btn-danger btn-sm" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a></div>
+        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a>
+        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a>
+        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a>
+        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a></div>
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->

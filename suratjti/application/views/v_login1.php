@@ -26,7 +26,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Masuk untuk memulai sesi</p>
 
       <form action="<?php echo base_url('login1/aksi_login'); ?>" method="post">
         <div class="input-group mb-3">
@@ -56,14 +56,14 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" value="Login" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" value="Login" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
       </form>      
 
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="#">Lupa Password</a>
       </p>      
     </div>
     <!-- /.login-card-body -->
