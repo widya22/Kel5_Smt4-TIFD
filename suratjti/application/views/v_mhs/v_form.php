@@ -49,10 +49,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link ml-2 mr-2" href="<?= base_url('mhs/home/surat_saya') ?>">Surat Saya</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?php echo base_url('mhs/form') ?>">Formulir Surat</a>
-              </li>
+              </li>              
             </ul>
             <li class="nav-item dropdown list-unstyled border border-primary text primary">
               <?php
