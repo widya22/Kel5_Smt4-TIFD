@@ -35,13 +35,7 @@
 <body>
     <div class="main-wrapper-first">
         <div class="hero-area relative">
-            <header>
-                
-                           
-                        </li>
-                    </div>
-                </nav>
-            </header>
+            
             <div class="banner-area relative">
                 <div class="overlay hero-overlay-bg"></div>
 
