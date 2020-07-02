@@ -111,7 +111,6 @@
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Jenis Surat</label>
                           <select class="custom-select col-md-8 mr-2" name="ID_JS">
-                            <option selected disabled>Pilih Jenis Surat</option>
                             <?php
                             $no = 1;
                             foreach ($jenis_surat as $j) :
@@ -124,7 +123,6 @@
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Nama Dosen</label>
                           <select class="custom-select col-md-8 mr-2" name="NIP">
-                            <option selected disabled>Pilih Nama Dosen</option>
                             <?php
                             $no1 = 1;
                             foreach ($dosen as $d) :
@@ -136,19 +134,19 @@
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Kepada</label>
-                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2">
+                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2" required>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Tanggal Survei</label>
-                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2">
+                          <input type="date" name="TANGGAL_PENGAJUAN" class="form-control col-md-8 mr-2" required>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Alamat </label>
-                          <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2"></textarea>
+                          <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2" placeholder="Alamat Instansi / Mitra" required></textarea>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Keterangan </label>
-                          <textarea name="KETERANGAN" class="form-control col-md-8 mr-2"></textarea>
+                          <textarea name="KETERANGAN" class="form-control col-md-8 mr-2"  placeholder="Tambah keterangan untuk surat anda jika perlu"></textarea>
                         </div>
                         <div class="form-group row text-center">
                           <label class="col-md-3 ml-4"></label>
@@ -169,8 +167,8 @@
                         </div>
                         <div id="insert-form"></div>
                         <label class="col-md-3 ml-4"></label>
-                        <button type="button" id="btn-tambah-form" class="btn btn-primary">Tambah Data</button>
-                        <button type="button" id="btn-reset-form" class="btn btn-secondary">Reset Form</button>
+                        <button type="button" id="btn-tambah-form" class="btn btn-primary">Tambah Anggota</button>
+                        <a href="<?php echo base_url('mhs/form') ?>" type="button" class="btn btn-secondary">Reset Form</a>
                       </div>
                       <br>
                       <hr>
@@ -274,9 +272,9 @@
             "<b>Anggota ke-" + nextform + "</b>" +
             "<div class='form-group row'>" +
             "<label class='col-md-3 ml-4'> NIM </label>" +
-            "<input type='text' name = 'nim[]' class='form-control col-md-8 mr-2 mb-2'>" +
+            "<input type='text' name = 'nim[]' class='form-control col-md-8 mr-2 mb-2' required>" +
             "<label class='col-md-3 ml-4'> Nama </label>" +
-            "<input type='text' name = 'nama[]' class='form-control col-md-8 mr-2 mb-2'>" +
+            "<input type='text' name = 'nama[]' class='form-control col-md-8 mr-2 mb-2' required>" +
             "</div>"
           );
           $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform

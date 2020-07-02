@@ -51,7 +51,7 @@ class M_data extends CI_Model
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Diproses'");
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Sedang Dalam Proses'");
 		return $hasil->result();
 	}
 
@@ -60,7 +60,7 @@ class M_data extends CI_Model
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Diambil'");
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Dapat Diambil'");
 		return $hasil->result();
 	}
 
