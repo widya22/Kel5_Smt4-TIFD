@@ -41,11 +41,18 @@
 					<?php foreach($database1 as $u){ ?>
 								<thead>
 									<tr class="bg-blue mt-3 mb-3">
-										<th scope="col" class="pl-5 d-flex justify-content-center">
-											<img src="<?php echo base_url("assets/asetmhs/assets/icon/s-logo.png") ?>" alt="" class="text-left mr-4"  height="40px">
+										<th scope="col" class=" d-flex justify-content-center">
+										<div class="col-1">
+											<img class="text-left mr-4" src="<?php echo base_url("assets/asetmhs/assets/icon/s-logo.png") ?>" alt=""  height="40px">
+										</div>
+										<div class="col-1"></div>
 												<h3 class="text-secondary text-bold col-8 mt-2" disabled>Surat <?php echo $u->JENIS_SURAT ?></h3>
-											<img src="<?php echo base_url("assets/asetmhs/assets/icon/ti-logo.png") ?>" alt="" class="text-right" height="40px">
-											<img src="<?php echo base_url("assets/asetmhs/assets/icon/polije-logo.png") ?>" alt="" class="text-right ml-4" height="40px">
+										<div class="col-1 text-right">
+											<img class="" src="<?php echo base_url("assets/asetmhs/assets/icon/ti-logo.png") ?>" alt="" height="40px">
+										</div>
+										<div class="col-1">
+											<img class="" src="<?php echo base_url("assets/asetmhs/assets/icon/polije-logo.png") ?>" alt="" height="40px">
+										</div>
 										</th>
 									</tr>
 									

@@ -60,10 +60,7 @@ class Home extends CI_Controller {
 		);
 		$this->session->set_userdata($data_session);
 
-		$nim=$_SESSION["nim"];
-		$status = 'diproses';
-		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		$this->load->view('v_mhs/v_surat_saya', $data);
+		$this->load->view('v_mhs/v_surat_saya');
 	}
 
 	public function surat_diambil(){
@@ -78,11 +75,8 @@ class Home extends CI_Controller {
 			'diambil' => "diambil"
 		);
 		$this->session->set_userdata($data_session);
-
-		$nim=$_SESSION["nim"];
-		$status = 'diambil';
-		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		$this->load->view('v_mhs/v_surat_saya', $data);
+		
+		$this->load->view('v_mhs/v_surat_saya');
 	}
 
 	public function surat_selesai(){
@@ -98,10 +92,7 @@ class Home extends CI_Controller {
 		);
 		$this->session->set_userdata($data_session);
 
-		$nim=$_SESSION["nim"];
-		$status = 'selesai';
-		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		$this->load->view('v_mhs/v_surat_saya', $data);
+		$this->load->view('v_mhs/v_surat_saya');
 	}
 
 	public function surat_gagal(){
@@ -116,11 +107,7 @@ class Home extends CI_Controller {
 			'gagal' => "gagal"
 		);
 		$this->session->set_userdata($data_session);
-
-		$nim=$_SESSION["nim"];
-		$status = 'gagal';
-		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		$this->load->view('v_mhs/v_surat_saya', $data);
+		$this->load->view('v_mhs/v_surat_saya');
 	}
 
 
