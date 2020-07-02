@@ -13,12 +13,12 @@ class Dosen extends CI_Controller{
 	}
 
 	function index(){
-        $data['surat'] = $this->m_data->tampil_data()->result();
+        $data['surat'] = $this->m_data->tampil_dataSuratDosen()->result();
 		$this->load->view('list',$data);
 	}
 	function list()
   {
-    $data['surat'] = $this->m_data->tampil_data()->result();
+    $data['surat'] = $this->m_data->tampil_dataSuratDosen()->result();
     $this->load->view('list',$data);   
   }
 
