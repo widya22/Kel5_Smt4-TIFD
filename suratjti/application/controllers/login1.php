@@ -20,6 +20,7 @@ class Login1 extends CI_Controller{
 			'PASSWORD_DSN' => md5($PASSWORD_DSN)
 			);
 		$cek = $this->m_login->cek_login("dosen",$where)->num_rows();
+		$hasil_db = $this->m_login->cek_login("dosen", $where)->result();
 		if($cek > 0){
 
 			$data_session = array(

@@ -6,9 +6,9 @@ class Form extends CI_Controller
 
 	public function index()
 	{
-		$data['dosen'] = $this->m_form2->get_dosen()->result();
-		$data['jenis_surat'] = $this->m_form2->get_js()->result();
-		$this->load->view('v_form2', $data);
+		$data['dosen'] = $this->m_form->get_dosen()->result();
+		$data['jenis_surat'] = $this->m_form->get_js()->result();
+		$this->load->view('v_form', $data);
 	}
 
 	public function tambahsurat()
@@ -26,7 +26,7 @@ class Form extends CI_Controller
 		$ket            = $this->input->post('KETERANGAN');
 
 		$data = array(
-			'ID_SURAT'          => $id_surat,
+			'ID_SURAT'          => md5($id_surat),
 			'NIP'               => $nip,
 			'NIM'               => $nim_u,
 			'NAMA_MITRA'        => $nama_mitra,
@@ -45,17 +45,17 @@ class Form extends CI_Controller
 		$index = 0; // Set index array awal dengan 0
 		foreach ($nim as $datanim) { // Kita buat perulangan berdasarkan nim sampai data terakhir
 			array_push($data2, array(
-				'ID_SURAT'    => $id_surat,
+				'ID_SURAT'    => md5($id_surat),
 				'NIM_ANGGOTA' => $datanim,
 				'ANGGOTA_MHS' => $nama[$index],  // Ambil dan set data nama sesuai index array dari $index
 			));
 			$index++;
 		}
 
-		$sql = $this->m_form2->save_batch($data2);
-		$this->m_form2->tambahsurat($data, 'surat');
+		$sql = $this->m_form->save_batch($data2);
+		$this->m_form->tambahsurat($data, 'surat');
 
 
-		redirect('form2');
+		redirect('home/surat_saya');
 	}
 }

@@ -10,6 +10,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->session->unset_userdata('semua');
+		$this->session->unset_userdata('diproses');
+		$this->session->unset_userdata('diambil');
+		$this->session->unset_userdata('selesai');
+		$this->session->unset_userdata('gagal');
+
 		$data['user'] = $this->m_data->tampil_data()->result();
 		$this->load->view('v_home');
 	}
@@ -114,8 +120,55 @@ class Home extends CI_Controller {
 		$nim=$_SESSION["nim"];
 		$status = 'gagal';
 		$data['database'] = $this->m_data->tampil_surat2($status)->result_array();
-		//variabel database dibungkus denan $data dikirim ke v surat saya seteleah di proses
-		//di m data tampil surat 2 lalu data ditampilkan dan dijadikan array
 		$this->load->view('v_surat_saya', $data);
 	}
+
+
+
+
+// menampilkan semua surat
+	function tampil_semua(){ 
+		$data=$this->m_data->surat_list();
+		echo json_encode($data);
+	}
+
+//menampil surat diproses
+	function tampil_diproses(){
+		$data=$this->m_data->surat_diproses();
+		echo json_encode($data);
+	}
+
+//menampilkan surat diambil
+	function tampil_diambil(){
+		$data=$this->m_data->surat_diambil();
+		echo json_encode($data);
+	}
+
+//menampilkan surat selesai
+	function tampil_selesai(){
+		$data=$this->m_data->surat_selesai();
+		echo json_encode($data);
+	}
+
+//menampilkan surat gagal
+	function tampil_gagal(){
+		$data=$this->m_data->surat_gagal();
+		echo json_encode($data);
+	}
+
+//menampilkan surat dengan kode
+	function get_surat_kode(){
+		$kobar=$this->input->get('id');
+		$data=$this->m_data->get_surat_by_kode($kobar);
+		echo json_encode($data);
+	}
+
+	public function cetak_bukti(){
+		$id_sur=$this->input->post('id_surat');
+
+		$data['database1'] = $this->m_data->bukti_surat1($id_sur)->result();
+		$data['database2'] = $this->m_data->bukti_surat2($id_sur)->result();
+		$this->load->view('v_bukti_pengajuan_surat', $data);
+	}
+
 }

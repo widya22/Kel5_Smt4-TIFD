@@ -2483,3 +2483,7 @@ body:after {
     border-width: 10px;
     border-color: white;
   }
+
+  .bg-bukti{
+    background-image: url(../images/bukti.png);
+  }
