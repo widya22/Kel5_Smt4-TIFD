@@ -104,7 +104,7 @@
 								</div>
 
 							<?php } else { ?>
-								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk</a>
+								<a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk/Daftar</a>
 							<?php } ?>
 						</li>
 					</div>
@@ -296,7 +296,7 @@
 							<label for="password">Password</label>
 							<input type="password" name="password" placeholder="Password" class="form-control" required/>
 						</div>
-						<!-- <a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a> -->
+						<a href="<?php echo base_url('home/register'); ?>" class="text-center">Belum punya akun?</a>
 						<div class="text-right">
 							<button class="btn btn-primary" type="submit">Masuk</button>
 						</div>

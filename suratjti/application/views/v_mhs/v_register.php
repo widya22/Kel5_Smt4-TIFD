@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/nice-select.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/main.css') ?>"> 
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/bootstrap.min.css') ?>">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 </head>
 
@@ -38,7 +38,7 @@
     <script src="<?php echo base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/js/waypoints.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.counterup.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+    <script src="<?php echo base_url('assets/asetmhs/assets/js/main.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
