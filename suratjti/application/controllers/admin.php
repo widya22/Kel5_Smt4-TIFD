@@ -8,7 +8,7 @@ class Admin extends CI_Controller{
     $this->load->helper('url');
 
     if($this->session->userdata('status') != "login0"){
-    redirect(base_url("login0"));             
+    redirect(base_url("login0"));
   }
 }
     function index(){

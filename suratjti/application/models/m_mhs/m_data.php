@@ -40,6 +40,7 @@ class M_data extends CI_Model
 	function surat_list()
 	{
 		$nim = $_SESSION["nim"];
+		$this->db->order_by('TANGGAL', 'ASC');
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
 								WHERE surat.NIM= '$nim'");
@@ -98,6 +99,14 @@ class M_data extends CI_Model
 	function bukti_surat2($id_sur){
 		$this->db->where('ID_SURAT', $id_sur);
 		return $this->db->from('detail_surat')->get();
+	}
+
+	function bukti_surat3($id_sur){
+		$nim = $_SESSION["nim"];
+		$this->db->where('NIM', "E411");
+		return $this->db->from('user')
+		->join('admin', 'user.PRODI=admin.PRODI')
+		->get();
 	}
 
 }

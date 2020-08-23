@@ -107,7 +107,16 @@
 									</td>
 								</tr>
 								</table>
-								
+
+								<div class="bg-light pt-2 pb-2">
+								<?php foreach($database3 as $c){ ?> <!-- menampilkan nama dan nomor admin -->
+									<p>untuk info lebih lanjut silahkan hubungi admin prodi <?= $c->PRODI ?></p>
+													<p>
+														<?php echo $c->NAMA_ADMIN ?> : 
+														<?php echo $c->HP ?>
+													</p>
+								<?php } ?>
+								</div>
 					</div>
 				</div>
 			</div>

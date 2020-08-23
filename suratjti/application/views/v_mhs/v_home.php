@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="<?php echo base_url('assets/asetmhs/assets/img/fav.png') ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav.png') ?>">
 	<!-- Author Meta -->
 	<meta name="author" content="Colorlib">
 	<!-- Meta Description -->
@@ -196,7 +196,7 @@
 						Download sekarang juga dan dapatkan pengalaman menarik membuat surat secara online dengan aplikasi mobile JTI-Surat</h6>
 
 						<div class="text-right">
-							<button class="btn-lg btn-light text-primary rounded">Download</button>
+							<a class="btn-lg btn-light text-primary rounded"  href="#" data-toggle="modal" data-target="#appModal">Download</a>
 						</div>
 					</div>
 					<div class="col-sm-4 text-center d-flex">
@@ -206,7 +206,7 @@
 
 		</section>
 
-		<!-- Start Footer Widget Area -->
+		<!-- Section mAsukann -->
 		<section class="footer-area pb-60">
 		<div class="section-title text-center">
 							<!-- <h3 class="text-uppercase text-primary"><span>Silahkan kirim masukan</span> <br>
@@ -347,6 +347,25 @@
 	</div>
 
 	<!-- modal selamat daftar  -->
+
+	<!-- modal aplikasi belum tersedia -->
+	<div class="modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">Mohon maaf aplikasi belum tersedia</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">oke</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<script>
 		var button = document.getElementById("mdtr");
 		<?php if (isset($_SESSION["popup"])) { ?>

@@ -81,13 +81,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo base_url() . 'crud/register'; ?>" method="post" class="form">
+                <form action="<?php echo base_url() . 'mhs/crud/register'; ?>" method="post" class="form">
                     <div class="form-group">
                         <!-- <label for="username">NIM</label> -->
-                        <div class="input-group ">
-
-                            <!-- <input type="text" name="nim" placeholder="Kode Jurusan" class="form-control" required onkeyup="this.value = this.value.toUpperCase()" maxlength = "1"
-                        id="inputGroup-sizing-sm"/> -->
+                        <div class="input-group "> 
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">E</span>
                             </div>
@@ -97,13 +94,14 @@
                         </div>
                         <div id="result" class="font-italic"></div>
                     </div>
+
                     <div class="form-group">
                         <!-- <label for="username">Nama Lengkap</label> -->
-                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5" value="<?php if (isset($_SESSION['nama'])) {
-                                                                                                                                                    echo $_SESSION["nama"];
-                                                                                                                                                } ?>" /> <!-- isi input otomatis -->
-
-                        <p class="font-italic">*Anda dapat menggunakan huruf, angka dan titik</p>
+                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5" 
+                        value="<?php if (isset($_SESSION['nama'])) {
+                                    echo $_SESSION["nama"];
+                                } ?>" /> <!-- isi input otomatis -->
+                                
                     </div>
                     <div class="form-group border rounded">
                         <!-- <label for="username">Prodi :</label><br> -->
@@ -129,6 +127,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <!-- <label for="username">NIM</label> -->
+                        <div class="input-group "> 
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">+62</span>
+                            </div>
+                            <input type="text" name="no_hp" placeholder="Masukkan No HP" class="form-control" required onkeypress="return hanyaAngka(event)" minlength="11" maxlength="15"/> <!-- isi input otomatis */ -->
+                        </div>
+                        <div id="result" class="font-italic"></div>
+                    </div>
+
                     <div class="form-group">
                         <!-- <label for="password">Kata Sandi</label> -->
                         <input type="password" name="sandi" placeholder="Kata Sandi" class="form-control" required minlength="8" value="<?php if (isset($_SESSION['sandi'])) {
@@ -145,7 +155,7 @@
                     </div>
                     <a href="<?php echo base_url(); ?>" class="text-center ml-2">kembali ke beranda?</a>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit">Berikutnya</button>
+                        <button class="btn btn-primary" type="submit" onclick="return confirm('Pastikan data anda sudah diisi dengan benar!')">Berikutnya</button>
                     </div>
                 </form>
             </div>

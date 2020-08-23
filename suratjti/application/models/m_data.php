@@ -172,10 +172,10 @@ class M_data extends CI_Model{
 
 	function surat_list()
 	{
-		$nim = $_SESSION["nim"];
+    $nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim'");
+								WHERE surat.NIM= '$nim' ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
 
@@ -184,7 +184,8 @@ class M_data extends CI_Model{
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Sedang Dalam Proses'");
+								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Sedang Dalam Proses'  
+                ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
 
@@ -193,7 +194,8 @@ class M_data extends CI_Model{
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Dapat Diambil'");
+                WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Dapat Diambil'
+                ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
 
@@ -202,7 +204,8 @@ class M_data extends CI_Model{
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Selesai'");
+                WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Selesai'
+                ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
 
@@ -211,7 +214,8 @@ class M_data extends CI_Model{
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-								WHERE surat.NIM= '$nim' && substring(surat.STATUS_SURAT, 1,8 )='DiTolak'");
+                WHERE surat.NIM= '$nim' && substring(surat.STATUS_SURAT, 1,8 )='DiTolak'
+                ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
 
@@ -231,6 +235,14 @@ class M_data extends CI_Model{
 	function bukti_surat2($id_sur){
 		$this->db->where('ID_SURAT', $id_sur);
 		return $this->db->from('detail_surat')->get();
+  }
+  
+  function bukti_surat3($id_sur){
+		$nim = $_SESSION["nim"];
+		$this->db->where('NIM', "E411");
+		return $this->db->from('user')
+		->join('admin', 'user.PRODI=admin.PRODI')
+		->get();
 	}
 
 }

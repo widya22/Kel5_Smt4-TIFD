@@ -22,7 +22,7 @@ class Crud extends CI_Controller{
 			'NIM' => $nim2,
 			'NAMA_MHS' => $nama,
 			'PRODI' => $prodi,
-			'PASSWORD_MHS' => $sandi,
+			'PASSWORD_MHS' => md5($sandi),
             );
             
         	$data_session = array(
@@ -40,6 +40,8 @@ class Crud extends CI_Controller{
 		$nim = $this->input->post('nim');
 		$nim2 = "E".$nim;
 		$nama = $this->input->post('nama');
+		$no_hp = $this->input->post('no_hp');
+		$no_hp2 = "62".$no_hp;
 		$prodi = $this->input->post('prodi'); 
 		$sandi = $this->input->post('sandi'); 
 		$k_sandi = $this->input->post('k_sandi');
@@ -65,12 +67,13 @@ class Crud extends CI_Controller{
 				'k_sandi' => $k_sandi
 			);
 		$this->session->set_userdata($data_session);
-			redirect('home/register');
+			redirect('mhs/home/register');
 		}else{
 			if($sandi==$k_sandi){
 				$data = array( //data yang didapat diubah ke array, jika data benar
 					'NIM' => $nim2,
 					'NAMA_MHS' => $nama,
+					'HP' => $no_hp2,
 					'PRODI' => $prodi,
 					'PASSWORD_MHS' => md5($sandi)
 					);
@@ -81,7 +84,7 @@ class Crud extends CI_Controller{
 					);
 				$this->session->set_userdata($data_session);
 				$this->m_data->input_data($data,'user'); //data dikirim ke m data dan dimasukkan ke tabel user
-				redirect('home/register2'); //tampilkan halaman reg 2
+				redirect('mhs/home/register2'); //tampilkan halaman reg 2
 			}else{ //jika password dan konfirmasi password tidak sama
 				$data_session = array(
 					'sama_password' => $nim,
@@ -91,7 +94,7 @@ class Crud extends CI_Controller{
 					'k_sandi' => $k_sandi
 				);
 			$this->session->set_userdata($data_session);
-				redirect('home/register');
+				redirect('mhs/home/register');
 			}
 		}
 		

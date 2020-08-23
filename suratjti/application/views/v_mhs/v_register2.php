@@ -20,12 +20,12 @@
 		<!--
 		CSS
 		============================================= -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/linearicons.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/nice-select.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/magnific-popup.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/linearicons.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/font-awesome.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/nice-select.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/magnific-popup.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/main.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/css/bootstrap.min.css') ?>">
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 	</head>
 	<body>
@@ -51,7 +51,7 @@
                 <h5 class="modal-title ">Selamat, anda sudah terdaftar di JTI-Surat</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url().'login/home_regis'; ?>" method="post">
+                    <form action="<?php echo base_url().'mhs/login/home_regis'; ?>" method="post">
                     <div class="text-center">
                     <input type="hidden" name="NIM2" value="E<?php echo $_SESSION["nim"] ?>">
                    <button class="btn btn-outline-primary rounded-pill" disabled>@ E<?php echo $_SESSION["nim"] ?> - <?php echo $_SESSION["name"] ?></button>

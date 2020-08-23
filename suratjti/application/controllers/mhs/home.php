@@ -155,6 +155,7 @@ class Home extends CI_Controller {
 
 		$data['database1'] = $this->m_data->bukti_surat1($id_sur)->result();
 		$data['database2'] = $this->m_data->bukti_surat2($id_sur)->result();
+		$data['database3'] = $this->m_data->bukti_surat3($id_sur)->result();
 		$this->load->view('v_mhs/v_bukti_pengajuan_surat', $data);
 	}
 
