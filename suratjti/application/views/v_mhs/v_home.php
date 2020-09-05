@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav.png') ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_mhs.png') ?>">
 	<!-- Author Meta -->
 	<meta name="author" content="Colorlib">
 	<!-- Meta Description -->
@@ -76,7 +76,7 @@
 							<li class="nav-item">
 								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Beranda</a>
 							</li>
-							<?php if (isset($_SESSION["status"])) { ?>
+							<?php if (isset($_SESSION["status_mhs"])) { ?>
 								<li class="nav-item">
 									<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url() . 'mhs/home/surat_saya' ?>">Surat Saya</a>
 								</li>
@@ -89,7 +89,7 @@
 						</ul>
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
 							<?php
-							if (isset($_SESSION["status"])) {
+							if (isset($_SESSION["status_mhs"])) {
 								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;
@@ -125,7 +125,7 @@
 									surat pengajuan pkl, surat survey tempat dan lain-lain. JTI-Surat bertujuan untuk membantu mempermudah mahasiswa dan juga
 									admin jurusan dalam transaksi pembuatan surat.
 								</p>
-								<?php if (isset($_SESSION["status"])) { ?>
+								<?php if (isset($_SESSION["status_mhs"])) { ?>
 									<a class="btn btn-light rounded-pill btn-lg glow-blue mb-5" href="<?php echo base_url('mhs/form') ?>"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>
 								<?php } else { ?>
 									<a class="btn btn-light rounded-pill btn-lg glow-blue mb-5" href="#" data-toggle="modal" data-target="#modalLogin"><span class="text-primary">Buat Surat Sekarang </span><i class="fa fa-chevron-circle-right text-primary"></i></a>

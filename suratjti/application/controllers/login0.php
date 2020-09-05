@@ -5,7 +5,6 @@ class Login0 extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('m_login');
-
 	}
 
 	function index(){
@@ -20,20 +19,40 @@ class Login0 extends CI_Controller{
 			'PASSWORD_ADM' => md5($PASSWORD_ADM)
 			);
 		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
+		$data_admin = $this->m_login->data_admin("admin", $where)->result();
+
 		if($cek > 0){
+			foreach ($data_admin as $N){
+				$id= $N->ID_ADMIN;
+				$nama= $N->NAMA_ADMIN;
+				$prodi= $N->PRODI;
+				$no_hp= $N->HP;
+			}
 
 			$data_session = array(
 				'id_admin' => $ID_ADMIN,
 				'nama_admin' => $row->NAMA_ADMIN,
+				'id' => $id,
+				'nama' =>$nama,
+				'prodi' => $prodi,
+				'no_hp'=> $no_hp,
 				'status' => "login0"
 				);
 
 			$this->session->set_userdata($data_session);
 
-			redirect(base_url("admin"));
-
+			if($id=='super'){
+				redirect(base_url("admin/superAdmin"));
+			}else{
+				redirect(base_url("admin"));
+			}
 		}else{
-			echo "Username dan password salah !";
+			$data_session = array(
+			'logingagal' => '1'
+			);
+
+			$this->session->set_userdata($data_session);
+			redirect(base_url("admin"));
 		}
 	}
 

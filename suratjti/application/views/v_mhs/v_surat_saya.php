@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav.png') ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_mhs.png') ?>">
 	<!-- Author Meta -->
 	<meta name="author" content="Colorlib">
 	<!-- Meta Description -->
@@ -75,7 +75,7 @@
 						<li class="nav-item dropdown list-unstyled border border-primary text primary">
 
 							<?php
-							if (isset($_SESSION["status"])) {
+							if (isset($_SESSION["status_mhs"])) {
 								$nama = $_SESSION['hasil_db'];
 								foreach ($nama as $u) {
 									$nama_user = $u->NAMA_MHS;

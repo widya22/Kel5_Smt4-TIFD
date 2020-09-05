@@ -66,8 +66,19 @@ class M_data extends CI_Model{
 
 
   //MODEL ADMIN
+  function tampil_data_admin(){
+  	$hasil = $this->db->query("SELECT * FROM `admin` WHERE `ID_ADMIN` != 'super' ORDER BY `ID_ADMIN` ASC ");
+		return $hasil->result();
+      }
+  function tampil_data_super_admin(){
+    $hasil = $this->db->query("SELECT * FROM `admin` WHERE `ID_ADMIN` = 'super'");
+    return $hasil->result();
+      }
+
+
   function tampil_data_mhs(){
-		return $this->db->get('user');
+    $this->db->where('PRODI', $_SESSION['prodi']);
+    return $this->db->get('user');
     }
   function tampil_jenis_surat(){
     return $this->db->get('jenis_surat');
@@ -76,19 +87,26 @@ class M_data extends CI_Model{
     //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
+  $this->db->join('user', 'surat.NIM=user.NIM');
   $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", 'Menunggu');
-  //$this->db->where("traking_surat", "Menunggu Admin");
-  //$this->db->where("usertype","admin");
+      if($_SESSION["id"]!= 'super'){
+          $this->db->where("PRODI",$_SESSION['prodi']);
+        }
+
   return $query=$this->db->get();
       }
+
   function tampil_data_suratTolak(){
   //return $this->db->get('surat');
   $this->db->select('*');
   $this->db->from('surat');
   $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", "Ditolak");
-  //$this->db->where("usertype","admin");
+  $this->db->join('user', 'surat.NIM=user.NIM');
+      if($_SESSION["id"]!= 'super'){
+        $this->db->where("PRODI",$_SESSION['prodi']);
+      }
   return $query=$this->db->get();
       }
   
@@ -98,7 +116,10 @@ class M_data extends CI_Model{
   $this->db->from('surat');
   $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", "Dapat Diambil");
-  //$this->db->where("usertype","admin");
+  $this->db->join('user', 'surat.NIM=user.NIM');
+      if($_SESSION["id"]!= 'super'){
+        $this->db->where("PRODI",$_SESSION['prodi']);
+      }
   return $query=$this->db->get();
   }    
   function tampil_data_suratDiProses(){
@@ -107,7 +128,10 @@ class M_data extends CI_Model{
     $this->db->from('surat');
     $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
     $this->db->like("status_surat", "Sedang Dalam Proses");
-    //$this->db->where("usertype","admin");
+    $this->db->join('user', 'surat.NIM=user.NIM');
+      if($_SESSION["id"]!= 'super'){
+        $this->db->where("PRODI",$_SESSION['prodi']);
+      }
     return $query=$this->db->get();
     }
     function tampil_data_suratDapatDiambil(){
@@ -116,12 +140,16 @@ class M_data extends CI_Model{
       $this->db->from('surat');
       $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
       $this->db->like("status_surat", "Dapat Diambil");
-      //$this->db->where("usertype","admin");
+      $this->db->join('user', 'surat.NIM=user.NIM');
+      if($_SESSION["id"]!= 'super'){
+        $this->db->where("PRODI",$_SESSION['prodi']);
+      }
       return $query=$this->db->get();
       }
   function input_jenisSurat($data,$table){
 		$this->db->insert($table,$data);
     }
+
   function simpan_js($id_jenis_surat,$jenis_surat){
         $hasil=$this->db->query("INSERT INTO jenis_surat (ID_JENIS_SURAT,JENIS_SURAT) VALUES ('$id_jenis_surat','$jenis_surat')");
         return $hasil;
@@ -142,7 +170,13 @@ class M_data extends CI_Model{
 
 	function input_data($data, $table)
 	{
-		$this->db->insert($table, $data); //masukkan data ke database
+		$this->db->insert($table, $data); //masukkan data jenis surat ke database
+  }
+
+  function update_jensu_data( $where, $data, $table)
+	{
+    $this->db->where($where);
+    $this->db->update($table, $data); //update data jenis surat ke database
 	}
 
 	function tampil_surat()
@@ -243,6 +277,24 @@ class M_data extends CI_Model{
 		return $this->db->from('user')
 		->join('admin', 'user.PRODI=admin.PRODI')
 		->get();
-	}
+  }
+  
+  function jenis_surat($id){ //ambil data dari surat
+    $this->db->where('ID_JENIS_SURAT', $id);
+    $this->db->from('jenis_surat');
+    return $this->db->get();
+  }
+
+  function cek_data($id, $id_db, $database){ //cek database
+    $this->db->from($database);
+    $this->db->where($id_db, $id);
+    return $this->db->count_all_results();
+  }
+
+  function edit_admin($id){ //ambil data dari admin
+    $this->db->where('ID_ADMIN', $id);
+    $this->db->from('admin');
+    return $this->db->get();
+  }
 
 }

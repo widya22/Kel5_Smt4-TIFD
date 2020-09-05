@@ -29,7 +29,7 @@ class Login extends CI_Controller
 				'hasil_db' => $hasil_db,
 				'nim' => $nim,
 				'alert' => "login",
-				'status' => "terdaftar"
+				'status_mhs' => "terdaftar"
 			);
 
 			$this->session->set_userdata($data_session);
@@ -61,8 +61,8 @@ class Login extends CI_Controller
 	// }
 
 	function home_regis(){
-		$nim = $this->input->post('NIM2');
-		print_r($nim);
+		$nim = $_SESSION['nim'];
+		// print_r($nim);
 		$where = array(
 			'NIM' => $nim,
 		);
@@ -71,7 +71,7 @@ class Login extends CI_Controller
 			'hasil_db' => $hasil_db,
 			'popup' => "oke",
 			'alert' => "daftar",
-			'status' => "terdaftar"
+			'status_mhs' => "terdaftar"
 		);
 		$this->session->set_userdata($data_session);
 		redirect(base_url());

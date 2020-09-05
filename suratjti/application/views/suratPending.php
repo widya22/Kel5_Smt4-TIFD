@@ -17,120 +17,15 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- favicon -->
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" alt="logo jti" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Surat JTI</span>
-    </a>
+ <?php $this->load->view('sidebar_menu'); ?>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?php echo base_url('assets/asetadmin/dist/img/jti.png');?>" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block"><?php echo $this->session->userdata("nama_admin"); ?></a>
-        </div>
-        
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">              
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin');?>"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/jnSrt');?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jenis Surat</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mahasiswa</p>
-                </a>
-              </li>
-              <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-circle"></i>
-              <p>
-                Pengajuan Surat
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link active">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Menunggu Persetujuan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtProses');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Sedang DiProses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtDapatDiambil');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Dapat Diambil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>Surat Ditolak</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtSls');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Surat Selesai</p>
-                </a>
-              </li>
-              </ul>
-            </ul>
-          </li>
-          
-        
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -138,7 +33,8 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+          <div class="col-sm-5">
             <h1>Surat Pending</h1>
           </div>
           <div class="col-sm-6">
@@ -172,8 +68,10 @@
 			<th width="180">Status Surat</th>
 			<th colspan="3">Action</th>
 		</tr>
-		<?php 
-		$no = 1;
+    <?php 
+    if($surat!=null){
+
+$no = 1;
 		foreach($surat as $u){ 
       $u->ID_SURAT 
 		?>
@@ -185,26 +83,18 @@
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
 			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-      <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>      
+      <td><a class="btn btn-success btn-sm" onclick= <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>     
+      <!-- <td><a class="btn btn-success btn-sm" onclick="konfirmasiConfirm('url')"  href="#!">AHA</a> </td>       -->
       <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalTolak">Tolak</a></td>       
 		</tr>
-    
+
+    <?php }}else { ?>
+
 		<?php } ?>
-                
                     
                 </tbody>
-                <tfoot>
-                <tr>
-                <th>No</th>
-			<th>Surat</th>			
-			<th>NIM</th>
-			<th>Nama Mitra</th>
-      <th>Tanggal</th>
-			<th>Status Surat</th>
-			<th colspan="3">Action</th>
-                </tr>
-                </tfoot>
               </table>
+                
             </div>
             <!-- /.card-body -->
           </div>
@@ -244,16 +134,15 @@
 				</div>
 				<div class="modal-body">
 					<!-- form Tolak -->
-					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">						
-            <div class="form-group">
-               <label>Alasan</label>
+					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">
+          <label>Alasan :</label>			
+            <div class="form-group text-center d-flex justify-content-center">
+              
                   <div class="row">
-                  <div class="col-sm-10">
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
-             </div>
+            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
+            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
+            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
+            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
              </div>			
             </div>
   
@@ -264,6 +153,27 @@
 			</div>
 		</div>
 	</div>
+
+ <!-- modal konfirmasi -->
+ <div class="modal fade" id="konfirmModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Pastikan data yang diterima sudah benar.</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="btn-konfirm" class="btn btn-primary" href="#">Konfirmasi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!-- modal konfirmasi -->
+
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
@@ -276,6 +186,8 @@
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
+<!-- main js -->
+<script src="<?php echo base_url('assets/asetadmin/dist/js/main.js');?>"></script>
 <!-- page script -->
 <script>
   $(function () {

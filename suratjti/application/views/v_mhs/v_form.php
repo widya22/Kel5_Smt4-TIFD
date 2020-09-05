@@ -5,7 +5,7 @@
   <!-- Mobile Specific Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Favicon-->
-  <link rel="shortcut icon" href="<?php echo base_url('assets/asetmhs/assets/img/fav.png') ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_mhs.png') ?>">
   <!-- Author Meta -->
   <meta name="author" content="Colorlib">
   <!-- Meta Description -->
@@ -35,47 +35,51 @@
 <body>
   <div class="main-wrapper-first">
     <div class="hero-area relative">
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <i class="fa fa-envelope fa-2x"></i>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+     <!-- header -->
+			<header>
+				<na class="row navbar navbar-expand-sm navbar-light bg-light col-lg-13">
+					<i class="fa fa-envelope fa-2x"></i>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?= base_url('mhs/home') ?>">Beranda</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link ml-2 mr-2" href="<?= base_url('mhs/home/surat_saya') ?>">Surat Saya</a>
-              </li>              
-            </ul>
-            <li class="nav-item dropdown list-unstyled border border-primary text primary">
-              <?php
-              if (isset($_SESSION["status"]) or isset($_SESSION["daftar"])) {
-                $nama = $_SESSION['hasil_db'];
-                foreach ($nama as $u) {
-                  $nama_user = $u->NAMA_MHS;
-                }
-              ?>
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  User : @<?php echo $nama_user ?>
-                </a>
-                <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#"><?php echo $nama_user ?></a>
-                  <a class="dropdown-item" href="#">Ubah Akun</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Keluar</a>
-                </div>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="<?php echo base_url('mhs/home') ?>">Beranda</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link ml-2 mr-2 border-left border-right" href="#">Surat Saya</a>
+							</li>
 
-              <?php } else { ?>
-                <a href="#" data-toggle="modal" class="nav-link" aria-haspopup="true" aria-expanded="false" data-target="#modalLogin">Masuk</a>
-              <?php } ?>
-            </li>
-          </div>
-        </nav>
-      </header>
+						</ul>
+						<li class="nav-item dropdown list-unstyled border border-primary text primary">
+
+							<?php
+							if (isset($_SESSION["status_mhs"])) {
+								$nama = $_SESSION['hasil_db'];
+								foreach ($nama as $u) {
+									$nama_user = $u->NAMA_MHS;
+								}
+							?>
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									User : @<?php echo $nama_user ?>
+								</a>
+								<div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item text-center keluar" data-toggle="modal" href="<?php echo base_url("mhs/login/logout") ?>">
+									Keluar<i class="fa fa-sign-out pl-2"></i></a>
+								</div>
+
+							<?php } else {
+								redirect('mhs/home', 'location');
+							} ?>
+						</li>
+					</div>
+					</nav>
+			</header>
+
+		
+<!-- header -->
       <div class="banner-area relative">
         <div class="overlay hero-overlay-bg"></div>
 
@@ -156,7 +160,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">NIM</label>
                           <?php
-                          if (isset($_SESSION["status"])) {
+                          if (isset($_SESSION["status_mhs"])) {
                             $nim = $_SESSION['nim'];
                           } ?>
                           <input type="hidden" name="NIM_U" value="<?= $nim ?>">

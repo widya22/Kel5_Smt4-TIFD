@@ -17,8 +17,23 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- favicon -->
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
 </head>
 <body class="hold-transition login-page">
+
+<?php 
+	if (isset($_SESSION["logingagal"])){ ?>
+	<div class="alert alert-danger alert-dismissible fade show">
+		<strong>Login Gagal</strong> username atau password salah.
+		<button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+  <?php } 
+	  $this->session->unset_userdata('logingagal');
+  ?>
+
 <div class="login-box">
   <div class="login-logo">
     <a href="#"><b>Admin</b>JTI</a>
@@ -46,14 +61,6 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" value="Login" class="btn btn-primary btn-block">Masuk</button>
@@ -61,10 +68,6 @@
           <!-- /.col -->
         </div>
       </form>      
-
-      <p class="mb-1">
-        <a href="#">Lupa Password</a>
-      </p>      
     </div>
     <!-- /.login-card-body -->
   </div>

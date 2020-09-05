@@ -5,7 +5,7 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?php echo base_url('assets/img/fav.png') ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_mhs.png') ?>">
     <!-- Author Meta -->
     <meta name="author" content="Colorlib">
     <!-- Meta Description -->
@@ -108,19 +108,19 @@
                         <p class="text-center">pilih prodi anda</p>
                         <div class="text-center">
                             <div class="form-check form-check-inline" required>
-                                <input class="form-check-input" type="radio" name="prodi" id="tif" value="Teknik Informatika" required>
+                                <input class="form-check-input" type="radio" name="prodi" id="tif" value="TIF" required>
                                 <label class="form-check-label" for="tif">
                                     TIF
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="prodi" id="mif" value="Manajemen Informatika" required>
+                                <input class="form-check-input" type="radio" name="prodi" id="mif" value="MIF" required>
                                 <label class="form-check-label" for="mif">
                                     MIF
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="prodi" id="tkk" value="Teknik Komputer" required>
+                                <input class="form-check-input" type="radio" name="prodi" id="tkk" value="TKK" required>
                                 <label class="form-check-label" for="tkk">
                                     TKK
                                 </label>

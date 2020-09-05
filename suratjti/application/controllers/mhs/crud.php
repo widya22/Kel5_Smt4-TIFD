@@ -79,7 +79,7 @@ class Crud extends CI_Controller{
 					);
 					
 					$data_session = array(
-						'nim' => $nim,
+						'nim' => $nim2,
 						'name' => $nama,
 					);
 				$this->session->set_userdata($data_session);

@@ -17,117 +17,12 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- favicon -->
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="dist/img/jti.png" alt="logo jti" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Surat JTI</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/jti.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Nama Admin</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">              
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin');?>"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/jnSrt');?>" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jenis Surat</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtMhs');?>"" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mahasiswa</p>
-                </a>
-              </li>
-              <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-circle"></i>
-              <p>
-                Pengajuan Surat
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Menunggu Persetujuan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtProses');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Sedang DiProses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtDapatDiambil');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Dapat Diambil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtTlk');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>Surat Ditolak</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtSls');?>" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Surat Selesai</p>
-                </a>
-              </li>
-              </ul>
-            </ul>
-          </li>
-          
-        
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+<?php $this->load->view('sidebar_menu'); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -135,8 +30,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Data Mahasiswa</h1>
+          <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+          <div class="col-sm-5 ">
+            <h1>Jenis Surat</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -148,16 +44,59 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-    
+  <!-- alert -->
+  <?php
+    if (isset($_SESSION['ubah_sukses'])){ 
+  ?>
+  <div class="alert alert-success alert-dismissible fade show ubah_sukses" role="alert">
+    Data berhasil diubah
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  <?php }
+    if(isset($_SESSION['hapus_sukses'])){
+  ?>
+  <div class="alert alert-danger alert-dismissible fade show hapus_sukses" role="alert">
+    Data berhasil dihapus
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    <?php } 
+     if(isset($_SESSION['tambah_sukses'])){
+      ?>
+      <div class="alert alert-info alert-dismissible fade show hapus_sukses" role="alert">
+        Data berhasil ditambahkan
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+        <?php } 
+         if(isset($_SESSION['tambah_gagal'])){
+          ?>
+          <div class="alert alert-danger alert-dismissible fade show hapus_sukses" role="alert">
+            Data gagal ditambahkan, ID Surat tidak boleh sama
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+            <?php } 
+    unset($_SESSION['ubah_sukses']);
+    unset($_SESSION['hapus_sukses']);
+    unset($_SESSION['tambah_sukses']);
+    unset($_SESSION['tambah_gagal']);
+    ?>
+  <!-- alert -->
 
+    <!-- Main content -->
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Jenis Surat </h3>
             </div>
             <div class="container">
    
-        <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>       
+        <!-- <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>        -->
     
             <!-- /.card-header -->
             <div class="card-body">
@@ -178,22 +117,18 @@
 			<td><?php echo $u->ID_JENIS_SURAT ?></td>
 			<td><?php echo $u->JENIS_SURAT ?></td>			
 			<td>
-			      <?php echo anchor('crud/edit/'.$u->ID_JENIS_SURAT,'Edit'); ?>
-            <?php echo anchor('crud/hapus/'.$u->ID_JENIS_SURAT,'Hapus'); ?>
+        <a href="<?php echo base_url().'crud/edit/'.$u->ID_JENIS_SURAT; ?>" 
+              class="btn btn-primary text-white">Edit</a>
+            
+        <a onclick="deleteConfirm('<?php echo base_url().'crud/hapus/'.$u->ID_JENIS_SURAT; ?>')" href="#!"
+              class="btn btn-danger text-white">Hapus</a>
+			  
 			</td>
 		</tr>
 		<?php } ?>
                 
                             
                 </tbody>
-                <tfoot>
-                <tr>
-                <th>No</th>
-			<th>ID Surat</th>
-      <th>Jenis Surat</th>			
-			<th>Action</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <div class="card card-primary">
@@ -205,16 +140,16 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="ijs">Id Jenis Surat</label>
-                    <input type="text" class="form-control" id="judul" name="ijs" placeholder="Masukan ID Jenis Surat">
+                    <input type="text" class="form-control" id="judul" name="ijs" placeholder="Masukan ID Jenis Surat" required>
                   </div>
                   <div class="form-group">
                     <label for="js">Jenis Surat</label>
-                    <input type="text" class="form-control" id="fasilitas" name="js" placeholder="Masukan Jenis Surat">
+                    <input type="text" class="form-control" id="fasilitas" name="js" placeholder="Masukan Jenis Surat" required>
                   </div>            
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="Tambah" class="btn btn-primary">Submit</button>
+                  <button type="Tambah" class="btn btn-primary">Tambah</button>
                 </div>
               </form>
             </div>
@@ -283,12 +218,31 @@
         </div>
         <!--END MODAL ADD BARANG-->
 
+        <!-- modal alert hapus -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal alert hapus -->
 
 
 
 
 <!-- jQuery -->
-<script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
+<script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.js');?>"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 <!-- DataTables -->
@@ -298,7 +252,9 @@
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
-<!-- page script -->
+<!-- main script -->
+<script src="<?php echo base_url('assets/asetadmin/dist/js/main.js');?>"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable();
@@ -311,6 +267,7 @@
       "autoWidth": false,
     });
   });
+
 </script>
 </body>
 </html>

@@ -6,14 +6,21 @@ class Admin extends CI_Controller{
 		parent::__construct();		
 		$this->load->model('m_data');
     $this->load->helper('url');
+    $this->load->library('session');
 
     if($this->session->userdata('status') != "login0"){
     redirect(base_url("login0"));
   }
 }
-    function index(){
+    function index(){ //untuk admin prodi
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
       $this->load->view('suratPending',$data);
+      }
+    
+    function superAdmin(){ //untuk super admin
+      $data['admin'] = $this->m_data->tampil_data_admin();
+      $data['superadmin'] = $this->m_data->tampil_data_super_admin();
+      $this->load->view('super_admin',$data);
       }
 
       //Tampil Jenis Surat
@@ -24,7 +31,7 @@ class Admin extends CI_Controller{
       //Tampil Data Mahasiswa
 	  function dtMhs(){
 		  $data['user'] = $this->m_data->tampil_data_mhs()->result();
-      $this->load->view('dataMahasiswa',$data);   
+      $this->load->view('dataMahasiswa',$data); 
       }
       //Tampil Data Surat Yang Pending
     function dtSrtPd(){
@@ -55,36 +62,10 @@ class Admin extends CI_Controller{
 		$this->load->view('v_input'); 
     }
     //function tambah diatas berfungsi untuk menampilkan v_input agar dapat memasukan data.
-    
 
-    //Tambah Jenis Surat
-    function tambahJS_aksi(){ // Tambah Jenis Surat
-		$id_jenis_surat = $this->input->post('ijs');
-		$jenis_surat = $this->input->post('js');
- 
-		$data = array(
-			'id_jenis_surat' => $id_jenis_surat,
-			'jenis_surat' => $jenis_surat
-			);
-		$this->m_data->input_jenisSurat($data,'jenis_surat');
-		redirect('admin/index');
-    }
+
     //Pada fungsi tambah_aksi data yang diinputkan akan dimasukkan kedalam array $data kemudia diparsing ke model m_data
 
-    function hapus($id){
-		$where = array('nim' => $id);
-		$this->m_data->hapus_data($where,'user');
-		redirect('admin');
-    }
-    //fungsi hapus menghapus data pada table dengan parameter id
-
-    function edit($id){
-		$where = array('id' => $id);
-		$data['user'] = $this->m_data->edit_data($where,'user')->result();
-		$this->load->view('v_edit',$data);
-    }
-    //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan melalui model
-    //kemudian data tersebut disimpan kembali dengan id yang sama.
 
     //Tampil Detail Surat
     function detailSurat0($id)
@@ -142,7 +123,7 @@ class Admin extends CI_Controller{
       );
   
       $this->m_data->update_data($where,$data,'surat');
-      redirect('admin/dtSrtPd');
+      redirect('admin/dtSrtProses');
   }
 
   //Update Status Surat menjadi Selesai
@@ -156,7 +137,7 @@ class Admin extends CI_Controller{
     );
 
     $this->m_data->update_data($where,$data,'surat');
-    redirect('admin/dtSrtPd');
+    redirect('admin/dtSrtDapatDiambil');
 }
     function updateTolak($id){
       $id = $this->input->post('ids');
@@ -205,19 +186,43 @@ class Admin extends CI_Controller{
       $this->m_data->simpan_js($id_jenis_surat,$jenis_surat);
       redirect('admin/JnSrt');
   } 
-  function tambah_aksiJs(){
-		$ijs = $this->input->post('ijs');
+
+  function tambah_aksiJs(){ //tambah jenis nsuratr
+		$id = $ijs = $this->input->post('ijs');
 		$js = $this->input->post('js');
-		
- 
+	
 		$data = array(
 			'ID_JENIS_SURAT' => $ijs,
 			'JENIS_SURAT' => $js
 			
-			);
-		$this->m_data->input_data($data,'jenis_surat');
-		redirect('admin/JnSrt');
-    }
+      );
+			$id_cek = $this->m_data->cek_data($id, 'ID_JENIS_SURAT', 'jenis_surat'); //untuk cek data
+
+      if($id_cek > 0){
+        $this->session->set_userdata('tambah_gagal', 'tambah');
+        redirect('admin/JnSrt');
+      }else{
+		    $this->m_data->input_data($data,'jenis_surat');
+        $this->session->set_userdata('tambah_sukses', 'tambah');
+        redirect('admin/JnSrt');
+    }}
+
+    function update_aksiJs(){// update jenis surat
+      $ijs = $this->input->post('ijs');
+      $js = $this->input->post('js');
+    
+      $data = array(
+        'ID_JENIS_SURAT' => $ijs,
+        'JENIS_SURAT' => $js
+        
+        );
+      $where = array(
+        'ID_JENIS_SURAT' => $ijs
+      );
+
+      $this->m_data->update_jensu_data($where, $data,'jenis_surat');
+      redirect('admin/JnSrt');
+      }
 
     function tolak(){
       $ids=$this->input->post('ids');
@@ -284,15 +289,35 @@ class Admin extends CI_Controller{
      //Reset Password Mahasiswa
     function resetPwd($id){   
       $data = array(
-          'PASSWORD_MHS' => "456c287de5f3a47c4c32903fd0ac45df"          
+          'PASSWORD_MHS' => "ce3b0a8763ba21d10f345df15a1dbf01"  //pwd = JTIPOLIJE       
       );    
       $where = array(
           'NIM' => $id
       );
 
-      $this->m_data->update_data($where,$data,'user');
-      redirect('admin/dtMhs');
+    $this->m_data->update_data($where,$data,'user');
+		$this->session->set_userdata('reset_sukses', 'ubah');
+    redirect('admin/dtMhs');
       } 
+
+      function hapus($id){
+        $where = array('nim' => $id);
+        $this->m_data->hapus_data($where,'user');
+		    $this->session->set_userdata('hapus_sukses', 'ubah');
+    redirect('admin/dtMhs');
+        }
+        //fungsi hapus menghapus data pada table dengan parameter id
+    
+        function edit($id){
+        $where = array('id' => $id);
+        $data['user'] = $this->m_data->edit_data($where,'user')->result();
+        $this->load->view('v_edit',$data);
+        }
+        //sama seperti hapus data, pada fungsi edit ini id dipilih sebagai parameter kemudian data yang ada di id itu ditampilkan melalui model
+        //kemudian data tersebut disimpan kembali dengan id yang sama.
+
+        
+
     function print($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);

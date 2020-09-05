@@ -23,7 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Github/Kel5_Smt4-TIFD/suratjti/';
+// $config['base_url'] = 'http://localhost/Github/Kel5_Smt4-TIFD/suratjti/';
+$config['base_url'] = '10.10.0.108';
 
 /*
 |--------------------------------------------------------------------------

@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- favicon -->
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">

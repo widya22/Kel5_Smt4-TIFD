@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2020 at 08:20 AM
+-- Generation Time: Sep 02, 2020 at 08:33 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -31,6 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `ID_ADMIN` varchar(25) NOT NULL,
   `NAMA_ADMIN` varchar(50) DEFAULT NULL,
+  `PRODI` char(3) NOT NULL,
+  `HP` char(13) NOT NULL,
   `PASSWORD_ADM` char(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,10 +40,13 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`ID_ADMIN`, `NAMA_ADMIN`, `PASSWORD_ADM`) VALUES
-('adminjti1', ' Novi Tri Kurniawati, A.Md', '456c287de5f3a47c4c32903fd0ac45df'),
-('adminjti2', 'Indriana Rahmawati', '456c287de5f3a47c4c32903fd0ac45df'),
-('super', 'SuperAdmin', '1b3231655cebb7a1f783eddf27d254ca');
+INSERT INTO `admin` (`ID_ADMIN`, `NAMA_ADMIN`, `PRODI`, `HP`, `PASSWORD_ADM`) VALUES
+('adminjti1', ' Novi Tri Kurniawati, A.Md', '', '088998991234', 'fcdbe828ad3de553a0ca5aa203c06d7b'),
+('adminjti2', 'Indriana Rahmawati', '', '081287765432', '592317e4b5c97de372b019702fbb2fcb'),
+('adminjti3', 'Adri Motorshop', 'TKK', '0222555222', '359f056ba034c3a81da6c21d5f1463cf'),
+('adminjti4', 'Lucas', 'TKK', '0222555222', '8c6f98e539f071e811d119c2dcdf20bb'),
+('adminjti5', 'SEKALI', 'MIF', '0222555222', 'b62170b560e3eb554da5351d714da38f'),
+('super', 'SuperAdminMM', '', '0255', '1b3231655cebb7a1f783eddf27d254ca');
 
 -- --------------------------------------------------------
 
@@ -80,7 +85,10 @@ INSERT INTO `detail_surat` (`ID_SURAT`, `ANGGOTA_MHS`, `NIM_ANGGOTA`) VALUES
 ('35002e0869646c497c3a324189f82f79', 'ASSIIKKKKJKjkfdsjijsdifjsdfdsf', 'E412321'),
 ('35002e0869646c497c3a324189f82f79', 'aawafdawdasdsda', 'dasdwadwe'),
 ('1ab4f4880c3072b28c616a735b09c5ab', 'Lucas Tamvan', 'E411'),
-('1ab4f4880c3072b28c616a735b09c5ab', 'Nur Hadi', 'E412');
+('1ab4f4880c3072b28c616a735b09c5ab', 'Nur Hadi', 'E412'),
+('6233fcf5b2aedc26f0729a4c00b5d49a', 'Lucas Tamvan', 'E411'),
+('6233fcf5b2aedc26f0729a4c00b5d49a', 'Tika', 'E412'),
+('7e67d1e759a4e3058693e88a007b2ef6', 'Lucas Tamvan', 'E411');
 
 -- --------------------------------------------------------
 
@@ -91,7 +99,8 @@ INSERT INTO `detail_surat` (`ID_SURAT`, `ANGGOTA_MHS`, `NIM_ANGGOTA`) VALUES
 CREATE TABLE `dosen` (
   `NIP` char(18) NOT NULL,
   `NAMA_DOSEN` varchar(50) DEFAULT NULL,
-  `JURUSAN` char(3) NOT NULL,
+  `PRODI` char(3) NOT NULL,
+  `NO_HP` int(13) NOT NULL,
   `USERNAME_DSN` varchar(15) NOT NULL,
   `PASSWORD_DSN` char(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -100,9 +109,9 @@ CREATE TABLE `dosen` (
 -- Dumping data for table `dosen`
 --
 
-INSERT INTO `dosen` (`NIP`, `NAMA_DOSEN`, `JURUSAN`, `USERNAME_DSN`, `PASSWORD_DSN`) VALUES
-('123321', 'Dosen JTI', '', '', '456c287de5f3a47c4c32903fd0ac45df'),
-('199002272018032001', 'Trismayanti Dwi P, S.Kom, M.Cs', 'TIF', 'trismayantidp', '456c287de5f3a47c4c32903fd0ac45df');
+INSERT INTO `dosen` (`NIP`, `NAMA_DOSEN`, `PRODI`, `NO_HP`, `USERNAME_DSN`, `PASSWORD_DSN`) VALUES
+('123321', 'Dosen JTI', '', 0, '', '456c287de5f3a47c4c32903fd0ac45df'),
+('199002272018032001', 'Trismayanti Dwi P, S.Kom, M.Cs', 'TIF', 0, 'trismayantidp', '456c287de5f3a47c4c32903fd0ac45df');
 
 -- --------------------------------------------------------
 
@@ -120,10 +129,14 @@ CREATE TABLE `jenis_surat` (
 --
 
 INSERT INTO `jenis_surat` (`ID_JENIS_SURAT`, `JENIS_SURAT`) VALUES
-('MK', 'Mata Kuliah'),
+('aa', 'ss'),
+('aha123', 'yiha'),
+('dasdasdsa', 'sdas'),
+('MK', 'Mata Kuliahan'),
 ('OBS', 'Observasi'),
 ('PK', 'Pengajuan PKL'),
-('TA', 'Tugas Akhir');
+('TA', 'Tugas Akhir'),
+('TT', 'Tugass nSelalu Tuiga');
 
 -- --------------------------------------------------------
 
@@ -149,10 +162,12 @@ CREATE TABLE `surat` (
 --
 
 INSERT INTO `surat` (`ID_SURAT`, `NIP`, `ID_JENIS_SURAT`, `NIM`, `NAMA_MITRA`, `ALAMAT_MITRA`, `TANGGAL`, `TANGGAL_PENGAJUAN`, `STATUS_SURAT`, `KETERANGAN`) VALUES
-('1ab4f4880c3072b28c616a735b09c5ab', '199002272018032001', 'OBS', 'E411', 'Soerabaja56', 'Jember Jawa Timur', '2020-08-19', '2020-08-24', 'Selesai', ''),
-('35002e0869646c497c3a324189f82f79', '199002272018032001', 'OBS', 'E411', 'Sekolah SMA', 'Tanggul', '2020-08-14', '2020-08-15', 'Menunggu', ''),
-('38164248477de4f57b34e466eca9e596', '199002272018032001', 'MK', 'E41181181', 'Kepala Bagian Akademik POLIJE', 'Jl. Mastrip No.164, Krajan Timur, Sumbersari, Kabupaten Jember, Jawa Timur 68121', '2020-06-20', '2020-06-20', 'Menunggu', ''),
-('56667cd0d7efe4c234d080fee2bd7748', '199002272018032001', 'MK', 'E41181181', 'Politeknik Negeri Jember Jurusan Teknologi Informasi', 'Jl. Mastrip No.164, Krajan Timur, Sumbersari, Kabupaten Jember, Jawa Timur 68121', '2020-06-20', '2020-06-20', 'Menunggu', ''),
+('1ab4f4880c3072b28c616a735b09c5ab', '199002272018032001', 'OBS', 'E411', 'Soerabaja56', 'Jember Jawa Timur', '2020-08-19', '2020-08-24', 'Sedang Dalam Proses', ''),
+('35002e0869646c497c3a324189f82f79', '199002272018032001', 'OBS', 'E411', 'Sekolah SMA', 'Tanggul', '2020-08-14', '2020-08-15', 'DiTolak - Data Surat Tidak Valid', ''),
+('38164248477de4f57b34e466eca9e596', '199002272018032001', 'MK', 'E41181181', 'Kepala Bagian Akademik POLIJE', 'Jl. Mastrip No.164, Krajan Timur, Sumbersari, Kabupaten Jember, Jawa Timur 68121', '2020-06-20', '2020-06-20', 'DiTolak - Data Surat Tidak Valid', ''),
+('56667cd0d7efe4c234d080fee2bd7748', '199002272018032001', 'MK', 'E41181181', 'Politeknik Negeri Jember Jurusan Teknologi Informasi', 'Jl. Mastrip No.164, Krajan Timur, Sumbersari, Kabupaten Jember, Jawa Timur 68121', '2020-06-20', '2020-06-20', 'DiTolak - Data Surat Tidak Lengkap', ''),
+('6233fcf5b2aedc26f0729a4c00b5d49a', '199002272018032001', 'OBS', 'E411', 'ASIK', 'Jember', '2020-08-23', '2020-08-24', 'Sedang Dalam Proses', ''),
+('7e67d1e759a4e3058693e88a007b2ef6', '123321', 'MK', 'E411', 'Soerbaja', 'Jember', '2020-08-24', '2020-08-25', 'DiTolak - Data Surat Tidak Lengkap', ''),
 ('9084e9eb1e2058681ed4b75171f86cf5', '199002272018032001', 'MK', 'E41181181', 'Politeknik Negeri Jember', 'Jl. Mastrip No.164, Krajan Timur, Sumbersari, Kabupaten Jember, Jawa Timur 68121', '2020-06-20', '0000-00-00', 'DiTolak - Data Surat Tidak Lengkap', ''),
 ('d41d8cd98f00b204e9800998ecf8427e', '199002272018032001', 'OBS', 'E411', 'PT Garuda Indonesia', 'Jember', '2020-07-02', '2020-07-04', 'DiTolak - Data Surat Tidak Lengkap', ''),
 ('d8fd1f0e850fa6c4fdcc7673152a355d', '199002272018032001', 'OBS', 'E41181181', 'Ketua Administarsi PT Lion Air ', 'Jl Sukaterbang', '2020-07-01', '2020-07-04', 'Sedang Dalam Proses', 'Observasi'),
@@ -178,13 +193,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`NIM`, `NAMA_MHS`, `PRODI`, `PASSWORD_MHS`, `HP`, `status`) VALUES
-('E411', 'Lucas Tamvan', 'Tif', 'f6dc2268d9b89b62182384ab392e235b', NULL, '0'),
+('E411', 'Lucas Tamvan', 'TIF', '456c287de5f3a47c4c32903fd0ac45df', NULL, '0'),
 ('E41181181', 'Ferdiansyah Rifqika Evanta', 'TIF', '456c287de5f3a47c4c32903fd0ac45df', '081333693785', '0'),
-('E41181233', 'Yosef Triadi Setiawan Santoso', 'TIF', '456c287de5f3a47c4c32903fd0ac45df', NULL, '0'),
-('E41181273', 'Ainun Nella', 'TIF', 'jtipolije', '081333693785', '0'),
-('E41181398', 'Nur Hadi', 'TIF', '25f9e794323b453885f5181f1b624d0b', '081554973376', '0'),
-('E41181630', 'Mustika Khoiri', 'TIF', '456c287de5f3a47c4c32903fd0ac45df', NULL, '0'),
-('E41181728', 'Widya Wahyu Pramesti', 'TIF', '456c287de5f3a47c4c32903fd0ac45df', NULL, '0');
+('E41181728', 'Widya Wahyu Pramesti', 'MIF', '456c287de5f3a47c4c32903fd0ac45df', NULL, '0'),
+('EE411344', 'Yosef Triadi', 'MIF', '456c287de5f3a47c4c32903fd0ac45df', '622236555656565', '0');
 
 --
 -- Indexes for dumped tables
