@@ -245,7 +245,7 @@ class M_data extends CI_Model{
 		$nim = $_SESSION["nim"];
 		$hasil = $this->db->query("SELECT * FROM surat JOIN jenis_surat 
 								ON surat.ID_JENIS_SURAT=jenis_surat.ID_JENIS_SURAT 
-                WHERE surat.NIM= '$nim' && surat.STATUS_SURAT='Selesai'
+                WHERE surat.NIM= '$nim' && substring(surat.STATUS_SURAT, 1,8 )='Selesai'
                 ORDER BY TANGGAL DESC");
 		return $hasil->result();
 	}
