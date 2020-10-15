@@ -100,11 +100,10 @@
                         </tr>						
                         <table border="1 solid" cellspacing="0" cellpadding="5" id="datamahasiswa">
                             <tr align="center" id="header">
-                                <td><strong>No.</strong></td>
-                                <td><strong>Nama Mahasiswa</strong></td>
-                                <td><strong>NIM</strong></td>
-								<td><strong>No. HP</strong></td>
-                                <td><strong>Jurusan / Prodi</strong></td>                                  
+                                <th><strong>No.</strong></th>
+                                <th><strong>Nama Mahasiswa</strong></th>
+                                <th><strong>NIM</strong></th>
+                                <th><strong>Jurusan / Prodi</strong></th>                                  
                             </tr>
 							<?php 
 						$noA = 1;
@@ -114,9 +113,9 @@
                             <tr>
                                 <td align="center"><?php echo $noA++ ?></td>
                                 <td><?php echo $DA->ANGGOTA_MHS ?></td>
-                                <td><?php echo $DA->NIM_ANGGOTA ?></td>
-								<td><?php echo $DA->HP ?></td>
-                                <td>Teknologi Informasi / <?php echo $DA->PRODI ?></td>								
+                                <td><?php echo $DA->NIM_ANGGOTA ?></td>                                
+                                <td>Teknologi Informasi / <?php echo $DA->PRODI ?></td>
+                                
                             </tr>
 							<?php } ?>							                    
                         </table>

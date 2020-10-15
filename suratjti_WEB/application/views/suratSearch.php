@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Pending</title>
+  <title>JTI SURAT | Surat</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,12 +35,12 @@
         <div class="row mb-2">
           <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           <div class="col-sm-5">
-            <h1>Surat Pending</h1>
+            <h1>Surat</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Pending</li>
+              <li class="breadcrumb-item active">Surat</li>
             </ol>
           </div>
         </div>
@@ -52,7 +52,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Surat Pending</h3>
+              <h3 class="card-title">Surat</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -82,7 +82,7 @@ $no = 1;
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSuratTlk/'.$u->ID_SURAT,'Detail'); ?></a> </td>
       <td><a class="btn btn-success btn-sm" onclick= <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>     
       <!-- <td><a class="btn btn-success btn-sm" onclick="konfirmasiConfirm('url')"  href="#!">AHA</a> </td>       -->
       <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalTolak">Tolak</a></td>       

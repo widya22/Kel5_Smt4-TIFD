@@ -128,6 +128,7 @@ class M_data extends CI_Model{
     $this->db->from('surat');
     $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
     $this->db->like("status_surat", "Sedang Dalam Proses");
+    //$this->db->like("id_jenis_surat", "MK");
     $this->db->join('user', 'surat.NIM=user.NIM');
       if($_SESSION["id"]!= 'super'){
         $this->db->where("PRODI",$_SESSION['prodi']);
@@ -157,11 +158,17 @@ class M_data extends CI_Model{
     
     
   function update_tolak($alasan,$ids){
-        $hasil=$this->db->query("UPDATE `surat` SET `STATUS_SURAT` = '$alasan' WHERE `surat`.`ID_SURAT` = '$ids';");
+        $hasil=$this->db->query("UPDATE `surat` SET `STATUS_SURAT` = 'DiTolak- $alasan' WHERE `surat`.`ID_SURAT` = '$ids';");
         return $hasil;
     }
     
-    
+  function search($search){
+    $hasil=$this->db->query("SELECT *, jenis_surat FROM surat INNER JOIN jenis_surat ON surat.ID_JENIS_SURAT 
+    = jenis_surat.ID_JENIS_SURAT WHERE surat.NIM='$search' OR jenis_surat.JENIS_SURAT='$search'");
+   
+        return $hasil;
+
+  }
     //MODEL MAHASISWA
     function tampil_data()
 	{

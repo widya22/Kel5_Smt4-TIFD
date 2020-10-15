@@ -151,7 +151,8 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">               
-        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/dtSrtDapatDiambil');?>">Kembali</a>
+        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/dtSrtSls');?>">Kembali</a>
+        <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
         </div>
         
         <!-- /.card-footer-->

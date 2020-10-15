@@ -38,6 +38,7 @@ class admin extends CI_Controller{
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
       $this->load->view('suratPending',$data);
       }
+      
       //Tampil Data Surat yang Ditolak
     function dtSrtTlk(){
       $data['surat'] = $this->m_data->tampil_data_suratTolak()->result();
@@ -71,6 +72,7 @@ class admin extends CI_Controller{
     function detailSurat0($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
+    $data['detailAnggota'] = $this->m_data->detailanggota($id);
     $this->load->view('detailsurat0', $data);
     }
     //Tampil Detail Surat 2
@@ -85,16 +87,22 @@ class admin extends CI_Controller{
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
-    $this->load->view('detailSuratDiproses.php', $data);
+    $this->load->view('detailSuratDiproses', $data);
     }
-    //Tampil Detail Surat Diproses
+    //Tampil Detail Surat dapat diambil
     function dsDapatDiambil($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
-    $this->load->view('detailSuratDapatDiambil.php', $data);
+    $this->load->view('detailSuratDapatDiambil', $data);
     }
-
+    //Tampil Detail Surat dapat diambil
+    function dsSelesai($id)
+    {
+    $data['detailnilai'] = $this->m_data->detaildata($id);
+    $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $this->load->view('detailSuratSelesai', $data);
+    }
     //Update Status Surat Menjadi Sedang Dalam Proses
     function update($id){   
         $data = array(
@@ -129,7 +137,7 @@ class admin extends CI_Controller{
   //Update Status Surat menjadi Selesai
   function updatestatus3($id){  
     $data = array(
-        'STATUS_SURAT' => "Selesai"        
+        'STATUS_SURAT' => "Selesai - Surat Telah Diterima Mahasiswa"        
     );
         
     $where = array(
@@ -137,7 +145,7 @@ class admin extends CI_Controller{
     );
 
     $this->m_data->update_data($where,$data,'surat');
-    redirect('admin/dtSrtDapatDiambil');
+    redirect('admin/dtSrtSls');
 }
     function updateTolak($id){
       $id = $this->input->post('ids');
@@ -224,19 +232,26 @@ class admin extends CI_Controller{
       redirect('admin/JnSrt');
       }
 
-    function tolak(){
-      $ids=$this->input->post('ids');
-      $alasan=$this->input->post('alasantlk');      
-      $this->m_data->update_tolak($ids,$alasan);
-      
+    function tolak($ids){
+      $alasan=$this->input->post('alasan1');      
+      $this->m_data->update_tolak($alasan,$ids);
+
+      redirect('admin/dtSrtPd');
   } 
+   //Tampil Data Searching
+
+  function searching(){
+    $search=$this->input->post('search');      
+    $data['surat'] = $this->m_data->search($search)->result();
+    $this->load->view('suratSearch',$data);
+} 
 
     //Update Status Surat Ditolak Dengan Alasannya
     function updateTolak1($id){  
+           
+      $alasantolak = $this->input->post('alasan1');
       $data = array(
-          'STATUS_SURAT' => "DiTolak - Data Surat Tidak Lengkap"
-          //'alamat' => $alamat,
-          //'pekerjaan' => $pekerjaan
+          'STATUS_SURAT' => $alasantolak
       );    
       $where = array(
           'ID_SURAT' => $id

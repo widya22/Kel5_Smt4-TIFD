@@ -154,17 +154,14 @@
         <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
         </div>
         <div class="card-footer">
-        <!-- <p>tolak surat :</br> -->
-        <!-- <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a>
-        <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a></div> -->
-
+        
         <div class="form-group">
-          <label for="alasan">tolak surat :</label>
-          <textarea class="form-control" id="alasan" name="alasan" rows="3" required></textarea>
+        <form action="<?php echo base_url('admin/tolak/'.$u->ID_SURAT); ?>" method="post" enctype="multipart/form-data">
+          <label for="alasan1">Tolak Surat :</label>
+          <input class="form-control" id="alasan1" name="alasan1" rows="3" required></input>
         </div>
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menolak surat?')">Tolak</button>
+        <!-- <a class="btn btn-outline-danger btn-sm" <?php echo anchor('admin/tolak/'.$u->ID_SURAT,'Tolak'); ?></a> -->
+        <button type="submit" class="btn btn-danger " onclick="return confirm('Yakin ingin menolak surat?')">Tolak</button>
         </form>
         <!-- /.card-footer-->
       </div>
