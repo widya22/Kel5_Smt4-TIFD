@@ -107,7 +107,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link 
-                    <?php if($this->uri->segment(2) == 'dtSrtPdMK'){echo $active;} ?>  ">
+                    <?php if($this->uri->segment(2) == 'dtSrtPd'){echo $active;} ?>  ">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Menunggu Persetujuan</p>
                 </a>
@@ -115,7 +115,7 @@
               <?php $c= "active"; ?>
               <li class="nav-item">
                 <a href="<?php echo base_url('admin/dtSrtProsesMK');?>" class="nav-link 
-                    <?php if($this->uri->segment(2) == 'dtSrtProses'){echo $active;} ?>  ">
+                    <?php if($this->uri->segment(2) == 'dtSrtProsesMK'){echo $active;} ?>  ">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Sedang DiProses</p>
                 </a>

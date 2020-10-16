@@ -107,11 +107,11 @@
 			<td><?php echo $u->ALAMAT_MITRA ?></td>
     </tr>
     <tr>
-      <td><?php echo "Tanggal Pelaksanaan" ?></td>
+      <td><?php echo "Tanggal Pengajuan" ?></td>
 			<td><?php echo $u->TANGGAL ?></td>
     </tr>  
 		<tr>
-      <td><?php echo "Tanggal Pengajuan" ?></td>
+      <td><?php echo "Tanggal Pelaksanaan" ?></td>
 			<td><?php echo $u->TANGGAL_PENGAJUAN ?></td>
     </tr>
     <tr>

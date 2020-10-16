@@ -90,7 +90,7 @@ class M_data extends CI_Model{
   $this->db->join('user', 'surat.NIM=user.NIM');
   $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", 'Menunggu');
-  $this->db->like("id_jenis_surat", 'MK');
+  //$this->db->like("id_jenis_surat", 'MK');
       if($_SESSION["id"]!= 'super'){
           $this->db->where("PRODI",$_SESSION['prodi']);
         }

@@ -61,8 +61,8 @@
 			<th width="20">No</th>      
 			<th width="30">Surat</th>			
 			<th width="100">NIM</th>
-			<th width="300">Nama Mitra</th>
-      <th width="100">Tanggal</th>
+			<th width="250">Nama Mitra</th>
+      <th width="170">Tanggal Pengajuan</th>
 			<th width="180">Status Surat</th>
 			<th colspan="2">Action</th>
 		</tr>

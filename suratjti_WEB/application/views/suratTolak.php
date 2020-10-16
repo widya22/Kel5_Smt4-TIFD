@@ -61,9 +61,9 @@
 			<th width="30">Surat</th>			
 			<th width="100">NIM</th>
 			<th width="300">Nama Mitra</th>
-      <th width="100">Tanggal</th>
+      <th width="100">Tanggal Pengajuan</th>
 			<th width="180">Status Surat</th>
-			<th>Action</th>
+			<th width="50">Action</th>
 		</tr>
 		<?php 
 		$no = 1;

@@ -68,8 +68,9 @@
 			<th width="30">Surat</th>			
 			<th width="100">NIM</th>
 			<th width="300">Nama Mitra</th>
-      <th width="100">Tanggal</th>
-			<th width="180">Status Surat</th>
+      <th width="100">Pengajuan</th>
+      <th width="100">Pelaksanaan</th>
+			<th width="120">Status Surat</th>
 			<th colspan="3">Action</th>
 		</tr>
     <?php 
@@ -85,6 +86,7 @@ $no = 1;
 			<td><?php echo $u->NIM ?></td>
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
+      <td><?php echo $u->TANGGAL_PENGAJUAN?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
 			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
       <td><a class="btn btn-success btn-sm" onclick= <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>     
