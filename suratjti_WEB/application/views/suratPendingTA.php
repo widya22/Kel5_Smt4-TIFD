@@ -19,6 +19,10 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- favicon -->
 	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/asetmhs/assets/bootstrap-4.4.1/css/bootstrap.min.css');?>">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   
   
@@ -57,7 +61,12 @@
             <div class="card-header">
               <h3 class="card-title">Surat Pending</h3>
             </div>
-            
+            <ul class="nav nav-tabs">
+            <li ><a href="admin/dtSrtPdMK">Surat MK</a></li>
+            <li class="active"><a href="dtSrtPdTA">Surat TA</a></li>
+            <li><a href="#">Menu 2</a></li>
+            <li><a href="#">Menu 3</a></li>
+            </ul>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">

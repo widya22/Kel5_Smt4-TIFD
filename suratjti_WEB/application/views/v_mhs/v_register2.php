@@ -54,7 +54,7 @@
                     <form action="<?php echo base_url().'mhs/login/home_regis'; ?>" method="post">
                     <div class="text-center">
                     <input type="hidden" name="NIM2" value="E<?php echo $_SESSION["nim"] ?>">
-                   <button class="btn btn-outline-primary rounded-pill" disabled>@ E<?php echo $_SESSION["nim"] ?> - <?php echo $_SESSION["name"] ?></button>
+                   <button class="btn btn-outline-primary rounded-pill" disabled>@<?php echo $_SESSION["nim"] ?> - <?php echo $_SESSION["name"] ?></button>
                    </div>
                    <div>
                    <h3 class="text-center mt-3">Informasi</h3>

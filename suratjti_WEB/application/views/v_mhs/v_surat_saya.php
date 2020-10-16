@@ -275,7 +275,10 @@
 										'<th scope="col" class="pl-5 pr-3">'+
 											'<div class="d-flex">'+
 												'<div class="p-2"><h2 class="d-inline-flex">'+data[i].JENIS_SURAT+'</h2></div>'+
-												'<div class="ml-auto p-2"><h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL_PENGAJUAN+'</h5></div>'+
+												'<div class="ml-auto p-2 text-right">'+
+													'<h5 class="text-secondary text-right d-inline-flex">'+data[i].TANGGAL.substring(0,10) +'</h5> <br>'+
+													'<h5 class="text-secondary text-right d-inline-flex text-right">'+data[i].TANGGAL.substring(10,16) +'</h5>'+
+												'</div>'+
 											'</div>'+
 										'</th>'+
 									'</tr>'+
@@ -283,8 +286,9 @@
 
 								'<tr>'+
 									'<td class="pl-5">'+
-										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label>'+
-										'<p><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</p>'+
+										'<label class="border-secondary pl-1"><span class="text-secondary">Nama Mitra : </span>'+data[i].NAMA_MITRA+'</label> <br>'+
+										'<label><span class="text-secondary">Alamat Mitra : </span>'+data[i].ALAMAT_MITRA+'</label> <br>'+
+										'<label><span class="text-secondary">Untuk Tanggal : </span>'+data[i].TANGGAL_PENGAJUAN+'</label>'+
 										'<div class="text-right mr-5 mt-4">'+
 										'<a href="javascript:;" class="item_edit mr-4 btn" data="'+data[i].ID_SURAT+'">Lihat Detail...</a>'+' '+
 										'</div>'+

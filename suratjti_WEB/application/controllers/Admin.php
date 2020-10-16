@@ -38,7 +38,10 @@ class admin extends CI_Controller{
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
       $this->load->view('suratPending',$data);
       }
-      
+      function dtSrtPdTA(){
+        $data['surat'] = $this->m_data->tampil_data_suratPendingTA()->result();
+        $this->load->view('suratPending',$data);
+        }  
       //Tampil Data Surat yang Ditolak
     function dtSrtTlk(){
       $data['surat'] = $this->m_data->tampil_data_suratTolak()->result();
@@ -50,9 +53,24 @@ class admin extends CI_Controller{
       $this->load->view('suratSelesai',$data);
       } 
       //Tampil Data Surat yang Diproses     
-    function dtSrtProses(){
-      $data['surat'] = $this->m_data->tampil_data_suratDiProses()->result();
-      $this->load->view('suratProses',$data);
+    function dtSrtProsesMK(){
+      $data['surat'] = $this->m_data->tampil_data_suratDiProsesMK()->result();
+      $this->load->view('suratProsesMK',$data);
+      }
+      //Tampil Data Surat yang Diproses     
+    function dtSrtProsesOBS(){
+      $data['surat'] = $this->m_data->tampil_data_suratDiProsesOBS()->result();
+      $this->load->view('suratProsesOBS',$data);
+      }
+      //Tampil Data Surat yang Diproses     
+    function dtSrtProsesTA(){
+      $data['surat'] = $this->m_data->tampil_data_suratDiProsesTA()->result();
+      $this->load->view('suratProsesTA',$data);
+      }
+      //Tampil Data Surat yang Diproses     
+    function dtSrtProsesPKL(){
+      $data['surat'] = $this->m_data->tampil_data_suratDiProsesPKL()->result();
+      $this->load->view('suratProsesPKL',$data);
       }
       //Tampil Data Surat yang Sudah Dapat Diambil
     function dtSrtDapatDiambil(){
@@ -131,7 +149,7 @@ class admin extends CI_Controller{
       );
   
       $this->m_data->update_data($where,$data,'surat');
-      redirect('admin/dtSrtProses');
+      redirect('admin/dtSrtProsesMK');
   }
 
   //Update Status Surat menjadi Selesai

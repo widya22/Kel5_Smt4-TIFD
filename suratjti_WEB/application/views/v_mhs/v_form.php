@@ -137,7 +137,7 @@
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Kepada</label>
-                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Mitra" class="form-control col-md-8 mr-2" required>
+                          <input type="text" name="NAMA_MITRA" placeholder="Nama Instansi / Perusahaan" class="form-control col-md-8 mr-2" required>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Tanggal Survei</label>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Alamat </label>
-                          <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2" placeholder="Alamat Instansi / Mitra" required></textarea>
+                          <textarea name="ALAMAT_MITRA" class="form-control col-md-8 mr-2" placeholder="Alamat Instansi / Perusahaan" required></textarea>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 ml-4">Keterangan </label>

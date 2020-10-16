@@ -271,6 +271,12 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
                                     TKK
                                 </label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="prodi" id="tkk" value="INTER-BDWS" required>
+                                <label class="form-check-label" for="INTER-BDWS">
+                                    INTER-BDWS
+                                </label>
+                            </div>
                         </div>
                     </div> 
 

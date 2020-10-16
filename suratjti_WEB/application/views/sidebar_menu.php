@@ -67,6 +67,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            
             <ul class="nav nav-treeview">              
               <li class="nav-item">
                 <a href="<?php echo base_url('admin');?>"  class="nav-link
@@ -106,14 +107,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo base_url('admin/dtSrtPd');?>" class="nav-link 
-                    <?php if($this->uri->segment(2) == 'dtSrtPd'){echo $active;} ?>  ">
+                    <?php if($this->uri->segment(2) == 'dtSrtPdMK'){echo $active;} ?>  ">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Menunggu Persetujuan</p>
                 </a>
               </li>
               <?php $c= "active"; ?>
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/dtSrtProses');?>" class="nav-link 
+                <a href="<?php echo base_url('admin/dtSrtProsesMK');?>" class="nav-link 
                     <?php if($this->uri->segment(2) == 'dtSrtProses'){echo $active;} ?>  ">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Sedang DiProses</p>

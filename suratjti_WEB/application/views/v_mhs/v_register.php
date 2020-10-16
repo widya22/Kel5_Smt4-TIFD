@@ -76,9 +76,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Buat akun JTI-Surat</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <a type="button" class="close" data-dismiss="modal" aria-label="Close" href="<?=base_url()?>">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </a>
             </div>
             <div class="modal-body">
                 <form action="<?php echo base_url().'mhs/crud/register'; ?>" method="post" class="form">
@@ -88,7 +88,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">E</span>
                             </div>
-                            <input type="text" name="nim" id="nim" placeholder="Masukkan NIM" class="form-control" required onkeypress="return hanyaAngka(event)" maxlength="8" value="<?php if (isset($_SESSION['nim_reload'])) {
+                            <input type="text" name="nim" id="nim" placeholder="Masukkan NIM" class="form-control" required onkeypress="return hanyaAngka(event)" minlength="8" maxlength="8" value="<?php if (isset($_SESSION['nim_reload'])) {
                                                                                                                                                                                             echo $_SESSION["nim_reload"];
                                                                                                                                                                                         } ?>" /> <!-- isi input otomatis */ -->
                         </div>
@@ -123,6 +123,12 @@
                                 <input class="form-check-input" type="radio" name="prodi" id="tkk" value="TKK" required>
                                 <label class="form-check-label" for="tkk">
                                     TKK
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="prodi" id="INTER-BDWS" value="INTER-BDWS" required>
+                                <label class="form-check-label" for="INTER-BDWS">
+                                    INTER-BDWS
                                 </label>
                             </div>
                         </div>

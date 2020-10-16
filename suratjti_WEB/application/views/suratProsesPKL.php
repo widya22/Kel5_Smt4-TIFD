@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Pending</title>
+  <title>JTI SURAT | Surat Proses</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,16 +19,12 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- favicon -->
 	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
-  
-  
-  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
   <!-- /.navbar -->
 
- <?php $this->load->view('sidebar_menu'); ?>
-
+  <?php $this->load->view('sidebar_menu'); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -38,12 +34,12 @@
         <div class="row mb-2">
           <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           <div class="col-sm-5">
-            <h1>Surat Pending</h1>
+            <h1>Surat DiProses</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Pending</li>
+              <li class="breadcrumb-item active">Surat Proses</li>
             </ol>
           </div>
         </div>
@@ -55,9 +51,14 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Surat Pending</h3>
+              <h3 class="card-title">Surat DiProses</h3>
             </div>
-            
+            <ul class="nav nav-tabs">
+            <li class="nav-link"><a href="dtSrtProsesMK">Mata Kuliah</a></li>
+            <li class="nav-link active"><a href="dtSrtProsesPKL">PKL</a></li>
+            <li class="nav-link"><a href="dtSrtProsesOBS">Observasi</a></li>
+            <li class="nav-link"><a href="dtSrtProsesTA">Tugas Akhir</a></li>
+            </ul>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -72,10 +73,8 @@
 			<th width="180">Status Surat</th>
 			<th colspan="3">Action</th>
 		</tr>
-    <?php 
-    if($surat!=null){
-
-$no = 1;
+		<?php 
+		$no = 1;
 		foreach($surat as $u){ 
       $u->ID_SURAT 
 		?>
@@ -86,19 +85,16 @@ $no = 1;
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-      <td><a class="btn btn-success btn-sm" onclick= <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> </td>     
-      <!-- <td><a class="btn btn-success btn-sm" onclick="konfirmasiConfirm('url')"  href="#!">AHA</a> </td>       -->
-      <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalTolak">Tolak</a></td>       
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDiproses/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+            <td><a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a> </td>
+            <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus2/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
 		</tr>
-
-    <?php }}else { ?>
-
+    
 		<?php } ?>
+                
                     
                 </tbody>
               </table>
-                
             </div>
             <!-- /.card-body -->
           </div>
@@ -138,17 +134,16 @@ $no = 1;
 				</div>
 				<div class="modal-body">
 					<!-- form Tolak -->
-					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">
-          <label>Alasan :</label>		
-          <!-- <input name= "alasan" type="text" class="form-control">
-          </input>	 -->
-            <div class="form-group text-center d-flex justify-content-center">
-              
+					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">						
+            <div class="form-group">
+               <label>Alasan</label>
                   <div class="row">
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
+                  <div class="col-sm-10">
+            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
+            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
+            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
+            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
+             </div>
              </div>			
             </div>
   
@@ -159,27 +154,6 @@ $no = 1;
 			</div>
 		</div>
 	</div>
-
- <!-- modal konfirmasi -->
- <div class="modal fade" id="konfirmModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Pastikan data yang diterima sudah benar.</div>
-                <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a id="btn-konfirm" class="btn btn-primary" href="#">Konfirmasi</a>
-              </div>
-            </div>
-          </div>
-        </div>
-  <!-- modal konfirmasi -->
-
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>
@@ -192,8 +166,6 @@ $no = 1;
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
-<!-- main js -->
-<script src="<?php echo base_url('assets/asetadmin/dist/js/main.js');?>"></script>
 <!-- page script -->
 <script>
   $(function () {

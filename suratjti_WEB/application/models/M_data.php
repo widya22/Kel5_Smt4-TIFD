@@ -90,13 +90,28 @@ class M_data extends CI_Model{
   $this->db->join('user', 'surat.NIM=user.NIM');
   $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
   $this->db->like("status_surat", 'Menunggu');
+  $this->db->like("id_jenis_surat", 'MK');
       if($_SESSION["id"]!= 'super'){
           $this->db->where("PRODI",$_SESSION['prodi']);
         }
 
   return $query=$this->db->get();
       }
-
+      function tampil_data_suratPendingTA(){
+        //return $this->db->get('surat');
+      $this->db->select('*');
+      $this->db->from('surat');
+      $this->db->join('user', 'surat.NIM=user.NIM');
+      $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+      $this->db->like("status_surat", 'Menunggu');
+      $this->db->like("id_jenis_surat", 'TA');
+          if($_SESSION["id"]!= 'super'){
+              $this->db->where("PRODI",$_SESSION['prodi']);
+            }
+    
+      return $query=$this->db->get();
+          }
+       
   function tampil_data_suratTolak(){
   //return $this->db->get('surat');
   $this->db->select('*');
@@ -122,19 +137,58 @@ class M_data extends CI_Model{
       }
   return $query=$this->db->get();
   }    
-  function tampil_data_suratDiProses(){
+  function tampil_data_suratDiProsesMK(){
     //return $this->db->get('surat');
     $this->db->select('*');
     $this->db->from('surat');
     $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
     $this->db->like("status_surat", "Sedang Dalam Proses");
-    //$this->db->like("id_jenis_surat", "MK");
+    $this->db->like("id_jenis_surat", "MK");
     $this->db->join('user', 'surat.NIM=user.NIM');
       if($_SESSION["id"]!= 'super'){
         $this->db->where("PRODI",$_SESSION['prodi']);
       }
     return $query=$this->db->get();
     }
+    function tampil_data_suratDiProsesOBS(){
+      //return $this->db->get('surat');
+      $this->db->select('*');
+      $this->db->from('surat');
+      $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+      $this->db->like("status_surat", "Sedang Dalam Proses");
+      $this->db->like("id_jenis_surat", "OBS");
+      $this->db->join('user', 'surat.NIM=user.NIM');
+        if($_SESSION["id"]!= 'super'){
+          $this->db->where("PRODI",$_SESSION['prodi']);
+        }
+      return $query=$this->db->get();
+      }
+    function tampil_data_suratDiProsesTA(){
+      //return $this->db->get('surat');
+      $this->db->select('*');
+      $this->db->from('surat');
+      $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+      $this->db->like("status_surat", "Sedang Dalam Proses");
+      $this->db->like("id_jenis_surat", "TA");
+      $this->db->join('user', 'surat.NIM=user.NIM');
+        if($_SESSION["id"]!= 'super'){
+          $this->db->where("PRODI",$_SESSION['prodi']);
+        }
+      return $query=$this->db->get();
+      }
+      function tampil_data_suratDiProsesPKL(){
+        //return $this->db->get('surat');
+        $this->db->select('*');
+        $this->db->from('surat');
+        $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
+        $this->db->like("status_surat", "Sedang Dalam Proses");
+        $this->db->like("id_jenis_surat", "PKL");
+        $this->db->join('user', 'surat.NIM=user.NIM');
+          if($_SESSION["id"]!= 'super'){
+            $this->db->where("PRODI",$_SESSION['prodi']);
+          }
+        return $query=$this->db->get();
+        }
     function tampil_data_suratDapatDiambil(){
       //return $this->db->get('surat');
       $this->db->select('*');

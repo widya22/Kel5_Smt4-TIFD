@@ -26,7 +26,7 @@ class Form extends CI_Controller
 		$ket            = $this->input->post('KETERANGAN');
 
 		date_default_timezone_set('Asia/Jakarta');
-		
+
 		$data = array(
 			'ID_SURAT'          => md5($id_surat),
 			'NIP'               => $nip,
@@ -35,7 +35,6 @@ class Form extends CI_Controller
 			'ALAMAT_MITRA'      => $alm_mitra,
 			'TANGGAL'           => $tgl,
 			'TANGGAL_PENGAJUAN' => $tgl_pengajuan,
-			'JAM_PENGAJUAN'     => date("h:i:sa"),
 			'STATUS_SURAT'      => $tracking,
 			'ID_JENIS_SURAT'    => $js,
 			'KETERANGAN'        => $ket
