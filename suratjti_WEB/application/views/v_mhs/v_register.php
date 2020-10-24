@@ -59,6 +59,16 @@
         </div>
     <?php }
 
+if (isset($_SESSION["nama_bukan_huruf"])) { ?>
+    <div class="alert alert-info alert-dismissible fade show">
+        <i class="fa fa-check-circle text-success"></i>
+        Nama tidak boleh berisi simbol dan angka
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php }
+
     if (isset($_SESSION["sama_password"])) { //tinggal cara hilangkan session 
     ?>
         <div class="alert alert-warning alert-dismissible fade show">
@@ -97,7 +107,7 @@
 
                     <div class="form-group">
                         <!-- <label for="username">Nama Lengkap</label> -->
-                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5" 
+                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"
                         value="<?php if (isset($_SESSION['nama'])) {
                                     echo $_SESSION["nama"];
                                 } ?>" /> <!-- isi input otomatis -->
@@ -126,9 +136,9 @@
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="prodi" id="INTER-BDWS" value="INTER-BDWS" required>
-                                <label class="form-check-label" for="INTER-BDWS">
-                                    INTER-BDWS
+                                <input class="form-check-input" type="radio" name="prodi" id="INTER" value="INTER" required>
+                                <label class="form-check-label" for="INTER">
+                                    INTER
                                 </label>
                             </div>
                         </div>
@@ -140,7 +150,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">+62</span>
                             </div>
-                            <input type="text" name="no_hp" placeholder="Masukkan No HP" class="form-control" required onkeypress="return hanyaAngka(event)" minlength="10" maxlength="12"/> <!-- isi input otomatis */ -->
+                            <input type="text" name="no_hp" placeholder="Masukkan No HP" class="form-control" required onkeypress="return hanyaAngka(event)" minlength="10" maxlength="12"
+                                                                                                                                        value="<?php if (isset($_SESSION['no_hp'])) {
+                                                                                                                                            echo $_SESSION["no_hp"];
+                                                                                                                                        } ?>"/> <!-- isi input otomatis */ -->
                         </div>
                         <div id="result" class="font-italic"></div>
                     </div>
@@ -154,14 +167,18 @@
                     </div>
                     <div class="form-group">
                         <!-- <label for="password">Konfirmasi Kata Sandi</label> -->
-                        <input type="password" name="k_sandi" placeholder="Konfirmasi Kata Sandi" class="form-control" required minlength="8" value="<?php if (isset($_SESSION['k_sandi'])) {
-                                                                                                                                                            echo $_SESSION["k_sandi"];
-                                                                                                                                                        } ?>" />
+                        <input type="password" name="k_sandi" placeholder="Konfirmasi Kata Sandi" class="form-control" required minlength="8" />
                         <p class="font-italic">*silahkan ketik ulang password anda</p>
                     </div>
+
+                    <div class="form-check text-center mb-2">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">Pastikan data yang sudah dimasukkan sudah benar</label>
+                    </div>
+
                     <a href="<?php echo base_url(); ?>" class="text-center ml-2">kembali ke beranda?</a>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit" onclick="return confirm('Pastikan data anda sudah diisi dengan benar!')">Berikutnya</button>
+                        <button class="btn btn-primary" type="submit" >Berikutnya</button>
                     </div>
                 </form>
             </div>
@@ -178,7 +195,10 @@
             return false;
         return true;
     }
+
 </script>
+
+
 
 <script type="text/javascript">
     $(document).ready(function() {

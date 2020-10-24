@@ -48,6 +48,7 @@ class Crud extends CI_Controller{
 
 		//untuk hapus session
 		$this->session->unset_userdata('sama_nim');
+		$this->session->unset_userdata('nama_bukan_huruf');
 		$this->session->unset_userdata('sama_password');
 		$this->session->unset_userdata('nim_reload');
 		$this->session->unset_userdata('nama');
@@ -63,10 +64,32 @@ class Crud extends CI_Controller{
 				'sama_nim' => $nim,
 				'nim_reload' => $nim,
 				'nama' => $nama,
+				'no_hp' => $no_hp,
 				'sandi' => $sandi,
 				'k_sandi' => $k_sandi
 			);
 		$this->session->set_userdata($data_session);
+			redirect('mhs/home/register');
+
+		}else if(!preg_match("/^[a-zA-Z ]*$/",$nama)){ //jika nama tidak sama dengan huruf dan spasi
+			$data_session = array(
+				'nama_bukan_huruf' => $nim,
+				'nim_reload' => $nim,
+				'nama' => $nama,
+				'no_hp' => $no_hp,
+				'sandi' => $sandi,
+				'k_sandi' => $k_sandi
+			);
+			$this->session->set_userdata($data_session);
+			redirect('mhs/home/register');
+		}else if($nama=""){//jika nama kosong
+			$data_session = array(
+				'nim_reload' => $nim,
+				'no_hp' => $no_hp,
+				'sandi' => $sandi,
+				'k_sandi' => $k_sandi
+			);
+			$this->session->set_userdata($data_session);
 			redirect('mhs/home/register');
 		}else{
 			if($sandi==$k_sandi){

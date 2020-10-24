@@ -22,6 +22,15 @@ class Home extends CI_Controller {
 
 	public function register()
 	{
+		//untuk hapus session
+		$this->session->unset_userdata('sama_nim');
+		$this->session->unset_userdata('nama_bukan_huruf');
+		$this->session->unset_userdata('sama_password');
+		$this->session->unset_userdata('nim_reload');
+		$this->session->unset_userdata('nama');
+		$this->session->unset_userdata('sandi');
+		$this->session->unset_userdata('k_sandi');
+		
 		$this->load->view('v_mhs/v_register');
 	}
 

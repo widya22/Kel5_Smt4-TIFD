@@ -67,11 +67,12 @@ class M_data extends CI_Model{
 
   //MODEL ADMIN
   function tampil_data_admin(){
-  	$hasil = $this->db->query("SELECT * FROM `admin` WHERE `ID_ADMIN` != 'super' ORDER BY `ID_ADMIN` ASC ");
+  	$hasil = $this->db->query("SELECT * FROM `admin` WHERE `ROLES` != 'super' ORDER BY `ID_ADMIN` ASC ");
 		return $hasil->result();
       }
   function tampil_data_super_admin(){
-    $hasil = $this->db->query("SELECT * FROM `admin` WHERE `ID_ADMIN` = 'super'");
+    $id_admin=$_SESSION['id_admin'];
+    $hasil = $this->db->query("SELECT * FROM `admin` WHERE `ID_ADMIN` = '$id_admin'");
     return $hasil->result();
       }
 
@@ -318,7 +319,16 @@ class M_data extends CI_Model{
 	{
 		$hsl = $this->db->query("SELECT * FROM detail_surat WHERE ID_SURAT='$kobar'");
 		return $hsl->result();
-	}
+  }
+
+  public function cek_idSurat()
+  {
+      $query = $this->db->query("SELECT MAX(ID_SURAT) as idSurat from surat");
+      $hasil = $query->row();
+      return $hasil->idSurat;
+  }
+  
+  // end model mahasiswa
 
 	function bukti_surat1($id_sur){
 		$this->db->where('ID_SURAT', $id_sur);

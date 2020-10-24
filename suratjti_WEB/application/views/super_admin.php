@@ -150,6 +150,10 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
     ?>
   <!-- alert -->
 
+  <?php 
+    //$this->load->library('encrypt'); 
+  ?>
+
 <!-- superadmin -->
 <div class="card card-primary">
             <div class="card-header">
@@ -272,9 +276,9 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="prodi" id="tkk" value="INTER-BDWS" required>
-                                <label class="form-check-label" for="INTER-BDWS">
-                                    INTER-BDWS
+                                <input class="form-check-input" type="radio" name="prodi" id="INTER" value="INTER" required>
+                                <label class="form-check-label" for="INTER">
+                                    INTER
                                 </label>
                             </div>
                         </div>
@@ -295,6 +299,11 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
                     <input type="password" class="form-control" id="fasilitas" name="pwd" placeholder="Masukan Password" required>
                   </div>           
                 <!-- /.card-body -->
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                  <label class="form-check-label" for="exampleCheck1">Pastikan data Admin yang dimasukkan sudah benar</label>
+                </div>
 
                 <div class="card-footer">
                   <button type="Tambah" class="btn btn-primary">Tambah</button>
@@ -435,6 +444,13 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
       "autoWidth": false,
     });
   });
+
+    function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+            return false;
+        return true;
+    }
 
 </script>
 </body>

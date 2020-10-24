@@ -27,6 +27,7 @@ class Login0 extends CI_Controller{
 				$nama= $N->NAMA_ADMIN;
 				$prodi= $N->PRODI;
 				$no_hp= $N->HP;
+				$roles= $N->ROLES;
 			}
 
 			$data_session = array(
@@ -36,12 +37,13 @@ class Login0 extends CI_Controller{
 				'nama' =>$nama,
 				'prodi' => $prodi,
 				'no_hp'=> $no_hp,
-				'status' => "login0"
+				'status' => "login0",
+				'roles' => $roles,
 				);
 
 			$this->session->set_userdata($data_session);
 
-			if($id=='super'){
+			if($roles=='super'){
 				redirect(base_url("admin/superAdmin"));
 			}else{
 				redirect(base_url("admin"));

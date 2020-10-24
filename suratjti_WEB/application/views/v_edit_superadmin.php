@@ -18,7 +18,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- Favicon-->
-   <?php if($_SESSION["id"] == 'super'){ ?>
+   <?php if($_SESSION["roles"] == 'super'){ ?>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_super_admin.png') ?>">
    <?php }else{ ?>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
@@ -30,7 +30,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-    <?php if($_SESSION["id"] == 'super'){ ?>
+    <?php if($_SESSION["roles"] == 'super'){ ?>
       <img src="<?php echo base_url('assets/img/super_admin_logo.png');?>" alt="logo jti" class="brand-image img-circle elevation-3"
            style="opacity: .8">
     <?php }else{ ?>
