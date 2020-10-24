@@ -151,7 +151,7 @@
         <div class="card-footer">
         <a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfimasi'); ?></a>
         <a class="btn btn-info btn-sm" href="<?php echo base_url('admin');?>">Kembali</a>
-        <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
+                   
         </div>
         <div class="card-footer">
         
