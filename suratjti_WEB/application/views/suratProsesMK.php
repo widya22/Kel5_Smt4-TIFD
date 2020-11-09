@@ -57,12 +57,14 @@
             <div class="card-header">
               <h3 class="card-title">Surat DiProses</h3>
             </div>
+            
             <ul class="nav nav-tabs">
-            <li class="nav-link active"><a href="dtSrtProsesMK">Mata Kuliah</a></li>
+            <li class="nav-link active" ><a href="dtSrtProsesMK">Mata Kuliah</a></li>
             <li class="nav-link"><a href="dtSrtProsesPKL">PKL</a></li>
             <li class="nav-link"><a href="dtSrtProsesOBS">Observasi</a></li>
             <li class="nav-link"><a href="dtSrtProsesTA">Tugas Akhir</a></li>
             </ul>
+            
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -76,8 +78,9 @@
       <th width="100">Pengajuan</th>
       <th width="100">Pelaksanaan</th>
 			<th width="150">Status Surat</th>
-			<th colspan="3">Action</th>
+			<th >Action</th>
 		</tr>
+    <tbody>
     <?php 
     if($surat!=null){
 
@@ -93,9 +96,10 @@ $no = 1;
       <td><?php echo $u->TANGGAL ?></td>
       <td><?php echo $u->TANGGAL_PENGAJUAN?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDiproses/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-            <td><a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a> </td>
-            <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus2/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDiproses/'.$u->ID_SURAT,'Detail'); ?></a> 
+      <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a> 
+      <a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus2/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
+           
 		</tr>
     <?php }}else { ?>
 		<?php } ?>
@@ -174,18 +178,25 @@ $no = 1;
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
-<!-- page script -->
+<!-- DataTables  & Plugins -->
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
   $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
 </body>

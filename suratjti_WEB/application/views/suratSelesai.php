@@ -57,20 +57,21 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-			<th width="20">No</th>      
-			<th width="30">Surat</th>			
-			<th width="100">NIM</th>
-			<th width="250">Nama Mitra</th>
-      <th width="160">Tanggal Pengajuan</th>
-			<th width="180">Status Surat</th>
-			<th colspan="2">Action</th>
-		</tr>
-		<?php 
-		$no = 1;
-		foreach($surat as $u){ 
-      $u->ID_SURAT 
-		?>
+               <tr>
+                <th width="20">No</th>      
+                <th width="30">Surat</th>			
+                <th width="100">NIM</th>
+                <th width="250">Nama Mitra</th>
+                <th width="160">Tanggal Pengajuan</th>
+                <th width="180">Status Surat</th>
+                <th >Action</th>
+              </tr>
+              <tbody>
+              <?php 
+              $no = 1;
+              foreach($surat as $u){ 
+                $u->ID_SURAT 
+              ?>
 		<tr>
 			<td><?php echo $no++ ?></td>      
 			<td><?php echo $u->ID_JENIS_SURAT ?></td>			
@@ -78,8 +79,8 @@
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsSelesai/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-      <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus3/'.$u->ID_SURAT,'Selesai'); ?></a> </td>             
+			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsSelesai/'.$u->ID_SURAT,'Detail'); ?></a><p></p><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus3/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
+                  
 		</tr>
     
 		<?php } ?>
@@ -126,18 +127,25 @@
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
-<!-- page script -->
+<!-- DataTables  & Plugins -->
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
   $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
 </body>

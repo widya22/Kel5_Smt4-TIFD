@@ -183,7 +183,7 @@ class M_data extends CI_Model{
         $this->db->from('surat');
         $this->db->order_by('TANGGAL_PENGAJUAN', 'DESC');
         $this->db->like("status_surat", "Sedang Dalam Proses");
-        $this->db->like("id_jenis_surat", "PKL");
+        $this->db->like("id_jenis_surat", "PK");
         $this->db->join('user', 'surat.NIM=user.NIM');
           if($_SESSION["id"]!= 'super'){
             $this->db->where("PRODI",$_SESSION['prodi']);
