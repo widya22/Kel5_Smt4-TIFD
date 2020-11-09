@@ -195,7 +195,6 @@ if (isset($_SESSION["nama_bukan_huruf"])) { ?>
             return false;
         return true;
     }
-
 </script>
 
 
