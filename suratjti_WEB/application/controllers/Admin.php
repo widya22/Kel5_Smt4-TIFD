@@ -98,7 +98,7 @@ class admin extends CI_Controller{
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
-    $this->load->view('alasanTolak', $data);
+    $this->load->view('detailSuratDiproses', $data);
     }
     //Tampil Detail Surat Diproses
     function dsDiproses($id)
