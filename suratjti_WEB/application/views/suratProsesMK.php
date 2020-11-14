@@ -70,16 +70,16 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-			<th width="20">No</th>      
-			<th width="30" class="text-center">Surat</th>			
-			<th width="100" class="text-center">NIM</th>
-			<th width="230" class="text-center">Nama Mitra</th>
-      <th width="100" class="text-center">Pengajuan</th>
-      <th width="100" class="text-center">Pelaksanaan</th>
-			<th width="150" class="text-center">Status Surat</th>
-			<th class="text-center">Action</th>
-		</tr>
+                <tr class="bg-primary">
+                  <th width="20">No</th>      
+                  <th width="30" class="text-center">Surat</th>			
+                  <th width="100" class="text-center">NIM</th>
+                  <th width="230" class="text-center">Nama Mitra</th>
+                  <th width="100" class="text-center">Pengajuan</th>
+                  <th width="100" class="text-center">Pelaksanaan</th>
+                  <th width="150" class="text-center">Status Surat</th>
+                  <th class="text-center">Action</th>
+                </tr>
     <tbody>
     <?php 
     if($surat!=null){

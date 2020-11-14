@@ -57,15 +57,15 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-			<th width="20">No</th>      
-			<th width="30" class="text-center">Surat</th>			
-			<th width="100" class="text-center">NIM</th>
-			<th width="250" class="text-center">Nama Mitra</th>
-      <th width="170" class="text-center">Tanggal Pengajuan</th>
-			<th width="180" class="text-center">Status Surat</th>
-			<th colspan="2" class="text-center">Action</th>
-		</tr>
+                <tr class="bg-primary">
+                  <th width="20">No</th>      
+                  <th width="30" class="text-center">Surat</th>			
+                  <th width="100" class="text-center">NIM</th>
+                  <th width="250" class="text-center">Nama Mitra</th>
+                  <th width="170" class="text-center">Tanggal Pengajuan</th>
+                  <th width="180" class="text-center">Status Surat</th>
+                  <th colspan="2" class="text-center">Action</th>
+                </tr>
 		<?php 
 		$no = 1;
 		foreach($surat as $u){ 

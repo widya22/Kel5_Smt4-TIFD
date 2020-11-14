@@ -56,15 +56,15 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-			<th width="20">No</th>      
-			<th width="30">Surat</th>			
-			<th width="100">NIM</th>
-			<th width="300">Nama Mitra</th>
-      <th width="100">Tanggal Pengajuan</th>
-			<th width="180">Status Surat</th>
-			<th width="50">Action</th>
-		</tr>
+                <tr class="bg-primary">
+                  <th width="20">No</th>      
+                  <th width="30">Surat</th>			
+                  <th width="100">NIM</th>
+                  <th width="300">Nama Mitra</th>
+                  <th width="100">Tanggal Pengajuan</th>
+                  <th width="180">Status Surat</th>
+                  <th width="50">Action</th>
+                </tr>
     <tbody>
 		<?php 
 		$no = 1;

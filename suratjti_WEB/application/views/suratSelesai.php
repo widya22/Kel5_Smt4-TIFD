@@ -57,7 +57,7 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-               <tr>
+               <tr class="bg-primary">
                 <th width="20">No</th>      
                 <th width="30">Surat</th>			
                 <th width="100">NIM</th>
