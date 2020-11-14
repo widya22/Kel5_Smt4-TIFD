@@ -81,6 +81,17 @@ if (isset($_SESSION["nama_bukan_huruf"])) { ?>
     <?php } ?>
     <!-- alert jika nim sama atau password tidak sama -->
 
+    <?php if (isset($_SESSION["gagal"])) { //tinggal cara hilangkan session 
+    ?>
+        <div class="alert alert-warning alert-dismissible fade show">
+            <i class="fa fa-check-circle text-success"></i>
+            Gagal Register, harap periksa kembali inputan anda
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php } ?>
+
     <!-- modal Register -->
     <div class="modal-dialog pt-60" role="document">
         <div class="modal-content">
@@ -107,11 +118,13 @@ if (isset($_SESSION["nama_bukan_huruf"])) { ?>
 
                     <div class="form-group">
                         <!-- <label for="username">Nama Lengkap</label> -->
-                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"
-                        value="<?php if (isset($_SESSION['nama'])) {
-                                    echo $_SESSION["nama"];
-                                } ?>" /> <!-- isi input otomatis -->
-                                
+                        <div class="input-group ">
+                            <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required minlength="5"
+                            value="<?php if (isset($_SESSION['nama'])) {
+                                        echo $_SESSION["nama"];
+                                    } ?>" /> <!-- isi input otomatis -->
+                                    
+                        </div>
                     </div>
                     <div class="form-group border rounded">
                         <!-- <label for="username">Prodi :</label><br> -->

@@ -54,13 +54,13 @@ class Form extends CI_Controller
 		$js             = $this->input->post('ID_JS');
 		$nip            = $this->input->post('NIP');
 		$nim_u          = $this->input->post('NIM_U');
-		$nama_mitra     = $this->input->post('NAMA_MITRA');
-		$alm_mitra      = $this->input->post('ALAMAT_MITRA');
+		$nama_mitra     = htmlspecialchars($this->input->post('NAMA_MITRA'));
+		$alm_mitra      = htmlspecialchars($this->input->post('ALAMAT_MITRA'));
 		$tgl            = $this->input->post('TANGGAL');
 		$tgl_pengajuan  = $this->input->post('TANGGAL_PENGAJUAN');
 		$tracking       = $this->input->post('STATUS_SURAT');
 		$nama_user      = $this->input->post('NAMA_USER');
-		$ket            = $this->input->post('KETERANGAN');
+		$ket            = htmlspecialchars($this->input->post('KETERANGAN'));
 
 		date_default_timezone_set('Asia/Jakarta');
 
