@@ -17,15 +17,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- favicon -->
-	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-
-  
-  <!-- /.navbar -->
-
-  <?php $this->load->view('sidebar_menu'); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -38,7 +31,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="http://localhost/suratdosen/admin/crud/list">Home</a></li>
+              <li class="breadcrumb-item"><a>Home</a></li>
               <li class="breadcrumb-item active">Detail Surat</li>
             </ol>
           </div>
@@ -53,23 +46,16 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Detail Surat</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
         </div>
         <div class="card-body">
         <table class="table table-bordered table-hover">		
 		<?php 
 		//$no = 1;
-		foreach($detailnilai as $u){ 
+		foreach($detail as $u){
       $u->ID_SURAT 
 		?>
 
-    <tr class="bg-primary" ><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
+    <tr ><td colspan="2" class="bg-primary"><b>Data Mahasiswa</b></td></tr> 		     
     <tr>
       <td><?php echo "NIM" ?></td>
 			<td><?php echo $u->NIM ?></td>
@@ -83,7 +69,7 @@
 			<td><?php echo $u->PRODI ?></td>
     </tr>
 
-    <tr class="bg-primary" ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
+    <tr ><td colspan="2" class="bg-primary"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
     <tr>
       <td><?php echo "NIP Dosen" ?></td>
 			<td><?php echo $u->NIP ?></td>
@@ -93,7 +79,7 @@
 			<td><?php echo $u->NAMA_DOSEN ?></td>
     </tr>
 
-    <tr class="bg-primary" ><td colspan="2"><b>Data Surat</b></td></tr>
+    <tr ><td colspan="2"><b>Data Surat</b></td></tr>
     <tr>
 			<td><?php echo "Jenis Surat"//$no++ ?></td>			
       <td><?php echo $u->JENIS_SURAT ?></td>
@@ -122,7 +108,7 @@
 	</table>
   <table class="table table-bordered table-hover">
   <thead>
-  <tr class="bg-primary" ><td colspan="3"><b>Data Anggota</b></td></tr> 
+  <tr ><td colspan="3" class="bg-primary"><b>Data Anggota</b></td></tr> 
     <tr>
 			<th>No</th>      
 			<th>Nama Anggota</th>			
@@ -144,10 +130,8 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">               
-        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/dtSrtProsesMK');?>">Kembali</a>
-        <a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a>           
+        <a class="btn btn-info btn-sm" href="<?= $kembali ?>">Kembali</a> 
         </div>
-        
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
@@ -166,10 +150,6 @@
     reserved.
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

@@ -44,10 +44,10 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 text-center">
         <div class="info">
-            <a class="d-block text-light"><?php echo $_SESSION["nama"]; ?></a>
-            <a href="<?php echo base_url('login0/logout') ?>" onclick="return confirm('Anda yakin ingin keluar?')">Logout</a>
+            <h3 class="d-block text-light border pl-3 pr-3 pt-2 pb-2">SUPER ADMIN</h3>
+            <h5 class="d-block text-light"><?php echo $_SESSION["nama"]; ?></h5>
         </div>
       </div>
 
@@ -94,7 +94,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Admin</a></li>
+              <li class="breadcrumb-item"><a href="#">SuperAdmin</a></li>
               <li class="breadcrumb-item active">Edit Admin</li>
             </ol>
           </div>
@@ -124,20 +124,22 @@
               <h3 class="card-title"></h3>
             </div>
             <div class="container">
-   
-        <!-- <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>        -->
+            
     
-         
             <div>
             <?php
             foreach($superadmin as $j) {
             ?>
             <form role="form" action="<?php echo base_url(). 'crud/update_aksi_admin'; ?>" method="post">
                 <div class="card-body">
-                  <div class="form-group">
+
+                  <div class="form-group" id="id-input">
                     <label for="ijs">Id Admin</label>
                     <input type="text" class="form-control" name="id" value="<?php echo $j->ID_ADMIN ?>" readonly>
                   </div>
+
+                    
+
                   <div class="form-group">
                     <label for="js">Nama Admin</label>
                     <input type="text" class="form-control" name="nama" value="<?php echo $j->NAMA_ADMIN ?>">
@@ -157,6 +159,7 @@
 
                 <div class="card-footer">
                   <button type="Tambah" class="btn btn-primary">Simpan</button>
+                  <a href="<?= $kembali ?>" class="btn btn-secondary">kembali</a>
                 </div>
               </form>
             <?php } ?>
@@ -202,6 +205,7 @@
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
 <!-- page script -->
 <script>
+
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
@@ -213,6 +217,7 @@
       "autoWidth": false,
     });
   });
+
 </script>
 </body>
 </html>

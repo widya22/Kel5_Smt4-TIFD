@@ -5,7 +5,7 @@ class M_data extends CI_Model{
   //MODEL DOSEN	
     function tampil_dataSuratDosen(){
       //return $this->db->get('surat');
-      $this->db->select('*');
+    $this->db->select('*');
     $this->db->from('surat');
     $this->db->where("status_surat", "Menunggu Dosen");
     //$this->db->where("traking_surat", "Menunggu Admin");
@@ -18,7 +18,8 @@ class M_data extends CI_Model{
     
     function hapus_data($where,$table){
 		$this->db->where($where);
-		$this->db->delete($table);
+    $this->db->delete($table);
+    return $this->db->affected_rows();
     }
     
     function edit_data($where,$table){		

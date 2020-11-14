@@ -44,7 +44,7 @@ class Login0 extends CI_Controller{
 			$this->session->set_userdata($data_session);
 
 			if($roles=='super'){
-				redirect(base_url("admin/superAdmin"));
+				redirect(base_url("superadmin"));
 			}else{
 				redirect(base_url("admin"));
 			}

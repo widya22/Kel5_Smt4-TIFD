@@ -22,56 +22,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="<?php echo base_url('assets/img/super_admin_logo.png');?>" alt="logo jti" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Surat JTI</span>
-    </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-            <a class="d-block text-light"><?php echo $_SESSION["nama"]; ?></a>
-            <a href="<?php echo base_url('login0/logout') ?>" onclick="return confirm('Anda yakin ingin keluar?')">Logout</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">              
-              <li class="nav-item">
-                <a href="#!"  class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Admin</p>
-                </a>
-              </li>
-             
-          
-            </ul>
-          </li>
-          
-        
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -154,46 +105,6 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
     //$this->load->library('encrypt'); 
   ?>
 
-<!-- superadmin -->
-<div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Super Admin</h3>
-            </div>
-            <div class="container">
-    
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-			<th>No</th>
-			<th>ID Admin</th>
-      <th>Nama Admin</th>
-      <th>No Hp</th>
-			<th>Action</th>
-		</tr>
-		<?php 
-		$no = 1;
-		foreach($superadmin as $u){ 
-		?>
-		<tr>
-			<td><?php echo $no++ ?></td>
-			<td><?php echo $u->ID_ADMIN ?></td>
-			<td><?php echo $u->NAMA_ADMIN ?></td>
-			<td><?php echo $u->HP ?></td>	
-			<td>
-        <a href="<?php echo base_url().'crud/edit_superadmin/'.$u->ID_ADMIN; ?>" 
-              class="btn btn-primary text-white">Edit</a>
-			  
-			</td>
-		</tr>
-		<?php } ?>
-                
-                            
-                </tbody>
-              </table>
-            </div>
-
 
     <!-- ADMIN -->
           <div class="card card-primary">
@@ -214,6 +125,8 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
       <th>No Hp</th>
 			<th>Action</th>
 		</tr>
+    
+    <tbody>
 		<?php 
 		$no = 1;
 		foreach($admin as $u){ 
@@ -242,7 +155,7 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
                 <h3 class="card-title">Tambah Admin Baru</h3>
               </div>
             <div>
-            <form role="form" action="<?php echo base_url(). 'crud/tambah_aksiADM'; ?>" method="post">
+            <form role="form" action="<?php echo base_url(). 'superadmin/tambah_aksi'; ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="ijs">ID Admin</label>
@@ -337,44 +250,6 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
 </div>
 <!-- ./wrapper -->
 
-
-<!-- ============ MODAL ADD BARANG =============== -->
-<div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Add New Barang</h3>
-            </div>
-            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/simpan_js'?>">
-                <div class="modal-body">
- 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >IJS</label>
-                        <div class="col-xs-8">
-                            <input id="id_jenis_surat" name="id_jenis_surat" class="form-control" type="text" placeholder="Id Jenis Surat" required>
-                        </div>
-                    </div>
- 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >JS</label>
-                        <div class="col-xs-8">
-                            <input id="jenis_surat" name="jenis_surat" class="form-control" type="text" placeholder="Jenis Surat" required>
-                        </div>
-                    </div>                    
- 
-                </div>
- 
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info">Simpan</button>
-                </div>
-            </form>
-            </div>
-            </div>
-        </div>
-        <!--END MODAL ADD BARANG-->
-
         <!-- modal alert hapus -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -417,7 +292,6 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
 
 
 
-
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.js');?>"></script>
 <!-- Bootstrap 4 -->
@@ -434,14 +308,8 @@ if (isset($_SESSION['tambah_gagal'])){   //alert gagal tambah data
 
 <script>
   $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false
     });
   });
 

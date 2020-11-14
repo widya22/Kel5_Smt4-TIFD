@@ -7,22 +7,17 @@ class admin extends CI_Controller{
 		$this->load->model('m_data');
     $this->load->helper('url');
     $this->load->library('session');
+    $this->load->library('form_validation');
 
     if($this->session->userdata('status') != "login0"){
     redirect(base_url("login0"));
   }
-}
+  }
     function index(){ //untuk admin prodi
       $data['surat'] = $this->m_data->tampil_data_suratPending()->result();
       $this->load->view('suratPending',$data);
       }
     
-    function superAdmin(){ //untuk super admin
-      $data['admin'] = $this->m_data->tampil_data_admin();
-      $data['superadmin'] = $this->m_data->tampil_data_super_admin();
-      $this->load->view('super_admin',$data);
-      }
-
       //Tampil Jenis Surat
     function jnSrt(){
       $data['jenis_surat'] = $this->m_data->tampil_jenis_surat()->result();
@@ -77,20 +72,21 @@ class admin extends CI_Controller{
         $data['surat'] = $this->m_data->tampil_data_suratDapatDiambil()->result();
         $this->load->view('suratDapatDiambil',$data);
         }
+        
     function tambah(){
 		$this->load->view('v_input'); 
     }
     //function tambah diatas berfungsi untuk menampilkan v_input agar dapat memasukan data.
 
 
-    //Pada fungsi tambah_aksi data yang diinputkan akan dimasukkan kedalam array $data kemudia diparsing ke model m_data
-
-
+//tampil detail surat //tampil detail surat //tampil detail surat //tampil detail surat
     //Tampil Detail Surat
     function detailSurat0($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $data['detail_pending'] = 'detail';
+
     $this->load->view('detailsurat0', $data);
     }
     //Tampil Detail Surat 2
@@ -98,13 +94,17 @@ class admin extends CI_Controller{
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
-    $this->load->view('detailSuratDiproses', $data);
+    $data['detail_tolak'] = 'detail';
+
+    $this->load->view('detailSuratDitolak', $data);
     }
     //Tampil Detail Surat Diproses
     function dsDiproses($id)
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $data['detail_proses'] = 'detail';
+
     $this->load->view('detailSuratDiproses', $data);
     }
     //Tampil Detail Surat dapat diambil
@@ -112,6 +112,8 @@ class admin extends CI_Controller{
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $data['detail_ambil'] = 'detail';
+
     $this->load->view('detailSuratDapatDiambil', $data);
     }
     //Tampil Detail Surat dapat diambil
@@ -119,8 +121,14 @@ class admin extends CI_Controller{
     {
     $data['detailnilai'] = $this->m_data->detaildata($id);
     $data['detailAnggota'] = $this->m_data->detailanggota($id);
+    $data['detail_selesai'] = 'detail';
+
     $this->load->view('detailSuratSelesai', $data);
     }
+ //tampil detail surat //tampil detail surat //tampil detail surat //tampil detail surat
+
+
+
     //Update Status Surat Menjadi Sedang Dalam Proses
     function update($id){   
         $data = array(
@@ -213,15 +221,24 @@ class admin extends CI_Controller{
       redirect('admin/JnSrt');
   } 
 
-  function tambah_aksiJs(){ //tambah jenis nsuratr
-		$id = $ijs = $this->input->post('ijs');
-		$js = $this->input->post('js');
+  function tambah_aksiJs(){ //tambah jenis surat
+    $this->form_validation->set_rules('ijs', 'ID Jenis Surat', 'required|max_length[5]');
+    $this->form_validation->set_rules('js', 'Jenis Surat', 'required|max_length[20]');
+
+    if($this->form_validation->run() == false){
+      $this->session->set_userdata('tambah_gagal', 'tambah');
+      redirect('admin/JnSrt');
+    }else{
+
+		$id =$this->input->post('ijs');
+		$ijs = htmlspecialchars($this->input->post('ijs'));
+		$js = htmlspecialchars($this->input->post('js'));
 	
 		$data = array(
 			'ID_JENIS_SURAT' => $ijs,
 			'JENIS_SURAT' => $js
-			
       );
+
 			$id_cek = $this->m_data->cek_data($id, 'ID_JENIS_SURAT', 'jenis_surat'); //untuk cek data
 
       if($id_cek > 0){
@@ -231,7 +248,9 @@ class admin extends CI_Controller{
 		    $this->m_data->input_data($data,'jenis_surat');
         $this->session->set_userdata('tambah_sukses', 'tambah');
         redirect('admin/JnSrt');
-    }}
+      }
+    }
+  }
 
     function update_aksiJs(){// update jenis surat
       $ijs = $this->input->post('ijs');

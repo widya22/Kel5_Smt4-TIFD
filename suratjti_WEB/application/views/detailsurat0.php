@@ -20,10 +20,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-  
-  <!-- /.navbar -->
-
-  <?php $this->load->view('sidebar_menu'); ?>
+<?php $this->load->view('sidebar_menu'); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -67,7 +64,7 @@
       $u->ID_SURAT 
 		?>
 
-    <tr ><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
+    <tr class="bg-primary"><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
     <tr>
       <td><?php echo "NIM" ?></td>
 			<td><?php echo $u->NIM ?></td>
@@ -81,7 +78,7 @@
 			<td><?php echo $u->PRODI ?></td>
     </tr>
 
-    <tr ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
+    <tr  class="bg-primary"><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
     <tr>
       <td><?php echo "NIP Dosen" ?></td>
 			<td><?php echo $u->NIP ?></td>
@@ -91,7 +88,7 @@
 			<td><?php echo $u->NAMA_DOSEN ?></td>
     </tr>
 
-    <tr ><td colspan="2"><b>Data Surat</b></td></tr>
+    <tr  class="bg-primary"><td colspan="2"><b>Data Surat</b></td></tr>
     <tr>
 			<td><?php echo "Jenis Surat"//$no++ ?></td>			
       <td><?php echo $u->JENIS_SURAT ?></td>
@@ -120,7 +117,7 @@
 	</table>
   <table class="table table-bordered table-hover">
   <thead>
-  <tr ><td colspan="3"><b>Data Anggota</b></td></tr> 
+  <tr class="bg-primary" ><td colspan="3"><b>Data Anggota</b></td></tr> 
     <tr>
 			<th>No</th>      
 			<th>Nama Anggota</th>			
@@ -138,20 +135,12 @@
 		</tr>
 		<?php } ?>
     </tbody>
-     <tfoot>
-     <tr>
-      <th>No</th>
-			<th>Nama Anggota</th>			
-			<th>NIM</th>			
-     </tr>
-     </tfoot>
     </table>  
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
         <a class="btn btn-success btn-sm" <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfimasi'); ?></a>
-        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin');?>">Kembali</a>
-                   
+        <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/dtSrtPd');?>">Kembali</a>
         </div>
         <div class="card-footer">
         

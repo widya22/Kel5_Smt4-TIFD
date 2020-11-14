@@ -69,7 +69,7 @@
       $u->ID_SURAT 
 		?>
 
-    <tr ><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
+    <tr class="bg-primary" ><td colspan="2"><b>Data Mahasiswa</b></td></tr> 		     
     <tr>
       <td><?php echo "NIM" ?></td>
 			<td><?php echo $u->NIM ?></td>
@@ -83,7 +83,7 @@
 			<td><?php echo $u->PRODI ?></td>
     </tr>
 
-    <tr ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
+    <tr class="bg-primary" ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
     <tr>
       <td><?php echo "NIP Dosen" ?></td>
 			<td><?php echo $u->NIP ?></td>
@@ -122,7 +122,7 @@
 	</table>
   <table class="table table-bordered table-hover">
   <thead>
-  <tr ><td colspan="3"><b>Data Anggota</b></td></tr> 
+  <tr class="bg-primary" ><td colspan="3"><b>Data Anggota</b></td></tr> 
     <tr>
 			<th>No</th>      
 			<th>Nama Anggota</th>			
@@ -140,13 +140,6 @@
 		</tr>
 		<?php } ?>
     </tbody>
-     <tfoot>
-     <tr>
-      <th>No</th>
-			<th>Nama Anggota</th>			
-			<th>NIM</th>			
-     </tr>
-     </tfoot>
     </table>  
         </div>
         <!-- /.card-body -->

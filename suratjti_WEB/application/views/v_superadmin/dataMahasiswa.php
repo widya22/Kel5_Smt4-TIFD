@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Pending</title>
+  <title>JTI SURAT | Jenis Surat</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,18 +17,9 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/asetadmin/dist/css/adminlte.min.css');?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- favicon -->
-	<link rel="shortcut icon" href="<?php echo base_url('assets/img/fav_admin.png') ?>">
-  
-  
-  
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-
-  <!-- /.navbar -->
-
-  <?php $this->load->view('sidebar_menu'); ?>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -38,68 +29,78 @@
         <div class="row mb-2">
           <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           <div class="col-sm-5">
-            <h1>Surat Pending</h1>
+            <h1>Data Mahasiswa</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Pending</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Data Mahasiswa</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-    
+    <!-- alert -->
+    <!-- <?php
+        if (isset($_SESSION['reset_sukses'])){ 
+      ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Password berhasil direset
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+      <?php }
+        if(isset($_SESSION['hapus_sukses'])){
+      ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Data berhasil dihapus
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+        <?php } 
+        unset($_SESSION['reset_sukses']);
+        unset($_SESSION['hapus_sukses']);
+        ?> -->
+    <!-- alert -->
 
-    <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Surat Pending</h3>
-            </div>
+    <!-- Main content -->
+          <div class="card card-primary">
+            <div class="container">
+
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr class="bg-primary">
-                  <th width="20">No</th>      
-                  <th width="30" class="text-center">Surat</th>			
-                  <th width="100" class="text-center">NIM</th>
-                  <th width="300" class="text-center">Nama Mitra</th>
-                  <th width="200" class="text-center">Tanggal Pengajuan</th>
-                  <th width="180" class="text-center">Status Surat</th>
-                  <th colspan="2" class="text-center">Action</th>
-                </tr>
+                <thead>
+                <tr>
+			<th>No</th>
+			<th>NIM</th>
+			<th>Nama Mahasiswa</th>
+			<th>Prodi</th>
+		</tr>
     <tbody>
 		<?php 
 		$no = 1;
-		foreach($surat as $u){ 
-      $u->ID_SURAT 
+		foreach($data_mahasiswa as $u){ 
 		?>
 		<tr>
-			<td><?php echo $no++ ?></td>      
-			<td><?php echo $u->ID_JENIS_SURAT ?></td>			
+			<td><?php echo $no++ ?></td>
 			<td><?php echo $u->NIM ?></td>
-			<td><?php echo $u->NAMA_MITRA ?></td>
-      <td><?php echo $u->TANGGAL ?></td>
-			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td class="text-center">
-          <a class="btn btn-info btn-sm" <?php echo anchor('admin/detailSurat0/'.$u->ID_SURAT,'Detail'); ?></a>
-      </td>
-      <td class="text-center">
-          <a class="btn btn-success btn-sm" onclick= <?php echo anchor('admin/update/'.$u->ID_SURAT,'Konfirmasi'); ?></a> 
-      </td>
-		</tr>    
-		<?php } ?>              
-                    
+			<td><?php echo $u->NAMA_MHS ?></td>
+			<td><?php echo $u->PRODI ?></td>
+		</tr>
+		<?php } ?>
+                
+                            
                 </tbody>
               </table>
+            </div>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-          
         </div>
         <!-- /.col -->
       </div>
@@ -123,41 +124,47 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<div id="modalTolak" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Tolak</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- form Tolak -->
-					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">
-          <label>Alasan :</label>		
-          <!-- <input name= "alasan" type="text" class="form-control">
-          </input>	 -->
-            <div class="form-group text-center d-flex justify-content-center">
-              
-                  <div class="row">
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block mr-2 ml-2" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
-             </div>			
+
+
+<!-- ============ MODAL ADD Mahassiwa =============== -->
+<div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title" id="myModalLabel">Add New Barang</h3>
             </div>
-  
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/simpan_js'?>">
+                <div class="modal-body">
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >IJS</label>
+                        <div class="col-xs-8">
+                            <input id="id_jenis_surat" name="id_jenis_surat" class="form-control" type="text" placeholder="Id Jenis Surat" required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >JS</label>
+                        <div class="col-xs-8">
+                            <input id="jenis_surat" name="jenis_surat" class="form-control" type="text" placeholder="Jenis Surat" required>
+                        </div>
+                    </div>                    
+ 
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info">Simpan</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL ADD Mahasiswa-->
 
-					</form>
-					<!-- end form login -->
-				</div>
-			</div>
-		</div>
-	</div>
-
- <!-- modal konfirmasi -->
- <div class="modal fade" id="konfirmModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
+  <!-- modal alert hapus -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -166,15 +173,37 @@
                 <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <div class="modal-body">Pastikan data yang diterima sudah benar.</div>
+              <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
                 <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a id="btn-konfirm" class="btn btn-primary" href="#">Konfirmasi</a>
+                <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
               </div>
             </div>
           </div>
         </div>
-  <!-- modal konfirmasi -->
+        <!-- modal alert hapus -->
+
+          <!-- modal alert reset pwd -->
+          <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" arialabelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Password Mahasiswa akan direset menjadi default "JTIPOLIJE"</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="btn-reset" class="btn btn-primary" href="#">Reset</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal alert reset pwd -->
+
+
 
 
 <!-- jQuery -->
@@ -188,6 +217,8 @@
 <script src="<?php echo base_url('assets/asetadmin/dist/js/adminlte.min.js');?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/asetadmin/dist/js/demo.js');?>"></script>
+
+<script src="<?php echo base_url('assets/asetadmin/dist/js/main.js');?>"></script>
 <!-- page script -->
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url() ?>assets/asetadmin/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -205,9 +236,8 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      "responsive": true, "lengthChange": false, "autoWidth": false
+    });
   });
 </script>
 </body>

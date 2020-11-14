@@ -14,5 +14,6 @@ function deleteConfirm(url){
       $('#konfirmModal').modal();
       }
 
+      
     // $(document).ready(function(){setTimeout(function(){$(".ubah_sukses").fadeIn(('slow');)}, 5000);});
     // $(document).ready(function(){setTimeout(function(){$(".ubah_sukses").fadeOut(('slow');)}, 500);});

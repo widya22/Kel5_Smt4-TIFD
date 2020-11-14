@@ -31,11 +31,16 @@ class Crud extends CI_Controller{
 		redirect('admin/JnSrt');
 		}
 	
-	function hapus($id){
+	function hapus_surat($id){
 		$where = array('ID_JENIS_SURAT' => $id);
-		$this->m_data->hapus_data($where,'jenis_surat');
-		$this->session->set_userdata('hapus_sukses', 'ubah');
-		redirect('admin/JnSrt');
+		$hapus = $this->m_data->hapus_data($where,'jenis_surat');
+		if($hapus > 0){
+			$this->session->set_userdata('hapus_sukses', 'ubah');
+		redirect('admin/jnSrt');
+			}else{
+			$this->session->set_userdata('hapus_gagal', 'ubah');
+		redirect('admin/jnSrt');
+			}
     }
 
     function tambahJS_aksi(){ // Tambah Jenis Surat
@@ -99,12 +104,15 @@ class Crud extends CI_Controller{
 			}
 		}
 
-		function edit_superadmin($id){
+		function edit_admin($id){
 			$data["superadmin"] = $this->m_data->edit_admin($id)->result();
-			$this->load->view('v_edit_superadmin', $data);
+			$data["kembali"] =  base_url("admin");
+		
+		$this->load->view('v_edit_admin', $data);
 		}
 
-		function update_aksi_admin(){// update jenis surat
+
+		function update_aksi_admin(){// update Admin
 
 			$id = $this->input->post('id');
 			$nama = $this->input->post('nama');
@@ -112,48 +120,50 @@ class Crud extends CI_Controller{
 			$hp = $this->input->post('hp');
 			$pwd1 = $this->input->post('pwd1');
 			$pwd2 = $this->input->post('pwd2');
-		  
-			if($pwd2 == null){
-			$data = array(
-			  'NAMA_ADMIN' => $nama,
-			  'PRODI' => $prodi,
-			  'HP' => $hp
-			  );
-			}else{
-				$data = array(
-					'NAMA_ADMIN' => $nama,
-					'PRODI' => $prodi,
-					'HP' => $hp,
-					'PASSWORD_ADM' => md5($pwd2)
+
+					if($pwd2 == null){
+						$data = array(
+						'NAMA_ADMIN' => $nama,
+						'PRODI' => $prodi,
+						'HP' => $hp
+							);
+					}else{
+						$data = array(
+							'NAMA_ADMIN' => $nama,
+							'PRODI' => $prodi,
+							'HP' => $hp,
+							'PASSWORD_ADM' => md5($pwd2)
+							);
+					}
+
+					$where = array(
+					'ID_ADMIN' => $id
 					);
-			}
 
-			$where = array(
-			  'ID_ADMIN' => $id
-			);
+					// VALIDASI PASSWORD
+					if($pwd2 == null ){
+						$this->m_data->update_jensu_data($where, $data,'admin');
+						$this->session->set_userdata('ubah_sukses', 'ubah');
 
-			if($pwd2 == null ){
-				$this->m_data->update_jensu_data($where, $data,'admin');
-				$this->session->set_userdata('ubah_sukses', 'ubah');
+						if ($_SESSION['id']=='super'){
+							redirect('admin/superAdmin/'.$id);
+						}else{
+							redirect('admin/dtSrtPd/'.$id);
+						}
+					}else {
+					if($this->m_data->cek_data(md5($pwd1), 'PASSWORD_ADM', 'admin') > 0){ //jika tidak ada di database
+						$this->m_data->update_jensu_data($where, $data,'admin');
+						$this->session->set_userdata('ubah_sukses', 'ubah');
 
-				if ($_SESSION['id']=='super'){
-					redirect('admin/superAdmin/'.$id);
-				}else{
-					redirect('admin/dtSrtPd/'.$id);
-				}
-			}else {
-			if($this->m_data->cek_data(md5($pwd1), 'PASSWORD_ADM', 'admin') > 0){ //jika tidak ada di database
-				$this->m_data->update_jensu_data($where, $data,'admin');
-				$this->session->set_userdata('ubah_sukses', 'ubah');
-
-				if ($_SESSION['id']=='super'){
-					redirect('admin/superAdmin/'.$id);
-				}else{
-					redirect('admin/dtSrtPd/'.$id);
-				}}
-			}
-			$this->session->set_userdata('pwd_gagal', 'ubah');
-			redirect('crud/edit_superadmin/'.$id);
+						if ($_SESSION['id']=='super'){
+							redirect('admin/superAdmin/'.$id);
+						}else{
+							redirect('admin/dtSrtPd/'.$id);
+						}}
+					}
+					$this->session->set_userdata('pwd_gagal', 'ubah');
+					redirect('crud/edit_superadmin/'.$id);
+					
 			
-			}
+		}
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Proses</title>
+  <title>JTI SURAT | Detail Surat</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,10 +22,6 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-  <!-- /.navbar -->
-
-  <?php $this->load->view('sidebar_menu'); ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -34,12 +30,12 @@
         <div class="row mb-2">
           <a class="nav-link text-secondary" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           <div class="col-sm-5">
-            <h1>Surat DiProses</h1>
+            <h1>Surat Dapat Diambil</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('admin');?>">Home</a></li>
-              <li class="breadcrumb-item active">Surat Proses</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Surat Dapat Diambil</li>
             </ol>
           </div>
         </div>
@@ -51,21 +47,21 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Surat DiProses</h3>
+              <h3 class="card-title">Surat Dapat Diambil</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
-                <thead>
+              <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
                 <tr>
 			<th width="20">No</th>      
-			<th width="30" class="text-center">Surat</th>			
-			<th width="100" class="text-center">NIM</th>
-			<th width="300" class="text-center">Nama Mitra</th>
-      <th width="100" class="text-center">Tanggal</th>
-			<th width="180" class="text-center">Status Surat</th>
-			<th colspan="3" class="text-center">Action</th>
+			<th width="30">Surat</th>			
+			<th width="100">NIM</th>
+			<th width="250">Nama Mitra</th>
+      <th width="170">Tanggal Pengajuan</th>
+			<th width="180">Status Surat</th>
+			<th width="180">Action</th>
 		</tr>
 		<?php 
 		$no = 1;
@@ -79,9 +75,7 @@
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td class="text-center"> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDiproses/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-      <td class="text-center"><a class="btn btn-warning btn-sm" href="<?php echo base_url('admin/print/'.$u->ID_SURAT);?>">Print</a> </td>
-      <td class="text-center"><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus2/'.$u->ID_SURAT,'Selesai'); ?></a> </td>
+      <td> <a class="btn btn-info btn-sm" <?php echo anchor('superadmin/detailSuratDiambil/'.$u->ID_SURAT,'Detail'); ?></a></td>
 		</tr>
     
 		<?php } ?>
@@ -93,7 +87,6 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-          
         </div>
         <!-- /.col -->
       </div>
@@ -117,37 +110,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<div id="modalTolak" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Tolak</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- form Tolak -->
-					<form action="<?php echo base_url('admin/updateTolak'); ?>" method="post">						
-            <div class="form-group">
-               <label>Alasan</label>
-                  <div class="row">
-                  <div class="col-sm-10">
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak1/'.$u->ID_SURAT,'Data Surat Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak2/'.$u->ID_SURAT,'Data Surat Tidak Valid'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak3/'.$u->ID_SURAT,'Data Mahasiswa Tidak Lengkap'); ?></a><p></p>
-            <a class="btn btn-danger btn-block" <?php echo anchor('admin/updateTolak4/'.$u->ID_SURAT,'Data Mahasiswa Tidak Valid'); ?></a>
-             </div>
-             </div>			
-            </div>
-  
-
-					</form>
-					<!-- end form login -->
-				</div>
-			</div>
-		</div>
-	</div>
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/asetadmin/plugins/jquery/jquery.min.js');?>"></script>

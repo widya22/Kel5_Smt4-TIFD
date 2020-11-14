@@ -59,12 +59,12 @@
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
                 <tr>
 			<th width="20">No</th>      
-			<th width="30">Surat</th>			
-			<th width="100">NIM</th>
-			<th width="250">Nama Mitra</th>
-      <th width="170">Tanggal Pengajuan</th>
-			<th width="180">Status Surat</th>
-			<th colspan="2">Action</th>
+			<th width="30" class="text-center">Surat</th>			
+			<th width="100" class="text-center">NIM</th>
+			<th width="250" class="text-center">Nama Mitra</th>
+      <th width="170" class="text-center">Tanggal Pengajuan</th>
+			<th width="180" class="text-center">Status Surat</th>
+			<th colspan="2" class="text-center">Action</th>
 		</tr>
 		<?php 
 		$no = 1;
@@ -78,8 +78,8 @@
 			<td><?php echo $u->NAMA_MITRA ?></td>
       <td><?php echo $u->TANGGAL ?></td>
 			<td><?php echo $u->STATUS_SURAT ?></td>
-			<td> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDapatDiambil/'.$u->ID_SURAT,'Detail'); ?></a> </td>
-      <td><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus3/'.$u->ID_SURAT,'Selesai'); ?></a> </td>             
+			<td class="text-center"> <a class="btn btn-info btn-sm" <?php echo anchor('admin/dsDapatDiambil/'.$u->ID_SURAT,'Detail'); ?></a> </td>
+      <td class="text-center"><a class="btn btn-success btn-sm" <?php echo anchor('admin/updatestatus3/'.$u->ID_SURAT,'Selesai'); ?></a> </td>             
 		</tr>
     
 		<?php } ?>
